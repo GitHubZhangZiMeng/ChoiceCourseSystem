@@ -12,7 +12,7 @@
 #import "CancelCourseViewController.h"
 #import "PersonViewController.h"
 #import "AppDelegate.h"
-#import "AlertViewController.h"
+
 #import "MBProgressHUD.h"
 @interface LoginViewController ()<MBProgressHUDDelegate>
 {
@@ -33,8 +33,12 @@
 }
 - (void)notNet
 {
-    AlertViewController *alert = [AlertViewController alertControllerWithTitle:@"提示" message:@"网络请求失败，请检查你的网络设置" preferredStyle:1];
-    [self presentViewController:alert animated:YES completion:nil];
+   [AlertNotice showAlert:0 withTitle:@"提示" withContent:@"网络请求失败，请检查你的网络设置" withVC:self clickLeftBtn:^{
+       [self dismissViewControllerAnimated:YES completion:nil];
+   } clickRightBtn:^{
+       [self dismissViewControllerAnimated:YES completion:nil];
+   }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,6 +66,7 @@
     
     
     ChoiceCourseViewController *choiseVC = [[ChoiceCourseViewController alloc] init];
+    choiseVC.view.backgroundColor = [UIColor whiteColor];
     choiseVC.tabBarItem.title=@"选课";
     choiseVC.tabBarItem.image=[UIImage imageNamed:@"ChoiseCourse"];
     UINavigationController *choiseNav = [[UINavigationController alloc] initWithRootViewController:choiseVC];
