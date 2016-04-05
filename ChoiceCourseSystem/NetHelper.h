@@ -13,7 +13,7 @@ typedef void(^errBlock)(id err);
 
 @interface NetHelper : NSObject
 
-
 - (void)getRequest:(NSString *)urlStr withNetBlock:(netBlock)block withErrBlock:(errBlock)errblock;
 
+- (void)getWaitRequest:(NSString *)urlStr withNetBlock:(netBlock)block withErrBlock:(errBlock)errblock;
 @end

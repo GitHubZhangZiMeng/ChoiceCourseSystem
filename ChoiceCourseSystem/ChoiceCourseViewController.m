@@ -18,11 +18,12 @@
     [super viewDidLoad];
     self.navigationItem.title=@"选课";
     
-   [[NetHelper new] getRequest:@"http://www.baidu.com" withNetBlock:^(id responseObject) {
+   [[NetHelper new] getRequest:nil withNetBlock:^(id responseObject) {
        NSLog(@"******%@",responseObject);
    } withErrBlock:^(id err) {
        NSLog(@"______%@",err);
    }];
+    
     
     
     // Do any additional setup after loading the view from its nib.
@@ -35,11 +36,11 @@
 }
 
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 0;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return nil;
