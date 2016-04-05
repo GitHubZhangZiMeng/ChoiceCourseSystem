@@ -32,6 +32,7 @@
 		0AD912ED1CA79BFC0090B2BB /* PersonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AD912EB1CA79BFC0090B2BB /* PersonTableViewCell.xib */; };
 		0AD912EF1CA79CD90090B2BB /* in.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AD912EE1CA79CD90090B2BB /* in.png */; };
 		C1B1D3FC1CAE6BDB0022A23F /* AlertNotice.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B1D3FB1CAE6BDB0022A23F /* AlertNotice.m */; };
+		C1D4DFB91CB3483500F14071 /* NetHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D4DFB81CB3483500F14071 /* NetHelper.m */; };
 		FAEBB2359A989E2461BBAB37 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AA4956B7BBF0171E834A703 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,8 @@
 		C1B1D3FA1CAE6BDB0022A23F /* AlertNotice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertNotice.h; sourceTree = "<group>"; };
 		C1B1D3FB1CAE6BDB0022A23F /* AlertNotice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertNotice.m; sourceTree = "<group>"; };
 		C1B1D3FE1CAE708D0022A23F /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		C1D4DFB71CB3483500F14071 /* NetHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetHelper.h; path = ChoiceCourseSystem/NetHelper.h; sourceTree = SOURCE_ROOT; };
+		C1D4DFB81CB3483500F14071 /* NetHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetHelper.m; path = ChoiceCourseSystem/NetHelper.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +156,8 @@
 		0A8E15311C8A9A03005200AB /* urlHelper */ = {
 			isa = PBXGroup;
 			children = (
+				C1D4DFB71CB3483500F14071 /* NetHelper.h */,
+				C1D4DFB81CB3483500F14071 /* NetHelper.m */,
 			);
 			name = urlHelper;
 			path = ../../liangCang/LC;
@@ -428,6 +433,7 @@
 				0A8E15471C8A9FCF005200AB /* CancelCourseViewController.m in Sources */,
 				0A8E15391C8A9E26005200AB /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				0A8E15421C8A9F59005200AB /* ChoiceCourseViewController.m in Sources */,
+				C1D4DFB91CB3483500F14071 /* NetHelper.m in Sources */,
 				0AD6E2781CA7AD87003541E2 /* Reachability.m in Sources */,
 				0AB6C0F21C75658B00BCC4A4 /* main.m in Sources */,
 				0A082C591C86BCE600A63C5B /* LoginViewController.m in Sources */,

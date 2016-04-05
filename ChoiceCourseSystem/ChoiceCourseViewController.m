@@ -18,7 +18,12 @@
     [super viewDidLoad];
     self.navigationItem.title=@"选课";
     
-//    [[AFJSONRequestSerializer serializer] requestWithMethod:@"get" URLString:nil parameters:nil error:nil];
+   [[NetHelper new] getRequest:@"http://www.baidu.com" withNetBlock:^(id responseObject) {
+       NSLog(@"******%@",responseObject);
+   } withErrBlock:^(id err) {
+       NSLog(@"______%@",err);
+   }];
+    
     
     // Do any additional setup after loading the view from its nib.
 }

@@ -17,4 +17,5 @@
 #import <UIKit/UIKit.h>
 #import "AlertNotice.h"
 #import "AFNetworking.h"
+#import "NetHelper.h"
 #endif /* PrefixHeader_pch */
