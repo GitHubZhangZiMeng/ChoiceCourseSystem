@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title=@"个人设置";
-    self.personArr = [NSMutableArray arrayWithObjects:@"我的选课",@"设置密码",@"清除缓存",@"关于我们",nil];
+    self.personArr = [NSMutableArray arrayWithObjects:@"我的选课",@"设置密码",@"退出登陆",@"关于我们",nil];
     // Do any additional setup after loading the view from its nib.
 }
 
