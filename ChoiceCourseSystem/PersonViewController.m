@@ -8,6 +8,7 @@
 
 #import "PersonViewController.h"
 #import "PersonTableViewCell.h"
+#import "SelectedViewController.h"
 @interface PersonViewController ()
 
 @end
@@ -19,6 +20,10 @@
     self.navigationItem.title=@"个人设置";
     self.personArr = [NSMutableArray arrayWithObjects:@"我的选课",@"设置密码",@"退出登陆",@"关于我们",nil];
     // Do any additional setup after loading the view from its nib.
+}
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.tabBarController.tabBar.hidden = NO ;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,7 +43,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.navigationController pushViewController:[SelectedViewController new] animated:YES];
     
+    self.tabBarController.tabBar.hidden=YES;
     
     
 }

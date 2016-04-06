@@ -22,6 +22,15 @@
 #import "UIViewController+Alert.h"
 
 
+#pragma mark -界面大小
+
+#define MainScreen [UIScreen mainScreen]
+#define MainScreenWidth MainScreen.bounds.size.width
+#define MainScreenHeight MainScreen.bounds.size.height
+
+
+#pragma mark - URL
+
 #define kURL_Host   @""  ///请示 URL
 #define kURL_Login  [kURL_Host stringByAppendingString:@""]   //登陆请求
 #define kURL_college [kURL_Host stringByAppendingString:@""]  //学院

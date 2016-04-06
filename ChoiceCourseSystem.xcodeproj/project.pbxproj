@@ -36,6 +36,7 @@
 		C1D4DFBC1CB3A4C700F14071 /* collegeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D4DFBB1CB3A4C700F14071 /* collegeModel.m */; };
 		C1D4DFBF1CB3AA1D00F14071 /* CourseContent.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D4DFBE1CB3AA1D00F14071 /* CourseContent.m */; };
 		C1DBB6371CB4DEAC00C478A7 /* UIViewController+Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DBB6361CB4DEAC00C478A7 /* UIViewController+Alert.m */; };
+		C1DBB63A1CB4F73400C478A7 /* SelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DBB6391CB4F73400C478A7 /* SelectedViewController.m */; };
 		FAEBB2359A989E2461BBAB37 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AA4956B7BBF0171E834A703 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,8 @@
 		C1D4DFBE1CB3AA1D00F14071 /* CourseContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseContent.m; sourceTree = "<group>"; };
 		C1DBB6351CB4DE5E00C478A7 /* UIViewController+Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Alert.h"; sourceTree = "<group>"; };
 		C1DBB6361CB4DEAC00C478A7 /* UIViewController+Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alert.m"; sourceTree = "<group>"; };
+		C1DBB6381CB4F73400C478A7 /* SelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedViewController.h; sourceTree = "<group>"; };
+		C1DBB6391CB4F73400C478A7 /* SelectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +143,8 @@
 				0A8E15451C8A9FCF005200AB /* CancelCourseViewController.m */,
 				0A8E154A1C8AA02C005200AB /* PersonViewController.h */,
 				0A8E154B1C8AA02C005200AB /* PersonViewController.m */,
+				C1DBB6381CB4F73400C478A7 /* SelectedViewController.h */,
+				C1DBB6391CB4F73400C478A7 /* SelectedViewController.m */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -463,6 +468,7 @@
 				0AD6E2781CA7AD87003541E2 /* Reachability.m in Sources */,
 				0AB6C0F21C75658B00BCC4A4 /* main.m in Sources */,
 				0A082C591C86BCE600A63C5B /* LoginViewController.m in Sources */,
+				C1DBB63A1CB4F73400C478A7 /* SelectedViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
