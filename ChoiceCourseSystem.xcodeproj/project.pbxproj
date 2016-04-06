@@ -37,6 +37,7 @@
 		C1D4DFBF1CB3AA1D00F14071 /* CourseContent.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D4DFBE1CB3AA1D00F14071 /* CourseContent.m */; };
 		C1DBB6371CB4DEAC00C478A7 /* UIViewController+Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DBB6361CB4DEAC00C478A7 /* UIViewController+Alert.m */; };
 		C1DBB63A1CB4F73400C478A7 /* SelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DBB6391CB4F73400C478A7 /* SelectedViewController.m */; };
+		C1DBB63D1CB50F0D00C478A7 /* CourseNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DBB63C1CB50F0D00C478A7 /* CourseNameViewController.m */; };
 		FAEBB2359A989E2461BBAB37 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AA4956B7BBF0171E834A703 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +95,8 @@
 		C1DBB6361CB4DEAC00C478A7 /* UIViewController+Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alert.m"; sourceTree = "<group>"; };
 		C1DBB6381CB4F73400C478A7 /* SelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedViewController.h; sourceTree = "<group>"; };
 		C1DBB6391CB4F73400C478A7 /* SelectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedViewController.m; sourceTree = "<group>"; };
+		C1DBB63B1CB50F0D00C478A7 /* CourseNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseNameViewController.h; sourceTree = "<group>"; };
+		C1DBB63C1CB50F0D00C478A7 /* CourseNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseNameViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,16 +138,10 @@
 		0A8E152C1C8A98EB005200AB /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				0A082C561C86BCE600A63C5B /* LoginViewController.h */,
-				0A082C571C86BCE600A63C5B /* LoginViewController.m */,
-				0A8E153F1C8A9F59005200AB /* ChoiceCourseViewController.h */,
-				0A8E15401C8A9F59005200AB /* ChoiceCourseViewController.m */,
-				0A8E15441C8A9FCF005200AB /* CancelCourseViewController.h */,
-				0A8E15451C8A9FCF005200AB /* CancelCourseViewController.m */,
-				0A8E154A1C8AA02C005200AB /* PersonViewController.h */,
-				0A8E154B1C8AA02C005200AB /* PersonViewController.m */,
-				C1DBB6381CB4F73400C478A7 /* SelectedViewController.h */,
-				C1DBB6391CB4F73400C478A7 /* SelectedViewController.m */,
+				C1DBB6411CB5224D00C478A7 /* PersonVC */,
+				C1DBB6401CB5223A00C478A7 /* CancelCourseVC */,
+				C1DBB63F1CB5222C00C478A7 /* ChoiseCourseVC */,
+				C1DBB63E1CB5222000C478A7 /* LoginVC */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -154,10 +151,6 @@
 			children = (
 				C1B1D3F91CAE6BAE0022A23F /* AlertView */,
 				0AD912F01CA7A8C60090B2BB /* CellView */,
-				0A082C581C86BCE600A63C5B /* LoginViewController.xib */,
-				0A8E15411C8A9F59005200AB /* ChoiceCourseViewController.xib */,
-				0A8E15461C8A9FCF005200AB /* CancelCourseViewController.xib */,
-				0A8E154C1C8AA02C005200AB /* PersonViewController.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -321,6 +314,50 @@
 			name = "UIViewController+Alert";
 			sourceTree = "<group>";
 		};
+		C1DBB63E1CB5222000C478A7 /* LoginVC */ = {
+			isa = PBXGroup;
+			children = (
+				0A082C561C86BCE600A63C5B /* LoginViewController.h */,
+				0A082C571C86BCE600A63C5B /* LoginViewController.m */,
+				0A082C581C86BCE600A63C5B /* LoginViewController.xib */,
+			);
+			name = LoginVC;
+			sourceTree = "<group>";
+		};
+		C1DBB63F1CB5222C00C478A7 /* ChoiseCourseVC */ = {
+			isa = PBXGroup;
+			children = (
+				C1DBB6381CB4F73400C478A7 /* SelectedViewController.h */,
+				C1DBB6391CB4F73400C478A7 /* SelectedViewController.m */,
+				0A8E153F1C8A9F59005200AB /* ChoiceCourseViewController.h */,
+				0A8E15401C8A9F59005200AB /* ChoiceCourseViewController.m */,
+				0A8E15411C8A9F59005200AB /* ChoiceCourseViewController.xib */,
+			);
+			name = ChoiseCourseVC;
+			sourceTree = "<group>";
+		};
+		C1DBB6401CB5223A00C478A7 /* CancelCourseVC */ = {
+			isa = PBXGroup;
+			children = (
+				0A8E15441C8A9FCF005200AB /* CancelCourseViewController.h */,
+				0A8E15451C8A9FCF005200AB /* CancelCourseViewController.m */,
+				0A8E15461C8A9FCF005200AB /* CancelCourseViewController.xib */,
+			);
+			name = CancelCourseVC;
+			sourceTree = "<group>";
+		};
+		C1DBB6411CB5224D00C478A7 /* PersonVC */ = {
+			isa = PBXGroup;
+			children = (
+				C1DBB63B1CB50F0D00C478A7 /* CourseNameViewController.h */,
+				C1DBB63C1CB50F0D00C478A7 /* CourseNameViewController.m */,
+				0A8E154A1C8AA02C005200AB /* PersonViewController.h */,
+				0A8E154B1C8AA02C005200AB /* PersonViewController.m */,
+				0A8E154C1C8AA02C005200AB /* PersonViewController.xib */,
+			);
+			name = PersonVC;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -456,6 +493,7 @@
 				C1B1D3FC1CAE6BDB0022A23F /* AlertNotice.m in Sources */,
 				0A8E154D1C8AA02C005200AB /* PersonViewController.m in Sources */,
 				C1DBB6371CB4DEAC00C478A7 /* UIViewController+Alert.m in Sources */,
+				C1DBB63D1CB50F0D00C478A7 /* CourseNameViewController.m in Sources */,
 				C1D4DFBC1CB3A4C700F14071 /* collegeModel.m in Sources */,
 				0A8E153D1C8A9E50005200AB /* MBProgressHUD.m in Sources */,
 				0AD912EC1CA79BFC0090B2BB /* PersonTableViewCell.m in Sources */,

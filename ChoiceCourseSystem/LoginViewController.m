@@ -87,7 +87,7 @@
 }
 - (void)loginPro
 {
-    sleep(5);
+    
     //网络请求登陆
 }
 @end

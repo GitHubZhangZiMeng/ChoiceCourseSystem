@@ -9,6 +9,7 @@
 #import "PersonViewController.h"
 #import "PersonTableViewCell.h"
 #import "SelectedViewController.h"
+#import "CourseNameViewController.h"
 @interface PersonViewController ()
 
 @end
@@ -43,20 +44,40 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.navigationController pushViewController:[SelectedViewController new] animated:YES];
-    
-    self.tabBarController.tabBar.hidden=YES;
-    
+    self.tabBarController.tabBar.hidden = YES;
+    switch (indexPath.row)
+    {
+        case 0://我的选课
+            [self.navigationController pushViewController:[CourseNameViewController new] animated:YES];
+            break;
+        case 1:
+            
+            break;
+            
+        case 2:
+            
+            break;
+            
+        case 3:
+            
+            break;
+        
+        default:
+            break;
+    }
     
 }
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 100;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 50;
