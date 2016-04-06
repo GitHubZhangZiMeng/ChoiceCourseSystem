@@ -7,7 +7,6 @@
 //
 
 #import "LoginViewController.h"
-//#import "YKNetHelper.h"
 #import "ChoiceCourseViewController.h"
 #import "CancelCourseViewController.h"
 #import "PersonViewController.h"
@@ -25,21 +24,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self showAlert];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notNet) name:@"netWorkState" object:nil];
     
     
     // Do any additional setup after loading the view from its nib.
 }
-- (void)notNet
-{
-   [AlertNotice showAlert:0 withTitle:@"提示" withContent:@"网络请求失败，请检查你的网络设置" withVC:self clickLeftBtn:^{
-       [self dismissViewControllerAnimated:YES completion:nil];
-   } clickRightBtn:^{
-       [self dismissViewControllerAnimated:YES completion:nil];
-   }];
-    
-}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -58,12 +49,14 @@
 
 - (IBAction)loginBtn:(id)sender {
     
+    
+    
+    
     progressHUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:progressHUD];
     progressHUD.delegate = self;
     progressHUD.labelText = @"登录中...";
     [progressHUD showWhileExecuting:@selector(loginPro) onTarget:self withObject:nil animated:YES];
-    
     
     ChoiceCourseViewController *choiseVC = [[ChoiceCourseViewController alloc] init];
     choiseVC.view.backgroundColor = [UIColor whiteColor];

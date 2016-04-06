@@ -40,7 +40,12 @@
             leftBtnTitle=@"确定";
             rightBtnTitle=@"取消";
             break;
-            
+        case 1:
+            title = @"提示";
+            content = @"账号密码错误";
+            leftBtnTitle = @"确定";
+            rightBtnTitle = @"取消";
+        
         default:
             break;
     }

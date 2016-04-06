@@ -19,4 +19,11 @@
 #import "AFNetworking.h"
 #import "NetHelper.h"
 #import "MBProgressHUD.h"
+#import "UIViewController+Alert.h"
+
+
+#define kURL_Host   @""  ///请示 URL
+#define kURL_Login  [kURL_Host stringByAppendingString:@""]   //登陆请求
+#define kURL_college [kURL_Host stringByAppendingString:@""]  //学院
+
 #endif /* PrefixHeader_pch */
