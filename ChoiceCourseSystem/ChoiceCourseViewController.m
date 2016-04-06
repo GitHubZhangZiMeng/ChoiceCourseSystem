@@ -18,11 +18,11 @@
     [super viewDidLoad];
     self.navigationItem.title=@"选课";
     
-   [[NetHelper new] getRequest:nil withNetBlock:^(id responseObject) {
-       NSLog(@"******%@",responseObject);
-   } withErrBlock:^(id err) {
-       NSLog(@"______%@",err);
-   }];
+//   [[NetHelper new] getRequest:nil withNetBlock:^(id responseObject) {
+//       NSLog(@"******%@",responseObject);
+//   } withErrBlock:^(id err) {
+//       NSLog(@"______%@",err);
+//   }];
     
     
     

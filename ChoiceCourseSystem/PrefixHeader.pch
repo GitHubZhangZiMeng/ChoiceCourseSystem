@@ -18,4 +18,5 @@
 #import "AlertNotice.h"
 #import "AFNetworking.h"
 #import "NetHelper.h"
+#import "MBProgressHUD.h"
 #endif /* PrefixHeader_pch */
