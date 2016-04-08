@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : SuperViewController
 @property (weak, nonatomic) IBOutlet UITextField *usernameTF;
-
 @property (weak, nonatomic) IBOutlet UITextField *pwdTF;
 
 - (IBAction)loginBtn:(id)sender;

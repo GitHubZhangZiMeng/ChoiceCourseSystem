@@ -34,12 +34,32 @@
 # pragma mark - table的代理
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UILabel *lab = [[UILabel alloc] init];
-    lab.text = @"用户名：XXX";
-    lab.textAlignment = NSTextAlignmentCenter;
-    lab.font = [UIFont systemFontOfSize:20];
-    lab.numberOfLines = 0;
-    return lab;
+    UIView *vi = [[UIView alloc] init];
+    
+//    UILabel *nameLab = [[UILabel alloc] init];
+//    nameLab.text = @"姓名：XXX";
+//    nameLab.textAlignment = NSTextAlignmentCenter;
+//    nameLab.font = [UIFont systemFontOfSize:20];
+//    nameLab.numberOfLines = 0;
+//    
+//    UILabel *lab = [[UILabel alloc] init];
+//    lab.text = @"用户名：XXX";
+//    lab.textAlignment = NSTextAlignmentCenter;
+//    lab.font = [UIFont systemFontOfSize:20];
+//    lab.numberOfLines = 0;
+//    
+//    UILabel *lab = [[UILabel alloc] init];
+//    lab.text = @"用户名：XXX";
+//    lab.textAlignment = NSTextAlignmentCenter;
+//    lab.font = [UIFont systemFontOfSize:20];
+//    lab.numberOfLines = 0;
+//    
+//    UILabel *lab = [[UILabel alloc] init];
+//    lab.text = @"用户名：XXX";
+//    lab.textAlignment = NSTextAlignmentCenter;
+//    lab.font = [UIFont systemFontOfSize:20];
+//    lab.numberOfLines = 0;
+    return vi;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -48,7 +68,7 @@
     switch (indexPath.row)
     {
         case 0://我的选课
-            [self.navigationController pushViewController:[CourseNameViewController new] animated:YES];
+            [self.navigationController pushViewController:[SelectedViewController new] animated:YES];
             break;
         case 1:
             

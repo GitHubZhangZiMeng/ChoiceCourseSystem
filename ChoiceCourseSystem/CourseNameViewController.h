@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CourseNameViewController : UIViewController
+@interface CourseNameViewController : SuperViewController
 
 @end

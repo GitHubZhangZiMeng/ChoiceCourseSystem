@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PersonViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
-@property (nonatomic ,strong) NSMutableArray *personArr;
+@interface PersonViewController : SuperViewController<UITableViewDataSource,UITableViewDelegate>
+@property (nonatomic ,strong)NSMutableArray *personArr;
+
+
+@property (nonatomic, strong)NSString *name;
+@property (nonatomic, strong)NSString *college;
+@property (nonatomic, strong)NSString *numble;
+@property (nonatomic, strong)NSString *schoolArea;
 
 @end

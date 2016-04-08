@@ -10,8 +10,8 @@
 
 @interface SelectedViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 
+@property (nonatomic, strong)UIView *tagVi;
 @property (nonatomic, strong)UIScrollView *scroll;
-@property (nonatomic, strong)UISegmentedControl *segment;
 
 @end
 
@@ -19,13 +19,36 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"已选课程",@"未选课程", nil]];
     
-    [_segment setSelectedSegmentIndex:0];
-    [_segment addTarget:self action:@selector(selectOrNot:) forControlEvents:UIControlEventValueChanged];
-    self.navigationItem.titleView = _segment;
+    self.navigationItem.title = @"课程";
     
-    _scroll = [[UIScrollView alloc] initWithFrame:MainScreen.bounds];
+    
+    UIView *seView = [[UIView alloc] init];
+    seView.backgroundColor = [UIColor greenColor];
+    seView.frame = CGRectMake(0 , NavHeight+StatusHeight, MainScreenWidth, 44);
+    [self.view addSubview:seView];
+    
+    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    [leftBtn setTitle:@"已选课程" forState:UIControlStateNormal];
+    [leftBtn setFrame:CGRectMake(0, 0, MainScreenWidth/2, 40)];
+    leftBtn.tag = 1;
+    [leftBtn addTarget:self action:@selector(selectBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [seView addSubview:leftBtn];
+    
+    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    rightBtn.tag = 2;
+    [rightBtn setTitle:@"未选课程" forState:UIControlStateNormal];
+    [rightBtn setFrame:CGRectMake(MainScreenWidth/2, 0, MainScreenWidth/2, 40)];
+    [rightBtn addTarget:self action:@selector(selectBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [seView addSubview:rightBtn];
+    
+    _tagVi = [[UIView alloc] init];
+    _tagVi.frame = CGRectMake(0, 40, MainScreenWidth/2, 4);
+    _tagVi.backgroundColor = [UIColor grayColor];
+    [seView addSubview:_tagVi];
+    
+    
+    _scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, NavHeight+StatusHeight+44, MainScreenWidth, MainScreenHeight)];
     _scroll.contentSize = CGSizeMake(MainScreenWidth*2, 0);
     _scroll.showsVerticalScrollIndicator = NO;
     _scroll.showsHorizontalScrollIndicator = NO;
@@ -50,20 +73,29 @@
     
     // Do any additional setup after loading the view.
 }
-
-
-#pragma mark - 选择segment
-- (void)selectOrNot:(UISegmentedControl *)segment
+#pragma mark - btn的addtarget
+- (void)selectBtn: (UIButton *)selectedBtn
 {
-    if (segment.selectedSegmentIndex ==0)
+    if (selectedBtn.tag == 1)
     {
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:.2];
+        _tagVi.frame = CGRectMake(0, 40, MainScreenWidth/2, 4);
         _scroll.contentOffset = CGPointMake(0, 0);
+        [UIView commitAnimations];
+        
+      
     }
     else
     {
-        _scroll.contentOffset = CGPointMake(MainScreenWidth, 0);
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:.2];
+        _tagVi.frame = CGRectMake(MainScreenWidth/2, 40, MainScreenWidth/2, 4);
+         _scroll.contentOffset = CGPointMake(MainScreenWidth, 0);
+        [UIView commitAnimations];
     }
 }
+
 #pragma mark - scroller代理
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
@@ -72,15 +104,23 @@
     {
         if (scrollView.contentOffset.x == MainScreenWidth)
         {
-            [_segment setSelectedSegmentIndex:1];
+             _tagVi.frame = CGRectMake(MainScreenWidth/2, 40, MainScreenWidth/2, 4);
         }
         else
         {
-            [_segment setSelectedSegmentIndex:0];
+            _tagVi.frame = CGRectMake(0, 40, MainScreenWidth/2, 4);
         }
     }
     
 }
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+//    NSLog(@"%@",NSStringFromCGPoint(scrollView.contentOffset));
+    _tagVi.frame =CGRectMake(scrollView.contentOffset.x/2, 40, MainScreenWidth/2, 4);
+    
+}
+
+
 #pragma mark - tableView代理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

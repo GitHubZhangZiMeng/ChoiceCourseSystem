@@ -19,7 +19,18 @@
 #import "AFNetworking.h"
 #import "NetHelper.h"
 #import "MBProgressHUD.h"
-#import "UIViewController+Alert.h"
+#import "SuperViewController.h"
+
+
+#pragma mark -状态栏大小
+
+#define StatusWidth  [[UIApplication sharedApplication] statusBarFrame].size.width
+#define StatusHeight [[UIApplication sharedApplication] statusBarFrame].size.height
+
+#pragma mark -导航栏大小
+
+#define NavWidth  self.navigationController.navigationBar.frame.size.width
+#define NavHeight self.navigationController.navigationBar.frame.size.height
 
 
 #pragma mark -界面大小

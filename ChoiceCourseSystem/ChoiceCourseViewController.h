@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChoiceCourseViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
+@interface ChoiceCourseViewController : SuperViewController <UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *collegeTable;
 
 @end

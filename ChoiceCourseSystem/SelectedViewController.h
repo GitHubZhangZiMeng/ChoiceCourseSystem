@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SelectedViewController : UIViewController
+@interface SelectedViewController : SuperViewController
 
 @end

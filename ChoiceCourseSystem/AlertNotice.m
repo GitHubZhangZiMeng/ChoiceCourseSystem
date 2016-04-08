@@ -45,7 +45,13 @@
             content = @"账号密码错误";
             leftBtnTitle = @"确定";
             rightBtnTitle = @"取消";
-        
+            break;
+        case 2:
+            title = @"提示";
+            content = @"账号密码不能为空";
+            leftBtnTitle = @"确定";
+            rightBtnTitle = @"取消";
+            break;
         default:
             break;
     }

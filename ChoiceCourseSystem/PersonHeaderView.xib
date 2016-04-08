@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="sbK-E3-g2t" customClass="PersonHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="198"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VB4-n9-gS6">
+                    <rect key="frame" x="30" y="10" width="260" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qc2-n4-Bu6">
+                    <rect key="frame" x="33" y="86" width="57" height="37"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Lm-6O-QEa">
+                    <rect key="frame" x="33" y="131" width="57" height="37"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBs-fb-425">
+                    <rect key="frame" x="30" y="39" width="260" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="VB4-n9-gS6" firstAttribute="height" secondItem="hBs-fb-425" secondAttribute="height" id="2QB-Ad-d3l"/>
+                <constraint firstItem="VB4-n9-gS6" firstAttribute="centerX" secondItem="sbK-E3-g2t" secondAttribute="centerX" id="ElO-mH-Wzu"/>
+                <constraint firstItem="VB4-n9-gS6" firstAttribute="width" secondItem="hBs-fb-425" secondAttribute="width" id="Gjh-t0-YsG"/>
+                <constraint firstItem="VB4-n9-gS6" firstAttribute="leading" secondItem="sbK-E3-g2t" secondAttribute="leading" constant="30" id="LDb-Ne-dtZ"/>
+                <constraint firstItem="VB4-n9-gS6" firstAttribute="top" secondItem="sbK-E3-g2t" secondAttribute="top" constant="10" id="TIS-7w-cZp"/>
+                <constraint firstItem="hBs-fb-425" firstAttribute="top" secondItem="VB4-n9-gS6" secondAttribute="bottom" constant="8" id="dnL-70-wx3"/>
+                <constraint firstItem="hBs-fb-425" firstAttribute="centerX" secondItem="sbK-E3-g2t" secondAttribute="centerX" id="gvR-N1-DE2"/>
+                <constraint firstItem="hBs-fb-425" firstAttribute="trailing" secondItem="VB4-n9-gS6" secondAttribute="trailing" id="kZj-2k-2dB"/>
+                <constraint firstAttribute="trailing" secondItem="VB4-n9-gS6" secondAttribute="trailing" constant="30" id="rjy-qN-nYY"/>
+                <constraint firstItem="hBs-fb-425" firstAttribute="leading" secondItem="VB4-n9-gS6" secondAttribute="leading" id="vb4-T2-0TH"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="281" y="265"/>
+        </view>
+    </objects>
+</document>

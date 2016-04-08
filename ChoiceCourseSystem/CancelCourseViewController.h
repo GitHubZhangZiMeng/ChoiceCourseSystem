@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CancelCourseViewController : UIViewController
+@interface CancelCourseViewController : SuperViewController
 
 @end

@@ -14,7 +14,8 @@ typedef void(^clickCallBack)();
 typedef NS_ENUM(NSInteger,AlertNoticeType)
 {
     kNotNetWork = 0,
-    kIdPwdErr = 1
+    kIdPwdErr = 1,
+    kIdPwdToNil = 2
 };
 
 
