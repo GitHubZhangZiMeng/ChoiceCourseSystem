@@ -10,6 +10,8 @@
 		0A082C591C86BCE600A63C5B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A082C571C86BCE600A63C5B /* LoginViewController.m */; };
 		0A082C5A1C86BCE600A63C5B /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A082C581C86BCE600A63C5B /* LoginViewController.xib */; };
 		0A082C5C1C86BEFF00A63C5B /* cuitPNG.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A082C5B1C86BEFF00A63C5B /* cuitPNG.png */; };
+		0A23DF641CB8A72200BCDAC2 /* SetPassWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A23DF621CB8A72200BCDAC2 /* SetPassWordViewController.m */; };
+		0A23DF651CB8A72200BCDAC2 /* SetPassWordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A23DF631CB8A72200BCDAC2 /* SetPassWordViewController.xib */; };
 		0A8E15391C8A9E26005200AB /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8E15361C8A9E26005200AB /* UIScrollView+SVInfiniteScrolling.m */; };
 		0A8E153A1C8A9E26005200AB /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8E15381C8A9E26005200AB /* UIScrollView+SVPullToRefresh.m */; };
 		0A8E153D1C8A9E50005200AB /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8E153C1C8A9E50005200AB /* MBProgressHUD.m */; };
@@ -52,6 +54,9 @@
 		0A082C571C86BCE600A63C5B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		0A082C581C86BCE600A63C5B /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		0A082C5B1C86BEFF00A63C5B /* cuitPNG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cuitPNG.png; sourceTree = "<group>"; };
+		0A23DF611CB8A72200BCDAC2 /* SetPassWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetPassWordViewController.h; sourceTree = "<group>"; };
+		0A23DF621CB8A72200BCDAC2 /* SetPassWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetPassWordViewController.m; sourceTree = "<group>"; };
+		0A23DF631CB8A72200BCDAC2 /* SetPassWordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetPassWordViewController.xib; sourceTree = "<group>"; };
 		0A8E15341C8A9E26005200AB /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
 		0A8E15351C8A9E26005200AB /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
 		0A8E15361C8A9E26005200AB /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
@@ -384,6 +389,9 @@
 				0A8E154A1C8AA02C005200AB /* PersonViewController.h */,
 				0A8E154B1C8AA02C005200AB /* PersonViewController.m */,
 				0A8E154C1C8AA02C005200AB /* PersonViewController.xib */,
+				0A23DF611CB8A72200BCDAC2 /* SetPassWordViewController.h */,
+				0A23DF621CB8A72200BCDAC2 /* SetPassWordViewController.m */,
+				0A23DF631CB8A72200BCDAC2 /* SetPassWordViewController.xib */,
 			);
 			name = PersonVC;
 			sourceTree = "<group>";
@@ -464,6 +472,7 @@
 				0AD912ED1CA79BFC0090B2BB /* PersonTableViewCell.xib in Resources */,
 				0A082C5A1C86BCE600A63C5B /* LoginViewController.xib in Resources */,
 				C184BE2A1CB789D400C844FF /* cancle@3x.png in Resources */,
+				0A23DF651CB8A72200BCDAC2 /* SetPassWordViewController.xib in Resources */,
 				C184BE251CB788CF00C844FF /* person@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -534,6 +543,7 @@
 				C184BE2D1CB798CE00C844FF /* PersonHeaderView.m in Sources */,
 				0A8E153A1C8A9E26005200AB /* UIScrollView+SVPullToRefresh.m in Sources */,
 				C1D4DFBF1CB3AA1D00F14071 /* CourseContent.m in Sources */,
+				0A23DF641CB8A72200BCDAC2 /* SetPassWordViewController.m in Sources */,
 				0A8E15471C8A9FCF005200AB /* CancelCourseViewController.m in Sources */,
 				0A8E15391C8A9E26005200AB /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				0A8E15421C8A9F59005200AB /* ChoiceCourseViewController.m in Sources */,

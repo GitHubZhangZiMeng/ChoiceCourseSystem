@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface PersonHeaderView : UIView
+@property (weak, nonatomic) IBOutlet UILabel *labOne;
+@property (weak, nonatomic) IBOutlet UILabel *labTwo;
+@property (weak, nonatomic) IBOutlet UILabel *labThree;
+@property (weak, nonatomic) IBOutlet UILabel *labFore;
 
 @end

@@ -86,9 +86,7 @@
     }
     else
     {
-        [AlertNotice showAlert:2 withTitle:nil withContent:nil withVC:self clickLeftBtn:^{
-            [self dismissViewControllerAnimated:YES completion:nil];
-        } clickRightBtn:^{
+        [AlertNotice showAlertNotType:@"提示" withContent:@"输入框不能为空" withVC:self clickLeftBtn:^{
             [self dismissViewControllerAnimated:YES completion:nil];
         }];
     }

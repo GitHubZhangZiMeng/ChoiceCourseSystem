@@ -13,17 +13,17 @@ typedef void(^clickCallBack)();
 
 typedef NS_ENUM(NSInteger,AlertNoticeType)
 {
-    kNotNetWork = 0,
-    kIdPwdErr = 1,
-    kIdPwdToNil = 2
+    
+    kEnterThePwd = 0,
+    kEnterOutSystem = 1
 };
 
 
 @interface AlertNotice : NSObject
-{
-    
-}
+
 
 +(void)showAlert: (AlertNoticeType)type withTitle:(NSString *)title withContent:(NSString *)content withVC:(UIViewController *)vc clickLeftBtn:(clickCallBack)leftCallBack clickRightBtn:(clickCallBack)rightCallBack;
+
++ (void)showAlertNotType :(NSString *)title withContent:(NSString *)content withVC:(UIViewController *)vc clickLeftBtn:(clickCallBack)CallBack;
 
 @end

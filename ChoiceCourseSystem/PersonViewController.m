@@ -10,6 +10,9 @@
 #import "PersonTableViewCell.h"
 #import "SelectedViewController.h"
 #import "CourseNameViewController.h"
+#import "PersonHeaderView.h"
+#import "SetPassWordViewController.h"
+#import "LoginViewController.h"
 @interface PersonViewController ()
 
 @end
@@ -34,51 +37,51 @@
 # pragma mark - table的代理
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *vi = [[UIView alloc] init];
     
-//    UILabel *nameLab = [[UILabel alloc] init];
-//    nameLab.text = @"姓名：XXX";
-//    nameLab.textAlignment = NSTextAlignmentCenter;
-//    nameLab.font = [UIFont systemFontOfSize:20];
-//    nameLab.numberOfLines = 0;
-//    
-//    UILabel *lab = [[UILabel alloc] init];
-//    lab.text = @"用户名：XXX";
-//    lab.textAlignment = NSTextAlignmentCenter;
-//    lab.font = [UIFont systemFontOfSize:20];
-//    lab.numberOfLines = 0;
-//    
-//    UILabel *lab = [[UILabel alloc] init];
-//    lab.text = @"用户名：XXX";
-//    lab.textAlignment = NSTextAlignmentCenter;
-//    lab.font = [UIFont systemFontOfSize:20];
-//    lab.numberOfLines = 0;
-//    
-//    UILabel *lab = [[UILabel alloc] init];
-//    lab.text = @"用户名：XXX";
-//    lab.textAlignment = NSTextAlignmentCenter;
-//    lab.font = [UIFont systemFontOfSize:20];
-//    lab.numberOfLines = 0;
-    return vi;
+    
+    
+    PersonHeaderView *personHeader = [[NSBundle mainBundle] loadNibNamed:@"PersonHeaderView" owner:nil options:nil][0];
+    personHeader.labOne.text = [NSString stringWithFormat:@"姓名：%@",self.name];
+    personHeader.labTwo.text = [NSString stringWithFormat:@"教师工号：%@",self.numble];
+    personHeader.labThree.text = [NSString stringWithFormat:@"所属学院：%@",self.college];
+    personHeader.labFore.text = [NSString stringWithFormat:@"学校校区：成都信息工程大学%@",self.schoolArea];
+    personHeader.labFore.adjustsFontSizeToFitWidth = YES;
+    
+    
+    return personHeader;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.tabBarController.tabBar.hidden = YES;
+    
     switch (indexPath.row)
     {
         case 0://我的选课
+            self.tabBarController.tabBar.hidden = YES;
             [self.navigationController pushViewController:[SelectedViewController new] animated:YES];
             break;
         case 1:
-            
+            self.tabBarController.tabBar.hidden = YES;
+            [self.navigationController pushViewController:[SetPassWordViewController new] animated:YES];
             break;
             
         case 2:
-            
+            //  退出登录
+            {
+                [[UserManager new] ClearUserInfo];
+                
+                AppDelegate *app = [UIApplication sharedApplication].delegate;
+                app.window.rootViewController=[LoginViewController new];
+            }
             break;
             
         case 3:
+        {
+            [AlertNotice showAlertNotType:@"关于我们" withContent:@"成都信息工程大学教师选课系统\nFor iOS V1.0.0\nCopyright © 2016 zimeng.zhang" withVC:self clickLeftBtn:^{
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }];
+        }
+            
             
             break;
         
@@ -95,7 +98,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 100;
+    return 150;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -26,6 +26,21 @@
 {
     [[AlertNotice shareAlert] showAlert:type withTitle:title withContent:content withVC:vc clickLeftBtn:leftCallBack clickRightBtn:rightCallBack];
 }
++ (void)showAlertNotType:(NSString *)title withContent:(NSString *)content withVC:(UIViewController *)vc clickLeftBtn:(clickCallBack)CallBack
+{
+    [[AlertNotice shareAlert] showAlertNotType:title withContent:content withVC:vc clickLeftBtn:CallBack];
+}
+- (void)showAlertNotType:(NSString *)title withContent:(NSString *)content withVC:(UIViewController *)vc clickLeftBtn:(clickCallBack)CallBack
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:content preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:0 handler:^(UIAlertAction * _Nonnull action) {
+        CallBack();
+    }];
+    [alertController addAction:action];
+    
+    [vc presentViewController:alertController animated:YES completion:nil];
+}
+
 
 
 - (void)showAlert:(AlertNoticeType)type withTitle:(NSString *)title withContent:(NSString *)content withVC:(id)vc clickLeftBtn:(clickCallBack)leftCallBack clickRightBtn:(clickCallBack)rightCallBack
@@ -34,27 +49,24 @@
     NSString *rightBtnTitle;
     switch (type)
     {
-        case 0:
-            title = @"提示";
-            content = @"网络请求失败，请检查你的网络设置";
-            leftBtnTitle=@"确定";
-            rightBtnTitle=@"取消";
-            break;
+       
         case 1:
             title = @"提示";
-            content = @"账号密码错误";
+            content = @"是否退出登录";
             leftBtnTitle = @"确定";
             rightBtnTitle = @"取消";
             break;
-        case 2:
+       
+        case 0:
             title = @"提示";
-            content = @"账号密码不能为空";
+            content = @"是否确定修改密码";
             leftBtnTitle = @"确定";
             rightBtnTitle = @"取消";
             break;
         default:
             break;
     }
+    
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:content preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *leftAction = [UIAlertAction actionWithTitle:leftBtnTitle style:0 handler:^(UIAlertAction * _Nonnull action) {
         leftCallBack();

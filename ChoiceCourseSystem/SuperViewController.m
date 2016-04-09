@@ -23,9 +23,7 @@
 
 - (void)NotNet
 {
-    [AlertNotice showAlert:0 withTitle:nil withContent:nil withVC:self clickLeftBtn:^{
-        [self dismissViewControllerAnimated:YES completion:nil];
-    } clickRightBtn:^{
+    [AlertNotice showAlertNotType:@"提示" withContent:@"网络连接失败，请设置网络" withVC:self clickLeftBtn:^{
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
 }
@@ -39,7 +37,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
 /*
 #pragma mark - Navigation
 

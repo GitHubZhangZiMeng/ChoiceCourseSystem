@@ -19,6 +19,8 @@
 #import "AFNetworking.h"
 #import "NetHelper.h"
 #import "MBProgressHUD.h"
+#import "UserManager.h"
+#import "AppDelegate.h"
 #import "SuperViewController.h"
 
 
