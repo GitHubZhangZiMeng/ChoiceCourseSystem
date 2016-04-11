@@ -7,9 +7,11 @@
 //
 
 #import "SelectedViewController.h"
-
+#import "PersonTableViewCell.h"
 @interface SelectedViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 
+@property (nonatomic, strong)NSArray *selectArr;
+@property (nonatomic, strong)NSArray *seledtNotArr;
 @property (nonatomic, strong)UIView *tagVi;
 @property (nonatomic, strong)UIScrollView *scroll;
 
@@ -20,7 +22,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"课程";
+    self.navigationItem.title=@"选择课程";
+    
+    //请求数据
+//    self.selectArr = [NSArray arrayWithObjects:@"大学英语",@"高等数学",@"工程导论", nil];
+    self.seledtNotArr = [NSArray arrayWithObjects:@"人生规划教育",@"思想道德修养和法律基础",@"体育1",@"网页制作",@"线性代数A", nil];
+    if(self.selectArr.count==0)
+    {
+        [AlertNotice showAlertNotType:@"提示" withContent:@"您还没有选课，请尽快去选课" withVC:self clickLeftBtn:^{
+            
+        }];
+    }
     
     
     UIView *seView = [[UIView alloc] init];
@@ -48,7 +60,7 @@
     [seView addSubview:_tagVi];
     
     
-    _scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, NavHeight+StatusHeight+44, MainScreenWidth, MainScreenHeight)];
+    _scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, NavHeight+StatusHeight+44, MainScreenWidth, MainScreenHeight- NavHeight-StatusHeight-44)];
     _scroll.contentSize = CGSizeMake(MainScreenWidth*2, 0);
     _scroll.showsVerticalScrollIndicator = NO;
     _scroll.showsHorizontalScrollIndicator = NO;
@@ -57,18 +69,26 @@
     _scroll.delegate = self;
     [self.view addSubview:_scroll];
     
-    UITableView *selectedTab = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, MainScreenWidth, MainScreenHeight)];
+    UITableView *selectedTab = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, MainScreenWidth, _scroll.bounds.size.height)];
     selectedTab.tag = 1;
     selectedTab.delegate = self;
     selectedTab.dataSource = self;
     [_scroll addSubview:selectedTab];
     
-    UITableView *notSelectedTab = [[UITableView alloc] initWithFrame:CGRectMake(MainScreenWidth, 0, MainScreenWidth, MainScreenHeight)];
+    UITableView *notSelectedTab = [[UITableView alloc] initWithFrame:CGRectMake(MainScreenWidth, 0, MainScreenWidth, _scroll.bounds.size.height)];
     notSelectedTab.tag = 2;
-    notSelectedTab.backgroundColor = [UIColor redColor];
     notSelectedTab.delegate = self;
     notSelectedTab.dataSource = self;
     [_scroll addSubview:notSelectedTab];
+    
+    
+    UIButton *commitBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    commitBtn.backgroundColor = [UIColor colorWithRed:253/255.0 green:146/255.0 blue:8/255.0 alpha:0.7];
+    [commitBtn setTitle:@"提交选课" forState:UIControlStateNormal];
+    [commitBtn setFrame:CGRectMake(MainScreenWidth, MainScreenHeight-NavHeight-StatusHeight-44-44, MainScreenWidth, 44)];
+    [commitBtn addTarget:self action:@selector(commitClick) forControlEvents:UIControlEventTouchUpInside];
+    [_scroll addSubview:commitBtn];
+    [_scroll bringSubviewToFront:commitBtn];
     
     
     // Do any additional setup after loading the view.
@@ -95,53 +115,69 @@
         [UIView commitAnimations];
     }
 }
-
-#pragma mark - scroller代理
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+- (void)commitClick
 {
-    if (scrollView.tag == 0)
-    {
-        if (scrollView.contentOffset.x == MainScreenWidth)
-        {
-             _tagVi.frame = CGRectMake(MainScreenWidth/2, 40, MainScreenWidth/2, 4);
-        }
-        else
-        {
-            _tagVi.frame = CGRectMake(0, 40, MainScreenWidth/2, 4);
-        }
-    }
+    
+    
     
 }
+#pragma mark - scroller代理
+
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
 //    NSLog(@"%@",NSStringFromCGPoint(scrollView.contentOffset));
-    _tagVi.frame =CGRectMake(scrollView.contentOffset.x/2, 40, MainScreenWidth/2, 4);
+    if (scrollView.tag ==0)
+    {
+         _tagVi.frame =CGRectMake(scrollView.contentOffset.x/2, 40, MainScreenWidth/2, 4);
+    }
+   
     
 }
 
 
 #pragma mark - tableView代理
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView.tag == 1)
+    {
+        
+    }
+    else
+    {
+        
+    }
+}
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (tableView.tag == 1)//已选课程
     {
-         return 0;
+         return self.selectArr.count;
     }
     else
     {
-         return 0;
+         return self.seledtNotArr.count;
     }
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    PersonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (!cell)
+    {
+        cell = [[NSBundle mainBundle] loadNibNamed:@"PersonTableViewCell" owner:nil options:nil][0];
+    }
+    
     if (tableView.tag == 1)
     {
-        return nil;
+        cell.personRowLab.text = self.selectArr[indexPath.row];
+        return cell;
     }
     else
     {
-        return nil;
+        cell.personRowLab.text = self.seledtNotArr[indexPath.row];
+        return cell;
     }
 }
 

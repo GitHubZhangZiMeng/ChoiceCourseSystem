@@ -1,19 +1,18 @@
 //
-//  SelectedViewController.h
+//  CourseViewController.h
 //  ChoiceCourseSystem
 //
-//  Created by monst on 16/4/6.
+//  Created by monst on 16/4/11.
 //  Copyright © 2016年 zzm. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "SuperViewController.h"
 
-@interface SelectedViewController : SuperViewController
+@interface CourseViewController : SuperViewController
 
 @property (nonatomic, strong)NSString *collegeName;
 @property (nonatomic, strong)NSString *yearClass;
 @property (nonatomic, strong)NSString *major;
 @property (nonatomic, strong)NSString *clas;
-
 
 @end

@@ -17,8 +17,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NotNet) name:@"netWorkState" object:nil];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    
+    
+    NSLog(@"count____%ld", self.navigationController.viewControllers.count);
+    
+    if (self.navigationController.viewControllers.count>1)
+    {
+        
+        self.tabBarController.tabBar.hidden = YES;
+        
+        UIBarButtonItem *rightBar = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"close"] style:UIBarButtonItemStylePlain target:self action:@selector(RightBarClike)];
+        self.navigationItem.rightBarButtonItem = rightBar;
+        
+        UIBarButtonItem *leftBar = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"left"] style:UIBarButtonItemStylePlain target:self action:@selector(LeftBarClick)];
+        self.navigationItem.leftBarButtonItem = leftBar;
+        
+    }
     
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)RightBarClike
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void)LeftBarClick
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)NotNet

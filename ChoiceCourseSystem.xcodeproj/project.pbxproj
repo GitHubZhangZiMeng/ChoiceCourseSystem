@@ -30,6 +30,20 @@
 		0AD912EC1CA79BFC0090B2BB /* PersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD912EA1CA79BFC0090B2BB /* PersonTableViewCell.m */; };
 		0AD912ED1CA79BFC0090B2BB /* PersonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AD912EB1CA79BFC0090B2BB /* PersonTableViewCell.xib */; };
 		0AD912EF1CA79CD90090B2BB /* in.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AD912EE1CA79CD90090B2BB /* in.png */; };
+		C17316091CBB3A4000915D5B /* YearClassVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C17316071CBB3A4000915D5B /* YearClassVC.m */; };
+		C173160A1CBB3A4000915D5B /* YearClassVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C17316081CBB3A4000915D5B /* YearClassVC.xib */; };
+		C173160E1CBB438C00915D5B /* MajorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C173160C1CBB438C00915D5B /* MajorViewController.m */; };
+		C173160F1CBB438C00915D5B /* MajorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C173160D1CBB438C00915D5B /* MajorViewController.xib */; };
+		C17316121CBB4E5000915D5B /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C17316101CBB4E5000915D5B /* close@2x.png */; };
+		C17316131CBB4E5000915D5B /* close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C17316111CBB4E5000915D5B /* close@3x.png */; };
+		C17316161CBB4ECE00915D5B /* left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C17316141CBB4ECE00915D5B /* left@2x.png */; };
+		C17316171CBB4ECE00915D5B /* left@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C17316151CBB4ECE00915D5B /* left@3x.png */; };
+		C173161B1CBB538E00915D5B /* ClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C17316191CBB538E00915D5B /* ClassViewController.m */; };
+		C173161C1CBB538E00915D5B /* ClassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C173161A1CBB538E00915D5B /* ClassViewController.xib */; };
+		C17316201CBB57BA00915D5B /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C173161E1CBB57BA00915D5B /* CourseViewController.m */; };
+		C17316211CBB57BA00915D5B /* CourseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C173161F1CBB57BA00915D5B /* CourseViewController.xib */; };
+		C17316251CBB8DEB00915D5B /* CourseInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C17316231CBB8DEB00915D5B /* CourseInfoTableViewCell.m */; };
+		C17316261CBB8DEB00915D5B /* CourseInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C17316241CBB8DEB00915D5B /* CourseInfoTableViewCell.xib */; };
 		C184BE0E1CB739C800C844FF /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BE0D1CB739C800C844FF /* UserManager.m */; };
 		C184BE121CB742FC00C844FF /* SuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BE101CB742FC00C844FF /* SuperViewController.m */; };
 		C184BE1D1CB7868800C844FF /* book@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C184BE1B1CB7868800C844FF /* book@2x.png */; };
@@ -90,6 +104,25 @@
 		1AA4956B7BBF0171E834A703 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		53ABE67F66050BEF4F3D2CA4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6470E9AF9CFEF7CA71EB5F68 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		C17316061CBB3A4000915D5B /* YearClassVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearClassVC.h; sourceTree = "<group>"; };
+		C17316071CBB3A4000915D5B /* YearClassVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearClassVC.m; sourceTree = "<group>"; };
+		C17316081CBB3A4000915D5B /* YearClassVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YearClassVC.xib; sourceTree = "<group>"; };
+		C173160B1CBB438C00915D5B /* MajorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MajorViewController.h; sourceTree = "<group>"; };
+		C173160C1CBB438C00915D5B /* MajorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MajorViewController.m; sourceTree = "<group>"; };
+		C173160D1CBB438C00915D5B /* MajorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MajorViewController.xib; sourceTree = "<group>"; };
+		C17316101CBB4E5000915D5B /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
+		C17316111CBB4E5000915D5B /* close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@3x.png"; sourceTree = "<group>"; };
+		C17316141CBB4ECE00915D5B /* left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left@2x.png"; sourceTree = "<group>"; };
+		C17316151CBB4ECE00915D5B /* left@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left@3x.png"; sourceTree = "<group>"; };
+		C17316181CBB538E00915D5B /* ClassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassViewController.h; sourceTree = "<group>"; };
+		C17316191CBB538E00915D5B /* ClassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassViewController.m; sourceTree = "<group>"; };
+		C173161A1CBB538E00915D5B /* ClassViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassViewController.xib; sourceTree = "<group>"; };
+		C173161D1CBB57BA00915D5B /* CourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseViewController.h; sourceTree = "<group>"; };
+		C173161E1CBB57BA00915D5B /* CourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseViewController.m; sourceTree = "<group>"; };
+		C173161F1CBB57BA00915D5B /* CourseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseViewController.xib; sourceTree = "<group>"; };
+		C17316221CBB8DEB00915D5B /* CourseInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseInfoTableViewCell.h; sourceTree = "<group>"; };
+		C17316231CBB8DEB00915D5B /* CourseInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseInfoTableViewCell.m; sourceTree = "<group>"; };
+		C17316241CBB8DEB00915D5B /* CourseInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseInfoTableViewCell.xib; sourceTree = "<group>"; };
 		C184BE0C1CB739C800C844FF /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
 		C184BE0D1CB739C800C844FF /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
 		C184BE0F1CB742FC00C844FF /* SuperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperViewController.h; sourceTree = "<group>"; };
@@ -134,6 +167,10 @@
 		0A8E152A1C8A98AD005200AB /* resImg */ = {
 			isa = PBXGroup;
 			children = (
+				C17316141CBB4ECE00915D5B /* left@2x.png */,
+				C17316151CBB4ECE00915D5B /* left@3x.png */,
+				C17316101CBB4E5000915D5B /* close@2x.png */,
+				C17316111CBB4E5000915D5B /* close@3x.png */,
 				C184BE231CB788CF00C844FF /* person@2x.png */,
 				C184BE241CB788CF00C844FF /* person@3x.png */,
 				C184BE1B1CB7868800C844FF /* book@2x.png */,
@@ -293,6 +330,9 @@
 				0AD912E91CA79BFC0090B2BB /* PersonTableViewCell.h */,
 				0AD912EA1CA79BFC0090B2BB /* PersonTableViewCell.m */,
 				0AD912EB1CA79BFC0090B2BB /* PersonTableViewCell.xib */,
+				C17316221CBB8DEB00915D5B /* CourseInfoTableViewCell.h */,
+				C17316231CBB8DEB00915D5B /* CourseInfoTableViewCell.m */,
+				C17316241CBB8DEB00915D5B /* CourseInfoTableViewCell.xib */,
 			);
 			name = CellView;
 			sourceTree = "<group>";
@@ -367,6 +407,18 @@
 				0A8E153F1C8A9F59005200AB /* ChoiceCourseViewController.h */,
 				0A8E15401C8A9F59005200AB /* ChoiceCourseViewController.m */,
 				0A8E15411C8A9F59005200AB /* ChoiceCourseViewController.xib */,
+				C17316061CBB3A4000915D5B /* YearClassVC.h */,
+				C17316071CBB3A4000915D5B /* YearClassVC.m */,
+				C17316081CBB3A4000915D5B /* YearClassVC.xib */,
+				C173160B1CBB438C00915D5B /* MajorViewController.h */,
+				C173160C1CBB438C00915D5B /* MajorViewController.m */,
+				C173160D1CBB438C00915D5B /* MajorViewController.xib */,
+				C17316181CBB538E00915D5B /* ClassViewController.h */,
+				C17316191CBB538E00915D5B /* ClassViewController.m */,
+				C173161A1CBB538E00915D5B /* ClassViewController.xib */,
+				C173161D1CBB57BA00915D5B /* CourseViewController.h */,
+				C173161E1CBB57BA00915D5B /* CourseViewController.m */,
+				C173161F1CBB57BA00915D5B /* CourseViewController.xib */,
 			);
 			name = ChoiseCourseVC;
 			sourceTree = "<group>";
@@ -459,19 +511,28 @@
 			files = (
 				C184BE2F1CB798F200C844FF /* PersonHeaderView.xib in Resources */,
 				0A8E15431C8A9F59005200AB /* ChoiceCourseViewController.xib in Resources */,
+				C17316261CBB8DEB00915D5B /* CourseInfoTableViewCell.xib in Resources */,
 				C184BE1D1CB7868800C844FF /* book@2x.png in Resources */,
+				C17316161CBB4ECE00915D5B /* left@2x.png in Resources */,
 				C184BE1E1CB7868800C844FF /* book@3x.png in Resources */,
+				C17316171CBB4ECE00915D5B /* left@3x.png in Resources */,
 				0A8E15481C8A9FCF005200AB /* CancelCourseViewController.xib in Resources */,
 				0A082C5C1C86BEFF00A63C5B /* cuitPNG.png in Resources */,
 				0AB6C1001C75658B00BCC4A4 /* LaunchScreen.storyboard in Resources */,
 				0A8E154E1C8AA02C005200AB /* PersonViewController.xib in Resources */,
 				0AD912EF1CA79CD90090B2BB /* in.png in Resources */,
+				C17316131CBB4E5000915D5B /* close@3x.png in Resources */,
 				C184BE291CB789D400C844FF /* cancle@2x.png in Resources */,
+				C173160F1CBB438C00915D5B /* MajorViewController.xib in Resources */,
+				C173160A1CBB3A4000915D5B /* YearClassVC.xib in Resources */,
 				C184BE261CB788CF00C844FF /* person@3x.png in Resources */,
+				C17316211CBB57BA00915D5B /* CourseViewController.xib in Resources */,
 				0AB6C0FD1C75658B00BCC4A4 /* Assets.xcassets in Resources */,
 				0AD912ED1CA79BFC0090B2BB /* PersonTableViewCell.xib in Resources */,
+				C17316121CBB4E5000915D5B /* close@2x.png in Resources */,
 				0A082C5A1C86BCE600A63C5B /* LoginViewController.xib in Resources */,
 				C184BE2A1CB789D400C844FF /* cancle@3x.png in Resources */,
+				C173161C1CBB538E00915D5B /* ClassViewController.xib in Resources */,
 				0A23DF651CB8A72200BCDAC2 /* SetPassWordViewController.xib in Resources */,
 				C184BE251CB788CF00C844FF /* person@2x.png in Resources */,
 			);
@@ -537,11 +598,15 @@
 				C184BE121CB742FC00C844FF /* SuperViewController.m in Sources */,
 				0A8E154D1C8AA02C005200AB /* PersonViewController.m in Sources */,
 				C1DBB63D1CB50F0D00C478A7 /* CourseNameViewController.m in Sources */,
+				C173161B1CBB538E00915D5B /* ClassViewController.m in Sources */,
+				C17316251CBB8DEB00915D5B /* CourseInfoTableViewCell.m in Sources */,
 				C1D4DFBC1CB3A4C700F14071 /* collegeModel.m in Sources */,
 				0A8E153D1C8A9E50005200AB /* MBProgressHUD.m in Sources */,
 				0AD912EC1CA79BFC0090B2BB /* PersonTableViewCell.m in Sources */,
 				C184BE2D1CB798CE00C844FF /* PersonHeaderView.m in Sources */,
 				0A8E153A1C8A9E26005200AB /* UIScrollView+SVPullToRefresh.m in Sources */,
+				C173160E1CBB438C00915D5B /* MajorViewController.m in Sources */,
+				C17316091CBB3A4000915D5B /* YearClassVC.m in Sources */,
 				C1D4DFBF1CB3AA1D00F14071 /* CourseContent.m in Sources */,
 				0A23DF641CB8A72200BCDAC2 /* SetPassWordViewController.m in Sources */,
 				0A8E15471C8A9FCF005200AB /* CancelCourseViewController.m in Sources */,
@@ -553,6 +618,7 @@
 				C184BE0E1CB739C800C844FF /* UserManager.m in Sources */,
 				0A082C591C86BCE600A63C5B /* LoginViewController.m in Sources */,
 				C1DBB63A1CB4F73400C478A7 /* SelectedViewController.m in Sources */,
+				C17316201CBB57BA00915D5B /* CourseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,77 +1,62 @@
 //
-//  choiceCourseViewController.m
+//  ClassViewController.m
 //  ChoiceCourseSystem
 //
-//  Created by zzm on 16/3/5.
+//  Created by monst on 16/4/11.
 //  Copyright © 2016年 zzm. All rights reserved.
 //
 
-#import "ChoiceCourseViewController.h"
+#import "ClassViewController.h"
 #import "PersonTableViewCell.h"
-#import "YearClassVC.h"
-@interface ChoiceCourseViewController ()
-
-@property (nonatomic, strong)NSArray *collegeArr;
-
-
+#import "CourseViewController.h"
+#import "SelectedViewController.h"
+@interface ClassViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property (nonatomic, strong)NSArray *classArr;
 @end
 
-@implementation ChoiceCourseViewController
+@implementation ClassViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title=@"选课";
-    //请求学院数据
     
-    
-    self.collegeArr = [NSArray arrayWithObjects:@"大气科学学院",@"资源环境学院",@"电子工程学院",@"通信工程学院",@"控制工程学院",@"计算机学院",@"软件工程学院",@"信息安全工程学院",@"应用数学学院",@"管理学院",@"外国语学院",@"光电技术学院",@"文化艺术学院",nil];
-    
-//   [[NetHelper new] getRequest:nil withNetBlock:^(id responseObject) {
-//       NSLog(@"******%@",responseObject);
-//   } withErrBlock:^(id err) {
-//       NSLog(@"______%@",err);
-//   }];
-    
-    
-    
+    self.navigationItem.title=@"选择班级";
+    self.classArr = [NSArray arrayWithObjects:@"2012届1班",@"2012届2班",@"2012届3班",@"2012届4班",@"2012届5班", nil];
     // Do any additional setup after loading the view from its nib.
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    self.tabBarController.tabBar.hidden = NO;
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    YearClassVC *vc = [[YearClassVC alloc] init];
-    vc.collegeName = self.collegeArr[indexPath.row];
+    SelectedViewController*vc = [[SelectedViewController alloc] init];
+    vc.collegeName = self.collegeName;
+    vc.yearClass = self.yearClass;
+    vc.major = self.major;
+    vc.clas = self.classArr[indexPath.row];
+    
     [self.navigationController pushViewController:vc animated:YES];
     
     
 }
 
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.collegeArr count];
+    return self.classArr.count;
 }
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PersonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell)
     {
         cell = [[NSBundle mainBundle] loadNibNamed:@"PersonTableViewCell" owner:nil options:nil][0];
+        
     }
-    cell.personRowLab.text = self.collegeArr[indexPath.row];
+    cell.personRowLab.text = self.classArr[indexPath.row];
     return cell;
 }
-
-
 /*
 #pragma mark - Navigation
 

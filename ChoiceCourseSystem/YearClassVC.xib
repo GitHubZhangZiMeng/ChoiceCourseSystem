@@ -5,9 +5,8 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChoiceCourseViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YearClassVC">
             <connections>
-                <outlet property="collegeTable" destination="aWf-34-fvh" id="xv6-gC-cxT"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,24 +15,23 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aWf-34-fvh">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2fy-YU-SCo">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="ox6-v6-1Ou"/>
-                        <outlet property="delegate" destination="-1" id="732-UU-iRU"/>
+                        <outlet property="dataSource" destination="-1" id="orw-1q-40v"/>
+                        <outlet property="delegate" destination="-1" id="UoB-Av-PV8"/>
                     </connections>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="aWf-34-fvh" secondAttribute="trailing" id="1V0-6a-NK7"/>
-                <constraint firstAttribute="bottom" secondItem="aWf-34-fvh" secondAttribute="bottom" id="V4q-s4-2nP"/>
-                <constraint firstItem="aWf-34-fvh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="YhB-pn-ghi"/>
-                <constraint firstItem="aWf-34-fvh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="qdn-3b-9Nu"/>
+                <constraint firstItem="2fy-YU-SCo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1eY-Ls-NLB"/>
+                <constraint firstAttribute="trailing" secondItem="2fy-YU-SCo" secondAttribute="trailing" id="2Uh-Gk-Qk8"/>
+                <constraint firstItem="2fy-YU-SCo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="QKB-ij-MSX"/>
+                <constraint firstAttribute="bottom" secondItem="2fy-YU-SCo" secondAttribute="bottom" id="tW9-nA-ZGc"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="235" y="368"/>
         </view>
     </objects>
 </document>

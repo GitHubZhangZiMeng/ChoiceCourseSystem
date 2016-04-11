@@ -57,21 +57,24 @@
     switch (indexPath.row)
     {
         case 0://我的选课
-            self.tabBarController.tabBar.hidden = YES;
             [self.navigationController pushViewController:[SelectedViewController new] animated:YES];
             break;
         case 1:
-            self.tabBarController.tabBar.hidden = YES;
+          
             [self.navigationController pushViewController:[SetPassWordViewController new] animated:YES];
             break;
             
         case 2:
             //  退出登录
             {
-                [[UserManager new] ClearUserInfo];
+                [AlertNotice showAlert:1 withTitle:nil withContent:nil withVC:self clickLeftBtn:^{
+                    [[UserManager new] ClearUserInfo];
+                    AppDelegate *app = [UIApplication sharedApplication].delegate;
+                    app.window.rootViewController=[LoginViewController new];
+                } clickRightBtn:^{
+                    
+                }];
                 
-                AppDelegate *app = [UIApplication sharedApplication].delegate;
-                app.window.rootViewController=[LoginViewController new];
             }
             break;
             
@@ -81,7 +84,6 @@
                 [self dismissViewControllerAnimated:YES completion:nil];
             }];
         }
-            
             
             break;
         
@@ -113,7 +115,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PersonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"personCell"];
+    PersonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell)
     {
         cell = [[NSBundle mainBundle] loadNibNamed:@"PersonTableViewCell" owner:nil options:nil][0];

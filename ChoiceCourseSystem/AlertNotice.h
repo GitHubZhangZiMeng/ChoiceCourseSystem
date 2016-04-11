@@ -16,6 +16,7 @@ typedef NS_ENUM(NSInteger,AlertNoticeType)
     
     kEnterThePwd = 0,
     kEnterOutSystem = 1
+    
 };
 
 
