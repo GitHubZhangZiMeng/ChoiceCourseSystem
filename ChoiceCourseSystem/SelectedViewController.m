@@ -8,12 +8,15 @@
 
 #import "SelectedViewController.h"
 #import "PersonTableViewCell.h"
+#import "CourseInfoTableViewCell.h"
+#import "CourseInfoView.h"
 @interface SelectedViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 
 @property (nonatomic, strong)NSArray *selectArr;
 @property (nonatomic, strong)NSArray *seledtNotArr;
 @property (nonatomic, strong)UIView *tagVi;
 @property (nonatomic, strong)UIScrollView *scroll;
+@property (nonatomic, strong)CourseInfoView *infoView;
 
 @end
 
@@ -79,6 +82,7 @@
     notSelectedTab.tag = 2;
     notSelectedTab.delegate = self;
     notSelectedTab.dataSource = self;
+    notSelectedTab.editing = YES;
     [_scroll addSubview:notSelectedTab];
     
     
@@ -93,6 +97,7 @@
     
     // Do any additional setup after loading the view.
 }
+
 #pragma mark - btn的addtarget
 - (void)selectBtn: (UIButton *)selectedBtn
 {
@@ -121,7 +126,23 @@
     
     
 }
+
+- (void)headerClick:(UIButton *)headerBtn
+{
+    for (NSObject *obj in headerBtn.superview.subviews)
+    {
+        if ([obj isKindOfClass:[UIImageView class]])
+        {
+            UIImageView *img = (UIImageView *)obj;
+            CGAffineTransform rotate = CGAffineTransformMakeRotation( 90.0 / 180.0 * 3.14 );
+            [img setTransform:rotate];
+        }
+    }
+    
+    
+}
 #pragma mark - scroller代理
+
 
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -137,46 +158,72 @@
 
 
 #pragma mark - tableView代理
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if (tableView.tag == 1)
     {
-        
+        return self.selectArr.count;
     }
     else
     {
-        
+        return self.seledtNotArr.count;
     }
+    
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 200;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 60;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    self.infoView = [[CourseInfoView alloc] init];
+    self.infoView.headerBtn.tag = section;
+    [self.infoView.headerBtn addTarget:self action:@selector(headerClick:) forControlEvents:UIControlEventTouchUpInside];
+    if (tableView.tag ==1)
+    {
+        self.infoView.CourseNameLab.text = self.selectArr[section];
+    }
+    else
+    {
+        self.infoView.CourseNameLab.text = self.seledtNotArr[section];
+    }
+    
+    return self.infoView;
+}
+
+
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (tableView.tag == 1)//已选课程
-    {
-         return self.selectArr.count;
-    }
-    else
-    {
-         return self.seledtNotArr.count;
-    }
+    return 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PersonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    CourseInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    
     if (!cell)
     {
-        cell = [[NSBundle mainBundle] loadNibNamed:@"PersonTableViewCell" owner:nil options:nil][0];
+        cell = [[NSBundle mainBundle] loadNibNamed:@"CourseInfoTableViewCell" owner:nil options:nil][0];
     }
     
     if (tableView.tag == 1)
     {
-        cell.personRowLab.text = self.selectArr[indexPath.row];
+        
         return cell;
     }
+    
     else
     {
-        cell.personRowLab.text = self.seledtNotArr[indexPath.row];
+        
         return cell;
     }
 }

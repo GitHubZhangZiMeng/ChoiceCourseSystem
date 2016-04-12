@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="ejI-27-RHA" customClass="CourseInfoView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="in.png" translatesAutoresizingMaskIntoConstraints="NO" id="TE5-db-x1D">
+                    <rect key="frame" x="8" y="14" width="30" height="31"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="yIN-dW-o2n"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6w-KP-xLU">
+                    <rect key="frame" x="46" y="19" width="266" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PBG-rd-swO">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottomMargin" secondItem="s6w-KP-xLU" secondAttribute="bottom" constant="11" id="0Mg-M7-6ZR"/>
+                <constraint firstItem="PBG-rd-swO" firstAttribute="top" secondItem="ejI-27-RHA" secondAttribute="top" id="8Jv-df-GnS"/>
+                <constraint firstAttribute="bottomMargin" secondItem="TE5-db-x1D" secondAttribute="bottom" constant="6" id="9xn-2T-ngw"/>
+                <constraint firstItem="s6w-KP-xLU" firstAttribute="leading" secondItem="TE5-db-x1D" secondAttribute="trailing" constant="8" id="AwL-cd-5Xc"/>
+                <constraint firstAttribute="bottom" secondItem="PBG-rd-swO" secondAttribute="bottom" id="HYP-uV-rjU"/>
+                <constraint firstItem="PBG-rd-swO" firstAttribute="leading" secondItem="ejI-27-RHA" secondAttribute="leading" id="L4z-CL-sxk"/>
+                <constraint firstItem="s6w-KP-xLU" firstAttribute="top" secondItem="ejI-27-RHA" secondAttribute="topMargin" constant="11" id="Qur-in-bXC"/>
+                <constraint firstAttribute="trailingMargin" secondItem="s6w-KP-xLU" secondAttribute="trailing" id="bd8-be-lOV"/>
+                <constraint firstAttribute="trailing" secondItem="PBG-rd-swO" secondAttribute="trailing" id="qS5-hS-DKb"/>
+                <constraint firstItem="TE5-db-x1D" firstAttribute="leading" secondItem="ejI-27-RHA" secondAttribute="leadingMargin" id="rqn-lq-gYh"/>
+                <constraint firstItem="TE5-db-x1D" firstAttribute="top" secondItem="ejI-27-RHA" secondAttribute="topMargin" constant="6" id="wuq-HS-fPp"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="CourseNameLab" destination="s6w-KP-xLU" id="i64-Pr-yGd"/>
+                <outlet property="headerBtn" destination="PBG-rd-swO" id="cEe-lN-Lrj"/>
+                <outlet property="inImgView" destination="TE5-db-x1D" id="7rz-xZ-bEc"/>
+            </connections>
+            <point key="canvasLocation" x="317" y="81.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="in.png" width="48" height="50"/>
+    </resources>
+</document>

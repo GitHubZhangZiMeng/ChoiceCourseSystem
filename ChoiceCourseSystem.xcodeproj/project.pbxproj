@@ -30,6 +30,8 @@
 		0AD912EC1CA79BFC0090B2BB /* PersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD912EA1CA79BFC0090B2BB /* PersonTableViewCell.m */; };
 		0AD912ED1CA79BFC0090B2BB /* PersonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AD912EB1CA79BFC0090B2BB /* PersonTableViewCell.xib */; };
 		0AD912EF1CA79CD90090B2BB /* in.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AD912EE1CA79CD90090B2BB /* in.png */; };
+		C166721F1CBC893C000DAA6F /* CourseInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = C166721E1CBC893C000DAA6F /* CourseInfoView.m */; };
+		C16672211CBC895B000DAA6F /* CourseInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C16672201CBC895B000DAA6F /* CourseInfoView.xib */; };
 		C17316091CBB3A4000915D5B /* YearClassVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C17316071CBB3A4000915D5B /* YearClassVC.m */; };
 		C173160A1CBB3A4000915D5B /* YearClassVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C17316081CBB3A4000915D5B /* YearClassVC.xib */; };
 		C173160E1CBB438C00915D5B /* MajorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C173160C1CBB438C00915D5B /* MajorViewController.m */; };
@@ -104,6 +106,9 @@
 		1AA4956B7BBF0171E834A703 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		53ABE67F66050BEF4F3D2CA4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6470E9AF9CFEF7CA71EB5F68 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		C166721D1CBC893C000DAA6F /* CourseInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseInfoView.h; sourceTree = "<group>"; };
+		C166721E1CBC893C000DAA6F /* CourseInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseInfoView.m; sourceTree = "<group>"; };
+		C16672201CBC895B000DAA6F /* CourseInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseInfoView.xib; sourceTree = "<group>"; };
 		C17316061CBB3A4000915D5B /* YearClassVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearClassVC.h; sourceTree = "<group>"; };
 		C17316071CBB3A4000915D5B /* YearClassVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearClassVC.m; sourceTree = "<group>"; };
 		C17316081CBB3A4000915D5B /* YearClassVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YearClassVC.xib; sourceTree = "<group>"; };
@@ -214,6 +219,9 @@
 				C184BE2B1CB798CE00C844FF /* PersonHeaderView.h */,
 				C184BE2C1CB798CE00C844FF /* PersonHeaderView.m */,
 				C184BE2E1CB798F200C844FF /* PersonHeaderView.xib */,
+				C166721D1CBC893C000DAA6F /* CourseInfoView.h */,
+				C166721E1CBC893C000DAA6F /* CourseInfoView.m */,
+				C16672201CBC895B000DAA6F /* CourseInfoView.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -528,6 +536,7 @@
 				C184BE261CB788CF00C844FF /* person@3x.png in Resources */,
 				C17316211CBB57BA00915D5B /* CourseViewController.xib in Resources */,
 				0AB6C0FD1C75658B00BCC4A4 /* Assets.xcassets in Resources */,
+				C16672211CBC895B000DAA6F /* CourseInfoView.xib in Resources */,
 				0AD912ED1CA79BFC0090B2BB /* PersonTableViewCell.xib in Resources */,
 				C17316121CBB4E5000915D5B /* close@2x.png in Resources */,
 				0A082C5A1C86BCE600A63C5B /* LoginViewController.xib in Resources */,
@@ -609,6 +618,7 @@
 				C17316091CBB3A4000915D5B /* YearClassVC.m in Sources */,
 				C1D4DFBF1CB3AA1D00F14071 /* CourseContent.m in Sources */,
 				0A23DF641CB8A72200BCDAC2 /* SetPassWordViewController.m in Sources */,
+				C166721F1CBC893C000DAA6F /* CourseInfoView.m in Sources */,
 				0A8E15471C8A9FCF005200AB /* CancelCourseViewController.m in Sources */,
 				0A8E15391C8A9E26005200AB /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				0A8E15421C8A9F59005200AB /* ChoiceCourseViewController.m in Sources */,
