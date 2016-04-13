@@ -13,10 +13,18 @@
 @interface SelectedViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 
 @property (nonatomic, strong)NSArray *selectArr;
+@property (nonatomic, strong)NSMutableArray *seletedTagArr;
 @property (nonatomic, strong)NSArray *seledtNotArr;
+@property (nonatomic, strong)NSMutableArray *seletedNotTagArr;
+
+@property (nonatomic, strong)UITableView *selectedTab;
+@property (nonatomic,strong)UITableView *notSelectedTab;
+
 @property (nonatomic, strong)UIView *tagVi;
 @property (nonatomic, strong)UIScrollView *scroll;
-@property (nonatomic, strong)CourseInfoView *infoView;
+@property (nonatomic, strong)UIButton *commitBtn;
+@property (nonatomic, strong)NSMutableDictionary *courseDic;
+
 
 @end
 
@@ -26,10 +34,29 @@
     [super viewDidLoad];
     
     self.navigationItem.title=@"选择课程";
+    self.courseDic = [[NSMutableDictionary alloc] init];
+    
     
     //请求数据
-//    self.selectArr = [NSArray arrayWithObjects:@"大学英语",@"高等数学",@"工程导论", nil];
+    self.selectArr = [NSArray arrayWithObjects:@"大学英语",@"高等数学",@"工程导论", nil];
     self.seledtNotArr = [NSArray arrayWithObjects:@"人生规划教育",@"思想道德修养和法律基础",@"体育1",@"网页制作",@"线性代数A", nil];
+    self.seletedNotTagArr = [NSMutableArray array];
+    self.seletedTagArr = [NSMutableArray array];
+    
+    for (int i=0; i<self.seledtNotArr.count; i++)
+    {
+        [self.seletedNotTagArr addObject:@"0"];
+    }
+    
+    NSLog(@"%ld",self.selectArr.count);
+    
+    for (int i=0; i<self.selectArr.count; i++)
+    {
+        [self.seletedTagArr addObject:@"0"];
+    }
+     NSLog(@"%ld",self.seletedTagArr.count);
+    
+    
     if(self.selectArr.count==0)
     {
         [AlertNotice showAlertNotType:@"提示" withContent:@"您还没有选课，请尽快去选课" withVC:self clickLeftBtn:^{
@@ -65,6 +92,7 @@
     
     _scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, NavHeight+StatusHeight+44, MainScreenWidth, MainScreenHeight- NavHeight-StatusHeight-44)];
     _scroll.contentSize = CGSizeMake(MainScreenWidth*2, 0);
+    _scroll.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:241/255.0 alpha:1];
     _scroll.showsVerticalScrollIndicator = NO;
     _scroll.showsHorizontalScrollIndicator = NO;
     _scroll.bounces = NO;
@@ -72,27 +100,31 @@
     _scroll.delegate = self;
     [self.view addSubview:_scroll];
     
-    UITableView *selectedTab = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, MainScreenWidth, _scroll.bounds.size.height)];
-    selectedTab.tag = 1;
-    selectedTab.delegate = self;
-    selectedTab.dataSource = self;
-    [_scroll addSubview:selectedTab];
+    _selectedTab = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, MainScreenWidth, _scroll.bounds.size.height) style:UITableViewStyleGrouped];
+    _selectedTab.tag = 1;
+    _selectedTab.delegate = self;
+    _selectedTab.dataSource = self;
+    _selectedTab.showsVerticalScrollIndicator = NO;
+    [_scroll addSubview:_selectedTab];
     
-    UITableView *notSelectedTab = [[UITableView alloc] initWithFrame:CGRectMake(MainScreenWidth, 0, MainScreenWidth, _scroll.bounds.size.height)];
-    notSelectedTab.tag = 2;
-    notSelectedTab.delegate = self;
-    notSelectedTab.dataSource = self;
-    notSelectedTab.editing = YES;
-    [_scroll addSubview:notSelectedTab];
+    _notSelectedTab = [[UITableView alloc] initWithFrame:CGRectMake(MainScreenWidth, 0, MainScreenWidth, _scroll.bounds.size.height-44) style:UITableViewStyleGrouped];
+    _notSelectedTab.tag = 2;
+    _notSelectedTab.delegate = self;
+    _notSelectedTab.dataSource = self;
+    _notSelectedTab.editing = YES;
+    _notSelectedTab.showsVerticalScrollIndicator = NO;
+    [_scroll addSubview:_notSelectedTab];
     
     
-    UIButton *commitBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    commitBtn.backgroundColor = [UIColor colorWithRed:253/255.0 green:146/255.0 blue:8/255.0 alpha:0.7];
-    [commitBtn setTitle:@"提交选课" forState:UIControlStateNormal];
-    [commitBtn setFrame:CGRectMake(MainScreenWidth, MainScreenHeight-NavHeight-StatusHeight-44-44, MainScreenWidth, 44)];
-    [commitBtn addTarget:self action:@selector(commitClick) forControlEvents:UIControlEventTouchUpInside];
-    [_scroll addSubview:commitBtn];
-    [_scroll bringSubviewToFront:commitBtn];
+    _commitBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    _commitBtn.hidden = YES;
+    _commitBtn.backgroundColor = [UIColor colorWithRed:253/255.0 green:146/255.0 blue:8/255.0 alpha:0.7];
+    [_commitBtn setTitle:@"提交选课" forState:UIControlStateNormal];
+    [_commitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_commitBtn setFrame:CGRectMake(MainScreenWidth, MainScreenHeight-NavHeight-StatusHeight-44-44, MainScreenWidth, 44)];
+    [_commitBtn addTarget:self action:@selector(commitClick) forControlEvents:UIControlEventTouchUpInside];
+    [_scroll addSubview:_commitBtn];
+    [_scroll bringSubviewToFront:_commitBtn];
     
     
     // Do any additional setup after loading the view.
@@ -122,26 +154,51 @@
 }
 - (void)commitClick
 {
-    
-    
+    NSLog(@"____%@",self.courseDic);
+    [AlertNotice showAlert:2 withTitle:@"提示" withContent:[NSString stringWithFormat:@"共选课%ld门，是否进行提交",self.courseDic.count] withVC:self clickLeftBtn:^{
+        //提交选课
+    } clickRightBtn:^{
+        
+    }];
     
 }
 
 - (void)headerClick:(UIButton *)headerBtn
 {
-    for (NSObject *obj in headerBtn.superview.subviews)
+    if (_scroll.contentOffset.x>0)
     {
-        if ([obj isKindOfClass:[UIImageView class]])
+        if ([self.seletedNotTagArr[headerBtn.tag] isEqualToString:@"1"])
         {
-            UIImageView *img = (UIImageView *)obj;
-            CGAffineTransform rotate = CGAffineTransformMakeRotation( 90.0 / 180.0 * 3.14 );
-            [img setTransform:rotate];
+            [self.seletedNotTagArr replaceObjectAtIndex:headerBtn.tag withObject:@"0"];
         }
+        else
+        {
+            [self.seletedNotTagArr replaceObjectAtIndex:headerBtn.tag withObject:@"1"];
+        }
+        
+        
+        [_notSelectedTab reloadSections:[NSIndexSet indexSetWithIndex:headerBtn.tag] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    else
+    {
+        NSLog(@"%ld",self.seletedTagArr.count);
+        NSLog(@"%ld",headerBtn.tag);
+        if ([self.seletedTagArr[headerBtn.tag] isEqualToString:@"1"])
+        {
+            [self.seletedTagArr replaceObjectAtIndex:headerBtn.tag withObject:@"0"];
+        }
+        else
+        {
+            [self.seletedTagArr replaceObjectAtIndex:headerBtn.tag withObject:@"1"];
+        }
+        
+        [_selectedTab reloadSections:[NSIndexSet indexSetWithIndex:headerBtn.tag] withRowAnimation:UITableViewRowAnimationFade];
     }
     
     
 }
 #pragma mark - scroller代理
+
 
 
 
@@ -159,6 +216,54 @@
 
 #pragma mark - tableView代理
 
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView.tag==2)
+    {
+         return UITableViewCellEditingStyleDelete | UITableViewCellEditingStyleInsert;
+    }
+    else
+    {
+        return UITableViewCellEditingStyleNone;
+    }
+   
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView.tag==2)
+    {
+        NSLog(@"didSelectRowAtIndexPath");
+        NSString *str = [NSString stringWithFormat:@"%ld",indexPath.section];
+        [self.courseDic setObject:self.seledtNotArr[indexPath.section] forKey:str];
+        NSLog(@"self.courseDic:%@",self.courseDic);
+        [_commitBtn setTitle:[NSString stringWithFormat:@"提交选课(%ld)",self.courseDic.count] forState:UIControlStateNormal];
+        if (self.courseDic.count !=0)
+        {
+            self.commitBtn.hidden = NO;
+        }
+    }
+   
+    
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView.tag==2)
+    {
+        NSLog(@"didDeselectRowAtIndexPath");
+        NSString *str = [NSString stringWithFormat:@"%ld",indexPath.section];
+        [self.courseDic removeObjectForKey:str];
+        [_commitBtn setTitle:[NSString stringWithFormat:@"提交选课(%ld)",self.courseDic.count] forState:UIControlStateNormal];
+        if (self.courseDic.count==0)
+        {
+            self.commitBtn.hidden = YES;
+        }
+
+    }
+}
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if (tableView.tag == 1)
@@ -174,38 +279,96 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 200;
+    return 300;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 60;
+    return 50;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    self.infoView = [[CourseInfoView alloc] init];
-    self.infoView.headerBtn.tag = section;
-    [self.infoView.headerBtn addTarget:self action:@selector(headerClick:) forControlEvents:UIControlEventTouchUpInside];
     if (tableView.tag ==1)
     {
-        self.infoView.CourseNameLab.text = self.selectArr[section];
+        CourseInfoView *infoView = [[NSBundle mainBundle] loadNibNamed:@"CourseInfoView" owner:nil options:nil][0];
+        infoView.headerBtn.tag = section;
+        [infoView.headerBtn addTarget:self action:@selector(headerClick:) forControlEvents:UIControlEventTouchUpInside];
+
+        infoView.CourseNameLab.text = self.selectArr[section];
+        for (NSObject *obj in infoView.subviews)
+        {
+            if ([obj isKindOfClass:[UIImageView class]])
+            {
+                UIImageView *img = (UIImageView *)obj;
+                if ([self.seletedTagArr[section] isEqualToString:@"1"])
+                {
+                    img.image = [UIImage imageNamed:@"down"];
+                }
+                else
+                {
+                    img.image = [UIImage imageNamed:@"in"];
+                }
+                break;
+            }
+        }
+        return infoView;
     }
     else
     {
-        self.infoView.CourseNameLab.text = self.seledtNotArr[section];
+        CourseInfoView *infoView = [[NSBundle mainBundle] loadNibNamed:@"CourseInfoView" owner:nil options:nil][0];
+        infoView.headerBtn.tag = section;
+        [infoView.headerBtn addTarget:self action:@selector(headerClick:) forControlEvents:UIControlEventTouchUpInside];
+
+        infoView.CourseNameLab.text = self.seledtNotArr[section];
+        for (NSObject *obj in infoView.subviews)
+        {
+            if ([obj isKindOfClass:[UIImageView class]])
+            {
+                UIImageView *img = (UIImageView *)obj;
+                if ([self.seletedNotTagArr[section] isEqualToString:@"1"])
+                {
+                    img.image = [UIImage imageNamed:@"down"];
+                }
+                else
+                {
+                    img.image = [UIImage imageNamed:@"in"];
+                }
+                break;
+            }
+        }
+        return infoView;
     }
-    
-    return self.infoView;
 }
-
-
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    if (tableView.tag==1)
+    {
+        if ([self.seletedTagArr[section] isEqualToString:@"1"])
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+        
+    }
+    else
+    {
+        if ([self.seletedNotTagArr[section] isEqualToString:@"1"])
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CourseInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
@@ -213,7 +376,9 @@
     if (!cell)
     {
         cell = [[NSBundle mainBundle] loadNibNamed:@"CourseInfoTableViewCell" owner:nil options:nil][0];
+        cell.courseStart.adjustsFontSizeToFitWidth = YES;
     }
+    
     
     if (tableView.tag == 1)
     {

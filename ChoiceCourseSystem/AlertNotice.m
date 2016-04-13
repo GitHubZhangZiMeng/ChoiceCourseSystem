@@ -63,6 +63,11 @@
             leftBtnTitle = @"确定";
             rightBtnTitle = @"取消";
             break;
+        case 2:
+            leftBtnTitle = @"确定";
+            rightBtnTitle = @"取消";
+            
+            break;
             
         default:
             break;
