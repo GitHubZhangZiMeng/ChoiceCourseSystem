@@ -22,6 +22,7 @@
 #import "UserManager.h"
 #import "AppDelegate.h"
 #import "SuperViewController.h"
+#import "SVPullToRefresh.h"
 
 
 #pragma mark -状态栏大小

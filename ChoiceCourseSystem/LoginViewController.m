@@ -64,12 +64,10 @@
         //title 颜色
         [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
         
-        
         CancelCourseViewController *cancelVC = [[CancelCourseViewController alloc] init];
         cancelVC.tabBarItem.title=@"退选";
         cancelVC.tabBarItem.image=[UIImage imageNamed:@"cancle"];
         UINavigationController *cancelNav = [[UINavigationController alloc] initWithRootViewController:cancelVC];
-        
         
         PersonViewController *personVC = [[PersonViewController alloc] init];
         personVC.tabBarItem.title=@"个人";

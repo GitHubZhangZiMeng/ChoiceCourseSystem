@@ -10,6 +10,7 @@
 #import "PersonTableViewCell.h"
 #import "CourseInfoTableViewCell.h"
 #import "CourseInfoView.h"
+#import "SVPullToRefresh/SVPullToRefresh.h"
 @interface SelectedViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 
 @property (nonatomic, strong)NSArray *selectArr;
@@ -36,7 +37,7 @@
     self.navigationItem.title=@"选择课程";
     self.courseDic = [[NSMutableDictionary alloc] init];
     
-    
+
     //请求数据
     self.selectArr = [NSArray arrayWithObjects:@"大学英语",@"高等数学",@"工程导论", nil];
     self.seledtNotArr = [NSArray arrayWithObjects:@"人生规划教育",@"思想道德修养和法律基础",@"体育1",@"网页制作",@"线性代数A", nil];
@@ -100,11 +101,21 @@
     _scroll.delegate = self;
     [self.view addSubview:_scroll];
     
+    
+    SVPullToRefreshView  *svPullView = [[SVPullToRefreshView alloc] init];
+    [svPullView setTitle:@"123" forState:SVPullToRefreshStateTriggered];
+    
     _selectedTab = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, MainScreenWidth, _scroll.bounds.size.height) style:UITableViewStyleGrouped];
     _selectedTab.tag = 1;
     _selectedTab.delegate = self;
     _selectedTab.dataSource = self;
     _selectedTab.showsVerticalScrollIndicator = NO;
+    __weak SelectedViewController *weakself= self;
+    [_selectedTab addPullToRefreshWithActionHandler:^{
+        //刷新数据 表
+        [weakself pulltoRefresh];
+        
+    }];
     [_scroll addSubview:_selectedTab];
     
     _notSelectedTab = [[UITableView alloc] initWithFrame:CGRectMake(MainScreenWidth, 0, MainScreenWidth, _scroll.bounds.size.height-44) style:UITableViewStyleGrouped];
@@ -128,6 +139,15 @@
     
     
     // Do any additional setup after loading the view.
+}
+#pragma mark - 下拉刷新
+- (void)pulltoRefresh
+{
+    
+//    sleep(2);
+    [self.selectedTab reloadData];
+    [self.selectedTab.pullToRefreshView stopAnimating];
+    
 }
 
 #pragma mark - btn的addtarget
@@ -198,9 +218,6 @@
     
 }
 #pragma mark - scroller代理
-
-
-
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
