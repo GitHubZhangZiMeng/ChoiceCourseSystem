@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -180,6 +179,13 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y33-8s-756">
+                        <rect key="frame" x="0.0" y="392" width="355" height="1"/>
+                        <color key="backgroundColor" red="0.60392156862745094" green="0.60392156862745094" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="lX6-fw-Bnz"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
@@ -214,6 +220,7 @@
                     <constraint firstItem="qGp-Mq-634" firstAttribute="width" secondItem="BDe-Ca-oLT" secondAttribute="width" id="FgP-Dp-qVx"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Zv8-Vm-oeB" secondAttribute="bottom" id="GT2-xC-Cca"/>
                     <constraint firstItem="8sL-sn-sM1" firstAttribute="top" secondItem="iSA-df-GSi" secondAttribute="bottom" id="H4H-yc-KUe"/>
+                    <constraint firstAttribute="bottom" secondItem="Y33-8s-756" secondAttribute="bottom" id="I1S-cf-gyv"/>
                     <constraint firstItem="tFK-HM-J80" firstAttribute="height" secondItem="Wrb-tV-OKY" secondAttribute="height" id="JWu-B5-8kQ"/>
                     <constraint firstItem="BjM-Ma-Q7h" firstAttribute="height" secondItem="fRV-c6-aTG" secondAttribute="height" id="JoC-tr-YMd"/>
                     <constraint firstItem="fRV-c6-aTG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="KXz-L4-Xmm"/>
@@ -223,6 +230,7 @@
                     <constraint firstItem="QYf-Xe-3QF" firstAttribute="top" secondItem="dRI-f7-1S9" secondAttribute="bottom" id="NbW-ns-aSS"/>
                     <constraint firstItem="QYf-Xe-3QF" firstAttribute="width" secondItem="fRV-c6-aTG" secondAttribute="width" id="Niv-wl-IKl"/>
                     <constraint firstItem="8sL-sn-sM1" firstAttribute="height" secondItem="Wrb-tV-OKY" secondAttribute="height" id="Nov-rC-n9i"/>
+                    <constraint firstAttribute="trailing" secondItem="Y33-8s-756" secondAttribute="trailing" id="Nyh-tj-iGT"/>
                     <constraint firstItem="f1o-oS-he7" firstAttribute="height" secondItem="BDe-Ca-oLT" secondAttribute="height" id="O3Y-cU-ZmM"/>
                     <constraint firstItem="dRI-f7-1S9" firstAttribute="height" secondItem="fRV-c6-aTG" secondAttribute="height" id="PqP-Gi-huq"/>
                     <constraint firstItem="iSA-df-GSi" firstAttribute="leading" secondItem="dRI-f7-1S9" secondAttribute="trailing" id="RNv-v5-Huv"/>
@@ -265,12 +273,14 @@
                     <constraint firstItem="iSA-df-GSi" firstAttribute="top" secondItem="dkO-z7-8ip" secondAttribute="bottom" id="mjh-UP-1d0"/>
                     <constraint firstItem="Pvj-RE-KMt" firstAttribute="leading" secondItem="EhU-FB-Log" secondAttribute="trailing" id="nch-Ms-jWd"/>
                     <constraint firstItem="UtD-jm-Ast" firstAttribute="width" secondItem="Wrb-tV-OKY" secondAttribute="width" id="oFg-f6-5Oc"/>
+                    <constraint firstItem="Y33-8s-756" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="oW6-CE-2Si"/>
                     <constraint firstItem="Zv8-Vm-oeB" firstAttribute="top" secondItem="EhU-FB-Log" secondAttribute="bottom" id="oth-pn-Fl9"/>
                     <constraint firstItem="OAi-fM-KBE" firstAttribute="width" secondItem="Wrb-tV-OKY" secondAttribute="width" id="pp9-Wd-ZRM"/>
                     <constraint firstItem="n5B-SA-tBo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="q2S-yR-QAI"/>
                     <constraint firstItem="Pvj-RE-KMt" firstAttribute="height" secondItem="BDe-Ca-oLT" secondAttribute="height" id="qBE-3p-cuO"/>
                     <constraint firstItem="8sL-sn-sM1" firstAttribute="width" secondItem="Wrb-tV-OKY" secondAttribute="width" id="qQh-cS-VSB"/>
                     <constraint firstItem="BjM-Ma-Q7h" firstAttribute="width" secondItem="fRV-c6-aTG" secondAttribute="width" id="qXc-Zb-o8M"/>
+                    <constraint firstItem="Y33-8s-756" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="qrx-1T-Dcs"/>
                     <constraint firstItem="3kW-KO-2aU" firstAttribute="top" secondItem="BjM-Ma-Q7h" secondAttribute="bottom" constant="15" id="r1Q-vy-MG7"/>
                     <constraint firstItem="BDe-Ca-oLT" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="rDZ-0g-kOW"/>
                     <constraint firstItem="qGp-Mq-634" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="sdj-h8-RIj"/>
@@ -285,11 +295,14 @@
                     <constraint firstItem="dkO-z7-8ip" firstAttribute="height" secondItem="Wrb-tV-OKY" secondAttribute="height" id="ysz-hC-Dqa"/>
                     <constraint firstItem="dRI-f7-1S9" firstAttribute="width" secondItem="fRV-c6-aTG" secondAttribute="width" id="zJl-c2-fTB"/>
                     <constraint firstItem="eRB-h4-cki" firstAttribute="width" secondItem="fRV-c6-aTG" secondAttribute="width" id="ziP-1L-wnh"/>
+                    <constraint firstItem="Y33-8s-756" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="zj8-jB-5oH"/>
                     <constraint firstItem="2w1-bq-yFp" firstAttribute="top" secondItem="3kW-KO-2aU" secondAttribute="bottom" id="zq2-vv-lXm"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
                         <exclude reference="r1Q-vy-MG7"/>
+                        <exclude reference="oW6-CE-2Si"/>
+                        <exclude reference="qrx-1T-Dcs"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>

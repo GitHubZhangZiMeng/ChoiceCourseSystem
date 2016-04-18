@@ -1,66 +1,40 @@
 //
-//  CancelCourseViewController.m
+//  MyCourseVC.m
 //  ChoiceCourseSystem
 //
-//  Created by zzm on 16/3/5.
+//  Created by monst on 16/4/18.
 //  Copyright © 2016年 zzm. All rights reserved.
 //
 
-#import "CancelCourseViewController.h"
+#import "MyCourseVC.h"
 #import "CourseInfoTableViewCell.h"
 #import "CourseInfoView.h"
-
-@interface CancelCourseViewController () <UITableViewDelegate,UITableViewDataSource>
+@interface MyCourseVC ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong)NSArray *courseArr;
 @property (nonatomic, strong)NSMutableArray *courseTagArr;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic ,strong)NSMutableDictionary *cancelDic;
 
 @end
 
-@implementation CancelCourseViewController
+@implementation MyCourseVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title=@"退选";
-    
-    _tableView.editing = YES;
-    _cancelDic = [NSMutableDictionary dictionary];
     _courseArr = [NSArray arrayWithObjects:@"C语言",@"C++面向对象编程",@"J2EE编程技术", nil];
     _courseTagArr = [NSMutableArray array];
     for (int i=0; i<_courseArr.count; i++)
     {
         [_courseTagArr addObject:@"0"];
     }
-
+    
     
     // Do any additional setup after loading the view from its nib.
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 3;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [_cancelDic setObject:_courseArr[indexPath.section] forKey:[NSString stringWithFormat:@"%ld",indexPath.section]];
-}
-
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [_cancelDic removeObjectForKey:[NSString stringWithFormat:@"%ld",indexPath.section]];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    self.tabBarController.tabBar.hidden = NO;
 }
 
 - (void)headerBtnClick:(UIButton *)btn
@@ -88,6 +62,8 @@
         }
     }
     
+    
+    
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -105,7 +81,6 @@
         vi.inImgView.image = [UIImage imageNamed:@"in"];
     }
     return vi;
-    
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -121,7 +96,6 @@
     return _courseArr.count;
 }
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if ([_courseTagArr[section] isEqualToString:@"1"])
@@ -132,7 +106,6 @@
     {
         return 0;
     }
-    
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -143,9 +116,8 @@
     }
     
     return cell;
-
+    
 }
-
 
 /*
 #pragma mark - Navigation

@@ -4,8 +4,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PersonViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyCourseVC">
             <connections>
+                <outlet property="tableView" destination="1iX-pP-DuM" id="r1Z-Ta-Vbs"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,21 +15,21 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Mhw-hX-sCg">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1iX-pP-DuM">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="ZJE-bN-lfo"/>
-                        <outlet property="delegate" destination="-1" id="AEn-TP-2Xd"/>
+                        <outlet property="dataSource" destination="-1" id="Apg-GY-i7M"/>
+                        <outlet property="delegate" destination="-1" id="h4I-qo-6HI"/>
                     </connections>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="Mhw-hX-sCg" secondAttribute="trailing" id="4ct-p6-vMp"/>
-                <constraint firstItem="Mhw-hX-sCg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="56n-ZQ-fD9"/>
-                <constraint firstItem="Mhw-hX-sCg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="U4p-8R-bnf"/>
-                <constraint firstAttribute="bottom" secondItem="Mhw-hX-sCg" secondAttribute="bottom" id="XJv-pp-WDD"/>
+                <constraint firstItem="1iX-pP-DuM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="3Pz-0G-0u1"/>
+                <constraint firstAttribute="trailing" secondItem="1iX-pP-DuM" secondAttribute="trailing" id="KXw-bn-th1"/>
+                <constraint firstItem="1iX-pP-DuM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Loj-g0-BHR"/>
+                <constraint firstAttribute="bottom" secondItem="1iX-pP-DuM" secondAttribute="bottom" id="mMo-aI-XP0"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>

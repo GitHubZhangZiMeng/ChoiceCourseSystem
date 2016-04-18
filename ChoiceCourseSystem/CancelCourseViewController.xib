@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CancelCourseViewController">
             <connections>
+                <outlet property="tableView" destination="CeE-5H-3LG" id="ktw-a6-1Bj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -13,7 +14,23 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CeE-5H-3LG">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="7HG-PM-9JM"/>
+                        <outlet property="delegate" destination="-1" id="2l1-9I-BY3"/>
+                    </connections>
+                </tableView>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="CeE-5H-3LG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="GUn-sB-uGi"/>
+                <constraint firstAttribute="bottom" secondItem="CeE-5H-3LG" secondAttribute="bottom" id="Udt-eB-lmC"/>
+                <constraint firstItem="CeE-5H-3LG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="rbc-Pr-IJf"/>
+                <constraint firstAttribute="trailing" secondItem="CeE-5H-3LG" secondAttribute="trailing" id="yf1-ny-V4W"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="292" y="285"/>
         </view>

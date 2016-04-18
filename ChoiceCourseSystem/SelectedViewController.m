@@ -67,7 +67,7 @@
     
     
     UIView *seView = [[UIView alloc] init];
-    seView.backgroundColor = [UIColor greenColor];
+    seView.backgroundColor = [UIColor yellowColor];
     seView.frame = CGRectMake(0 , NavHeight+StatusHeight, MainScreenWidth, 44);
     [self.view addSubview:seView];
     

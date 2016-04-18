@@ -13,6 +13,7 @@
 #import "PersonHeaderView.h"
 #import "SetPassWordViewController.h"
 #import "LoginViewController.h"
+#import "MyCourseVC.h"
 @interface PersonViewController ()
 
 @end
@@ -53,11 +54,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     switch (indexPath.row)
     {
         case 0://我的选课
-            [self.navigationController pushViewController:[SelectedViewController new] animated:YES];
+            [self.navigationController pushViewController:[MyCourseVC new] animated:YES];
             break;
         case 1:
           
@@ -84,13 +84,11 @@
                 [self dismissViewControllerAnimated:YES completion:nil];
             }];
         }
-            
             break;
         
         default:
             break;
     }
-    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
