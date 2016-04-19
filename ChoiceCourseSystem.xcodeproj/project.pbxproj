@@ -29,6 +29,17 @@
 		0AD6E2781CA7AD87003541E2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD6E2771CA7AD87003541E2 /* Reachability.m */; };
 		0AD912EC1CA79BFC0090B2BB /* PersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD912EA1CA79BFC0090B2BB /* PersonTableViewCell.m */; };
 		0AD912ED1CA79BFC0090B2BB /* PersonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AD912EB1CA79BFC0090B2BB /* PersonTableViewCell.xib */; };
+		C128358F1CC5BD96003906AE /* CourseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C128358D1CC5BD96003906AE /* CourseVC.m */; };
+		C12835901CC5BD96003906AE /* CourseVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C128358E1CC5BD96003906AE /* CourseVC.xib */; };
+		C12835971CC6051C003906AE /* CancelCourseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C12835961CC6051C003906AE /* CancelCourseView.m */; };
+		C12835991CC60539003906AE /* CancelCourseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12835981CC60539003906AE /* CancelCourseView.xib */; };
+		C12835A61CC609CE003906AE /* circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12835A21CC609CE003906AE /* circle@2x.png */; };
+		C12835A71CC609CE003906AE /* circle@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12835A31CC609CE003906AE /* circle@3x.png */; };
+		C12835A81CC609CE003906AE /* yes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12835A41CC609CE003906AE /* yes@2x.png */; };
+		C12835A91CC609CE003906AE /* yes@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12835A51CC609CE003906AE /* yes@3x.png */; };
+		C12835AC1CC60BC9003906AE /* superBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = C12835AB1CC60BC9003906AE /* superBtn.m */; };
+		C12835AF1CC61900003906AE /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12835AD1CC61900003906AE /* icon@2x.png */; };
+		C12835B01CC61900003906AE /* icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12835AE1CC61900003906AE /* icon@3x.png */; };
 		C1660AAD1CC4D1C500F55040 /* MyCourseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C1660AAB1CC4D1C500F55040 /* MyCourseVC.m */; };
 		C1660AAE1CC4D1C500F55040 /* MyCourseVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1660AAC1CC4D1C500F55040 /* MyCourseVC.xib */; };
 		C166721F1CBC893C000DAA6F /* CourseInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = C166721E1CBC893C000DAA6F /* CourseInfoView.m */; };
@@ -110,6 +121,20 @@
 		1AA4956B7BBF0171E834A703 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		53ABE67F66050BEF4F3D2CA4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6470E9AF9CFEF7CA71EB5F68 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		C128358C1CC5BD96003906AE /* CourseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseVC.h; sourceTree = "<group>"; };
+		C128358D1CC5BD96003906AE /* CourseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseVC.m; sourceTree = "<group>"; };
+		C128358E1CC5BD96003906AE /* CourseVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseVC.xib; sourceTree = "<group>"; };
+		C12835951CC6051C003906AE /* CancelCourseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CancelCourseView.h; sourceTree = "<group>"; };
+		C12835961CC6051C003906AE /* CancelCourseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CancelCourseView.m; sourceTree = "<group>"; };
+		C12835981CC60539003906AE /* CancelCourseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CancelCourseView.xib; sourceTree = "<group>"; };
+		C12835A21CC609CE003906AE /* circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle@2x.png"; sourceTree = "<group>"; };
+		C12835A31CC609CE003906AE /* circle@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle@3x.png"; sourceTree = "<group>"; };
+		C12835A41CC609CE003906AE /* yes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yes@2x.png"; sourceTree = "<group>"; };
+		C12835A51CC609CE003906AE /* yes@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yes@3x.png"; sourceTree = "<group>"; };
+		C12835AA1CC60BC9003906AE /* superBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = superBtn.h; sourceTree = "<group>"; };
+		C12835AB1CC60BC9003906AE /* superBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = superBtn.m; sourceTree = "<group>"; };
+		C12835AD1CC61900003906AE /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		C12835AE1CC61900003906AE /* icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@3x.png"; sourceTree = "<group>"; };
 		C1660AAA1CC4D1C500F55040 /* MyCourseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCourseVC.h; sourceTree = "<group>"; };
 		C1660AAB1CC4D1C500F55040 /* MyCourseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCourseVC.m; sourceTree = "<group>"; };
 		C1660AAC1CC4D1C500F55040 /* MyCourseVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCourseVC.xib; sourceTree = "<group>"; };
@@ -183,6 +208,10 @@
 		0A8E152A1C8A98AD005200AB /* resImg */ = {
 			isa = PBXGroup;
 			children = (
+				C12835A21CC609CE003906AE /* circle@2x.png */,
+				C12835A31CC609CE003906AE /* circle@3x.png */,
+				C12835A41CC609CE003906AE /* yes@2x.png */,
+				C12835A51CC609CE003906AE /* yes@3x.png */,
 				C1E8450B1CBDD828009D1981 /* down@2x.png */,
 				C1E8450C1CBDD828009D1981 /* down@3x.png */,
 				C1E845071CBDD7A3009D1981 /* in@3x.png */,
@@ -198,6 +227,8 @@
 				C184BE271CB789D400C844FF /* cancle@2x.png */,
 				C184BE281CB789D400C844FF /* cancle@3x.png */,
 				0A082C5B1C86BEFF00A63C5B /* cuitPNG.png */,
+				C12835AD1CC61900003906AE /* icon@2x.png */,
+				C12835AE1CC61900003906AE /* icon@3x.png */,
 			);
 			name = resImg;
 			sourceTree = "<group>";
@@ -236,6 +267,9 @@
 				C166721D1CBC893C000DAA6F /* CourseInfoView.h */,
 				C166721E1CBC893C000DAA6F /* CourseInfoView.m */,
 				C16672201CBC895B000DAA6F /* CourseInfoView.xib */,
+				C12835951CC6051C003906AE /* CancelCourseView.h */,
+				C12835961CC6051C003906AE /* CancelCourseView.m */,
+				C12835981CC60539003906AE /* CancelCourseView.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -390,6 +424,8 @@
 			children = (
 				C184BE0F1CB742FC00C844FF /* SuperViewController.h */,
 				C184BE101CB742FC00C844FF /* SuperViewController.m */,
+				C12835AA1CC60BC9003906AE /* superBtn.h */,
+				C12835AB1CC60BC9003906AE /* superBtn.m */,
 			);
 			name = SuperController;
 			sourceTree = "<group>";
@@ -441,6 +477,9 @@
 				C173161D1CBB57BA00915D5B /* CourseViewController.h */,
 				C173161E1CBB57BA00915D5B /* CourseViewController.m */,
 				C173161F1CBB57BA00915D5B /* CourseViewController.xib */,
+				C128358C1CC5BD96003906AE /* CourseVC.h */,
+				C128358D1CC5BD96003906AE /* CourseVC.m */,
+				C128358E1CC5BD96003906AE /* CourseVC.xib */,
 			);
 			name = ChoiseCourseVC;
 			sourceTree = "<group>";
@@ -534,13 +573,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C12835A71CC609CE003906AE /* circle@3x.png in Resources */,
 				C184BE2F1CB798F200C844FF /* PersonHeaderView.xib in Resources */,
 				0A8E15431C8A9F59005200AB /* ChoiceCourseViewController.xib in Resources */,
 				C17316261CBB8DEB00915D5B /* CourseInfoTableViewCell.xib in Resources */,
+				C12835A61CC609CE003906AE /* circle@2x.png in Resources */,
 				C184BE1D1CB7868800C844FF /* book@2x.png in Resources */,
 				C17316161CBB4ECE00915D5B /* left@2x.png in Resources */,
 				C1660AAE1CC4D1C500F55040 /* MyCourseVC.xib in Resources */,
+				C12835B01CC61900003906AE /* icon@3x.png in Resources */,
+				C12835991CC60539003906AE /* CancelCourseView.xib in Resources */,
+				C12835AF1CC61900003906AE /* icon@2x.png in Resources */,
 				C1E8450E1CBDD828009D1981 /* down@3x.png in Resources */,
+				C12835901CC5BD96003906AE /* CourseVC.xib in Resources */,
+				C12835A91CC609CE003906AE /* yes@3x.png in Resources */,
 				C184BE1E1CB7868800C844FF /* book@3x.png in Resources */,
 				C17316171CBB4ECE00915D5B /* left@3x.png in Resources */,
 				0A8E15481C8A9FCF005200AB /* CancelCourseViewController.xib in Resources */,
@@ -551,6 +597,7 @@
 				C184BE291CB789D400C844FF /* cancle@2x.png in Resources */,
 				C1E8450A1CBDD7A3009D1981 /* in@2x.png in Resources */,
 				C173160F1CBB438C00915D5B /* MajorViewController.xib in Resources */,
+				C12835A81CC609CE003906AE /* yes@2x.png in Resources */,
 				C173160A1CBB3A4000915D5B /* YearClassVC.xib in Resources */,
 				C184BE261CB788CF00C844FF /* person@3x.png in Resources */,
 				C17316211CBB57BA00915D5B /* CourseViewController.xib in Resources */,
@@ -623,8 +670,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C12835AC1CC60BC9003906AE /* superBtn.m in Sources */,
 				0AB6C0F51C75658B00BCC4A4 /* AppDelegate.m in Sources */,
 				C1B1D3FC1CAE6BDB0022A23F /* AlertNotice.m in Sources */,
+				C128358F1CC5BD96003906AE /* CourseVC.m in Sources */,
+				C12835971CC6051C003906AE /* CancelCourseView.m in Sources */,
 				C184BE121CB742FC00C844FF /* SuperViewController.m in Sources */,
 				0A8E154D1C8AA02C005200AB /* PersonViewController.m in Sources */,
 				C1DBB63D1CB50F0D00C478A7 /* CourseNameViewController.m in Sources */,

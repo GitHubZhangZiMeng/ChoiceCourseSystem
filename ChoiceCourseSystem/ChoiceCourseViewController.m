@@ -9,6 +9,8 @@
 #import "ChoiceCourseViewController.h"
 #import "PersonTableViewCell.h"
 #import "YearClassVC.h"
+#import "CourseVC.h"
+#import "SelectedViewController.h"
 @interface ChoiceCourseViewController ()
 
 @property (nonatomic, strong)NSArray *collegeArr;
@@ -48,7 +50,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    YearClassVC *vc = [[YearClassVC alloc] init];
+    SelectedViewController *vc = [[SelectedViewController alloc] init];
     vc.collegeName = self.collegeArr[indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
     

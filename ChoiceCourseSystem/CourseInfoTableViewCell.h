@@ -22,5 +22,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *peopleNum;
 @property (weak, nonatomic) IBOutlet UILabel *creditLab;
 @property (weak, nonatomic) IBOutlet UILabel *teacherLab;
+@property (weak, nonatomic) IBOutlet UIImageView *inImgView;
 
 @end

@@ -11,6 +11,7 @@
 #import "CourseInfoTableViewCell.h"
 #import "CourseInfoView.h"
 #import "SVPullToRefresh/SVPullToRefresh.h"
+#import "ClassViewController.h"
 @interface SelectedViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 
 @property (nonatomic, strong)NSArray *selectArr;
@@ -49,13 +50,13 @@
         [self.seletedNotTagArr addObject:@"0"];
     }
     
-    NSLog(@"%ld",self.selectArr.count);
+    NSLog(@"%d",self.selectArr.count);
     
     for (int i=0; i<self.selectArr.count; i++)
     {
         [self.seletedTagArr addObject:@"0"];
     }
-     NSLog(@"%ld",self.seletedTagArr.count);
+     NSLog(@"%d",self.seletedTagArr.count);
     
     
     if(self.selectArr.count==0)
@@ -67,7 +68,7 @@
     
     
     UIView *seView = [[UIView alloc] init];
-    seView.backgroundColor = [UIColor yellowColor];
+    seView.backgroundColor = [UIColor colorWithRed:253/255.0 green:146/255.0 blue:8/255.0 alpha:1];
     seView.frame = CGRectMake(0 , NavHeight+StatusHeight, MainScreenWidth, 44);
     [self.view addSubview:seView];
     
@@ -105,49 +106,55 @@
     SVPullToRefreshView  *svPullView = [[SVPullToRefreshView alloc] init];
     [svPullView setTitle:@"123" forState:SVPullToRefreshStateTriggered];
     
-    _selectedTab = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, MainScreenWidth, _scroll.bounds.size.height) style:UITableViewStyleGrouped];
+    _selectedTab = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, MainScreenWidth, _scroll.bounds.size.height) style:UITableViewStylePlain];
     _selectedTab.tag = 1;
     _selectedTab.delegate = self;
     _selectedTab.dataSource = self;
     _selectedTab.showsVerticalScrollIndicator = NO;
+    
     __weak SelectedViewController *weakself= self;
     [_selectedTab addPullToRefreshWithActionHandler:^{
         //刷新数据 表
-        [weakself pulltoRefresh];
+        [weakself tab1pulltoRefresh];
         
     }];
     [_scroll addSubview:_selectedTab];
     
-    _notSelectedTab = [[UITableView alloc] initWithFrame:CGRectMake(MainScreenWidth, 0, MainScreenWidth, _scroll.bounds.size.height-44) style:UITableViewStyleGrouped];
+    _notSelectedTab = [[UITableView alloc] initWithFrame:CGRectMake(MainScreenWidth, 0, MainScreenWidth, _scroll.bounds.size.height) style:UITableViewStylePlain];
     _notSelectedTab.tag = 2;
     _notSelectedTab.delegate = self;
     _notSelectedTab.dataSource = self;
-    _notSelectedTab.editing = YES;
     _notSelectedTab.showsVerticalScrollIndicator = NO;
     [_scroll addSubview:_notSelectedTab];
     
     
-    _commitBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    _commitBtn.hidden = YES;
-    _commitBtn.backgroundColor = [UIColor colorWithRed:253/255.0 green:146/255.0 blue:8/255.0 alpha:0.7];
-    [_commitBtn setTitle:@"提交选课" forState:UIControlStateNormal];
-    [_commitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [_commitBtn setFrame:CGRectMake(MainScreenWidth, MainScreenHeight-NavHeight-StatusHeight-44-44, MainScreenWidth, 44)];
-    [_commitBtn addTarget:self action:@selector(commitClick) forControlEvents:UIControlEventTouchUpInside];
-    [_scroll addSubview:_commitBtn];
-    [_scroll bringSubviewToFront:_commitBtn];
+//    _commitBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+//    _commitBtn.hidden = YES;
+//    _commitBtn.backgroundColor = [UIColor colorWithRed:253/255.0 green:146/255.0 blue:8/255.0 alpha:0.7];
+//    [_commitBtn setTitle:@"提交选课" forState:UIControlStateNormal];
+//    [_commitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    [_commitBtn setFrame:CGRectMake(MainScreenWidth, MainScreenHeight-NavHeight-StatusHeight-44-44, MainScreenWidth, 44)];
+//    [_commitBtn addTarget:self action:@selector(commitClick) forControlEvents:UIControlEventTouchUpInside];
+//    [_scroll addSubview:_commitBtn];
+//    [_scroll bringSubviewToFront:_commitBtn];
     
     
     // Do any additional setup after loading the view.
 }
 #pragma mark - 下拉刷新
-- (void)pulltoRefresh
+- (void)tab1pulltoRefresh
 {
     
 //    sleep(2);
     [self.selectedTab reloadData];
     [self.selectedTab.pullToRefreshView stopAnimating];
     
+}
+
+- (void)tab2pulltoRefresh
+{
+    [self.notSelectedTab reloadData];
+    [self.notSelectedTab.pullToRefreshView stopAnimating];
 }
 
 #pragma mark - btn的addtarget
@@ -175,7 +182,7 @@
 - (void)commitClick
 {
     NSLog(@"____%@",self.courseDic);
-    [AlertNotice showAlert:2 withTitle:@"提示" withContent:[NSString stringWithFormat:@"共选课%ld门，是否进行提交",self.courseDic.count] withVC:self clickLeftBtn:^{
+    [AlertNotice showAlert:2 withTitle:@"提示" withContent:[NSString stringWithFormat:@"共选课%d门，是否进行提交",self.courseDic.count] withVC:self clickLeftBtn:^{
         //提交选课
     } clickRightBtn:^{
         
@@ -201,8 +208,8 @@
     }
     else
     {
-        NSLog(@"%ld",self.seletedTagArr.count);
-        NSLog(@"%ld",headerBtn.tag);
+        NSLog(@"%d",self.seletedTagArr.count);
+        NSLog(@"%d",headerBtn.tag);
         if ([self.seletedTagArr[headerBtn.tag] isEqualToString:@"1"])
         {
             [self.seletedTagArr replaceObjectAtIndex:headerBtn.tag withObject:@"0"];
@@ -251,14 +258,19 @@
     if (tableView.tag==2)
     {
         NSLog(@"didSelectRowAtIndexPath");
-        NSString *str = [NSString stringWithFormat:@"%ld",indexPath.section];
-        [self.courseDic setObject:self.seledtNotArr[indexPath.section] forKey:str];
-        NSLog(@"self.courseDic:%@",self.courseDic);
-        [_commitBtn setTitle:[NSString stringWithFormat:@"提交选课(%ld)",self.courseDic.count] forState:UIControlStateNormal];
-        if (self.courseDic.count !=0)
-        {
-            self.commitBtn.hidden = NO;
-        }
+        ClassViewController *classVC = [[ClassViewController alloc] init];
+        classVC.collegeName = self.collegeName;
+        classVC.courseName = _seledtNotArr[indexPath.section];
+        [self.navigationController pushViewController:classVC animated:YES];
+        
+//        NSString *str = [NSString stringWithFormat:@"%d",indexPath.section];
+//        [self.courseDic setObject:self.seledtNotArr[indexPath.section] forKey:str];
+//        NSLog(@"self.courseDic:%@",self.courseDic);
+//        [_commitBtn setTitle:[NSString stringWithFormat:@"提交选课(%d)",self.courseDic.count] forState:UIControlStateNormal];
+//        if (self.courseDic.count !=0)
+//        {
+//            self.commitBtn.hidden = NO;
+//        }
     }
    
     
@@ -269,9 +281,9 @@
     if (tableView.tag==2)
     {
         NSLog(@"didDeselectRowAtIndexPath");
-        NSString *str = [NSString stringWithFormat:@"%ld",indexPath.section];
+        NSString *str = [NSString stringWithFormat:@"%d",indexPath.section];
         [self.courseDic removeObjectForKey:str];
-        [_commitBtn setTitle:[NSString stringWithFormat:@"提交选课(%ld)",self.courseDic.count] forState:UIControlStateNormal];
+        [_commitBtn setTitle:[NSString stringWithFormat:@"提交选课(%d)",self.courseDic.count] forState:UIControlStateNormal];
         if (self.courseDic.count==0)
         {
             self.commitBtn.hidden = YES;
@@ -399,7 +411,7 @@
     
     if (tableView.tag == 1)
     {
-        
+        cell.inImgView.hidden = YES;
         return cell;
     }
     

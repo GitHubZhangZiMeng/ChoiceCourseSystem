@@ -12,6 +12,9 @@
 #import "SelectedViewController.h"
 @interface ClassViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong)NSArray *classArr;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *commitBtn;
+@property (nonatomic ,strong)NSMutableDictionary *dic;
 @end
 
 @implementation ClassViewController
@@ -20,27 +23,64 @@
     [super viewDidLoad];
     
     self.navigationItem.title=@"选择班级";
+    _tableView.editing = YES;
     self.classArr = [NSArray arrayWithObjects:@"2012届1班",@"2012届2班",@"2012届3班",@"2012届4班",@"2012届5班", nil];
+    [_commitBtn addTarget:self action:@selector(commitClick) forControlEvents:UIControlEventTouchUpInside];
+    
+    _dic = [NSMutableDictionary dictionary];
+    _commitBtn.hidden = YES;
+    
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void)commitClick
+{
+    NSLog(@"____%@",self.dic);
+    [AlertNotice showAlert:2 withTitle:@"提示" withContent:[NSString stringWithFormat:@"共选中%d个班级，是否进行提交",self.dic.count] withVC:self clickLeftBtn:^{
+        //提交选课
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    } clickRightBtn:^{
+        
+    }];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 3;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SelectedViewController*vc = [[SelectedViewController alloc] init];
-    vc.collegeName = self.collegeName;
-    vc.yearClass = self.yearClass;
-    vc.major = self.major;
-    vc.clas = self.classArr[indexPath.row];
-    
-    [self.navigationController pushViewController:vc animated:YES];
-    
+    [_dic setObject:_classArr[indexPath.row] forKey:[NSString stringWithFormat:@"%d",indexPath.row]];
+    if (_dic.count !=0)
+    {
+        _commitBtn.hidden = NO;
+    }
+    else
+    {
+        _commitBtn.hidden = YES;
+    }
     
 }
 
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [_dic removeObjectForKey:[NSString stringWithFormat:@"%d",indexPath.row]];
+    
+    if (_dic.count != 0)
+    {
+        _commitBtn.hidden = NO;
+    }
+    else
+    {
+         _commitBtn.hidden = YES;
+    }
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -48,15 +88,16 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PersonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell)
     {
-        cell = [[NSBundle mainBundle] loadNibNamed:@"PersonTableViewCell" owner:nil options:nil][0];
-        
+        cell = [[UITableViewCell alloc] initWithStyle:0 reuseIdentifier:@"cell"];
     }
-    cell.personRowLab.text = self.classArr[indexPath.row];
+    cell.textLabel.text = self.classArr[indexPath.row];
+    
     return cell;
 }
+
 /*
 #pragma mark - Navigation
 

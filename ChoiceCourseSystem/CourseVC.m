@@ -1,27 +1,32 @@
 //
-//  MyCourseVC.m
+//  CourseVC.m
 //  ChoiceCourseSystem
 //
-//  Created by monst on 16/4/18.
+//  Created by monst on 16/4/19.
 //  Copyright © 2016年 zzm. All rights reserved.
 //
 
-#import "MyCourseVC.h"
-#import "CourseInfoTableViewCell.h"
+#import "CourseVC.h"
+#import "PersonTableViewCell.h"
 #import "CourseInfoView.h"
-@interface MyCourseVC ()<UITableViewDelegate,UITableViewDataSource>
+#import "CourseInfoTableViewCell.h"
 
-@property (nonatomic, strong)NSArray *courseArr;
-@property (nonatomic, strong)NSMutableArray *courseTagArr;
+@interface CourseVC () <UITableViewDelegate,UITableViewDataSource>
+
+@property (nonatomic,strong)NSArray *courseArr;
+@property (nonatomic,strong)NSArray *classArr;
+@property (nonatomic,strong)NSMutableArray *courseTagArr;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
-@implementation MyCourseVC
+@implementation CourseVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _courseArr = [NSArray arrayWithObjects:@"C语言",@"C++面向对象编程",@"J2EE编程技术", nil];
+    _courseArr = [NSArray arrayWithObjects:@"C语言基础编程技术",@"C++面向对象编程",@"Java面向对象编程",@"计算机科学技术", nil];
+    _tableView.editing= YES;
+    _classArr = [NSArray arrayWithObjects:@"信息对抗121",@"信息对抗122",@"信息安全121",@"信息安全122",nil];
     _courseTagArr = [NSMutableArray array];
     for (int i=0; i<_courseArr.count; i++)
     {
@@ -29,16 +34,19 @@
     }
     
     
+    
     // Do any additional setup after loading the view from its nib.
 }
 
-- (void)didReceiveMemoryWarning{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 - (void)headerBtnClick:(UIButton *)btn
 {
+    NSLog(@"%@",_courseTagArr);
+    
     for (NSObject *obj in btn.superview.subviews)
     {
         if ([obj isKindOfClass:[UIImageView class]])
@@ -66,6 +74,23 @@
     
 }
 
+
+#pragma mark - tableview 代理
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row==0)
+    {
+        
+        return 0;
+    }
+    else
+    {
+        
+        return 3;
+    }
+}
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     CourseInfoView *vi = [[NSBundle mainBundle] loadNibNamed:@"CourseInfoView" owner:nil options:nil][0];
@@ -81,10 +106,14 @@
         vi.inImgView.image = [UIImage imageNamed:@"in"];
     }
     return vi;
+    
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+   
     return 300;
+    
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -107,18 +136,22 @@
         return 0;
     }
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CourseInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    
     if (!cell)
     {
         cell = [[NSBundle mainBundle] loadNibNamed:@"CourseInfoTableViewCell" owner:nil options:nil][0];
+      
     }
-    cell.inImgView.hidden = YES;
     
     return cell;
     
 }
+
+
 
 /*
 #pragma mark - Navigation

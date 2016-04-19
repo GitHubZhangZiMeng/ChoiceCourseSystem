@@ -16,7 +16,8 @@ typedef NS_ENUM(NSInteger,AlertNoticeType)
     
     kEnterThePwd = 0,
     kEnterOutSystem = 1,
-    kEnterCommitCourse = 2
+    kEnterCommitCourse = 2,
+    kEnterCancle = 3
 };
 
 

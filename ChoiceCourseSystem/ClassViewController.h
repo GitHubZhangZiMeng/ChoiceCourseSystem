@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong)NSString *collegeName;
 @property (nonatomic, strong)NSString *yearClass;
+@property (nonatomic, strong)NSString *courseName;
 @property (nonatomic, strong)NSString *major;
 
 @end
