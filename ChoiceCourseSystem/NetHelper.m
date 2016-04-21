@@ -27,7 +27,6 @@
     return [NetHelper shareAFManager];
 }
 
-
 - (void)getRequest:(NSString *)urlStr withNetBlock:(netBlock)netblock withErrBlock:(errBlock)errblock
 {
     [[self AFHTTPManager] GET:urlStr parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -46,11 +45,9 @@
     NSURLSession *session=[NSURLSession sharedSession];
     
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        
         NSLog(@"%@",data);
         NSLog(@"%@",response);
         NSLog(@"%@",error);
-        
     }];
     
     [task resume];
