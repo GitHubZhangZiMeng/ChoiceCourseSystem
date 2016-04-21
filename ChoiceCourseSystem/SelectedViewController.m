@@ -27,6 +27,9 @@
 @property (nonatomic, strong)UIButton *commitBtn;
 @property (nonatomic, strong)NSMutableDictionary *courseDic;
 
+@property (nonatomic, strong)UIButton *leftBtn;
+@property (nonatomic, strong)UIButton *rightBtn;
+
 
 @end
 
@@ -56,8 +59,8 @@
     {
         [self.seletedTagArr addObject:@"0"];
     }
-     NSLog(@"%d",self.seletedTagArr.count);
     
+    NSLog(@"%d",self.seletedTagArr.count);
     
     if(self.selectArr.count==0)
     {
@@ -65,30 +68,30 @@
             
         }];
     }
-    
-    
     UIView *seView = [[UIView alloc] init];
     seView.backgroundColor = [UIColor colorWithRed:253/255.0 green:146/255.0 blue:8/255.0 alpha:1];
     seView.frame = CGRectMake(0 , NavHeight+StatusHeight, MainScreenWidth, 44);
     [self.view addSubview:seView];
     
-    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    [leftBtn setTitle:@"已选课程" forState:UIControlStateNormal];
-    [leftBtn setFrame:CGRectMake(0, 0, MainScreenWidth/2, 40)];
-    leftBtn.tag = 1;
-    [leftBtn addTarget:self action:@selector(selectBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [seView addSubview:leftBtn];
+    _leftBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    [_leftBtn setTitle:@"已选课程" forState:UIControlStateNormal];
+    [_leftBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_leftBtn setFrame:CGRectMake(0, 0, MainScreenWidth/2, 40)];
+    _leftBtn.tag = 1;
+    [_leftBtn addTarget:self action:@selector(selectBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [seView addSubview:_leftBtn];
     
-    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    rightBtn.tag = 2;
-    [rightBtn setTitle:@"未选课程" forState:UIControlStateNormal];
-    [rightBtn setFrame:CGRectMake(MainScreenWidth/2, 0, MainScreenWidth/2, 40)];
-    [rightBtn addTarget:self action:@selector(selectBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [seView addSubview:rightBtn];
+    _rightBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    _rightBtn.tag = 2;
+    [_rightBtn setTitle:@"未选课程" forState:UIControlStateNormal];
+    [_rightBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [_rightBtn setFrame:CGRectMake(MainScreenWidth/2, 0, MainScreenWidth/2, 40)];
+    [_rightBtn addTarget:self action:@selector(selectBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [seView addSubview:_rightBtn];
     
     _tagVi = [[UIView alloc] init];
     _tagVi.frame = CGRectMake(0, 40, MainScreenWidth/2, 4);
-    _tagVi.backgroundColor = [UIColor grayColor];
+    _tagVi.backgroundColor = [UIColor whiteColor];
     [seView addSubview:_tagVi];
     
     
@@ -167,7 +170,8 @@
         _tagVi.frame = CGRectMake(0, 40, MainScreenWidth/2, 4);
         _scroll.contentOffset = CGPointMake(0, 0);
         [UIView commitAnimations];
-        
+        [_leftBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_rightBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
       
     }
     else
@@ -177,12 +181,14 @@
         _tagVi.frame = CGRectMake(MainScreenWidth/2, 40, MainScreenWidth/2, 4);
          _scroll.contentOffset = CGPointMake(MainScreenWidth, 0);
         [UIView commitAnimations];
+        [_rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_leftBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     }
 }
 - (void)commitClick
 {
     NSLog(@"____%@",self.courseDic);
-    [AlertNotice showAlert:2 withTitle:@"提示" withContent:[NSString stringWithFormat:@"共选课%d门，是否进行提交",self.courseDic.count] withVC:self clickLeftBtn:^{
+    [AlertNotice showAlert:2 withTitle:@"提示" withContent:[NSString stringWithFormat:@"共选课%lu门，是否进行提交",(unsigned long)self.courseDic.count] withVC:self clickLeftBtn:^{
         //提交选课
     } clickRightBtn:^{
         
@@ -192,7 +198,7 @@
 
 - (void)headerClick:(UIButton *)headerBtn
 {
-    if (_scroll.contentOffset.x>0)
+    if (_scroll.contentOffset.x > 0)
     {
         if ([self.seletedNotTagArr[headerBtn.tag] isEqualToString:@"1"])
         {
@@ -208,8 +214,8 @@
     }
     else
     {
-        NSLog(@"%d",self.seletedTagArr.count);
-        NSLog(@"%d",headerBtn.tag);
+        NSLog(@"%lu",(unsigned long)self.seletedTagArr.count);
+        NSLog(@"%ld",(long)headerBtn.tag);
         if ([self.seletedTagArr[headerBtn.tag] isEqualToString:@"1"])
         {
             [self.seletedTagArr replaceObjectAtIndex:headerBtn.tag withObject:@"0"];
@@ -233,7 +239,6 @@
     {
          _tagVi.frame =CGRectMake(scrollView.contentOffset.x/2, 40, MainScreenWidth/2, 4);
     }
-   
     
 }
 
