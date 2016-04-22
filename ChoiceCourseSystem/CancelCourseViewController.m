@@ -119,7 +119,18 @@
     if (!sBtn.isClike)
     {
         sBtn.isClike = YES;
-        [btn setImage:[UIImage imageNamed:@"yes"] forState:UIControlStateNormal];
+        for (UIView *obj in btn.superview.subviews)
+        {
+            if ([obj isKindOfClass:[UIImageView class]] && obj.tag==1)
+            {
+                UIImageView *imgView = (UIImageView *)obj;
+                imgView.image = [UIImage imageNamed:@"checkbox-selected"];
+                
+            }
+            
+        }
+        
+        
         [_cancelDic setObject:@"" forKey:[NSString stringWithFormat:@"%ld",(long)btn.tag]];
         if (_cancelDic.count==0)
         {
@@ -134,7 +145,16 @@
     else
     {
         sBtn.isClike = NO;
-        [btn setImage:[UIImage imageNamed:@"circle"] forState:UIControlStateNormal];
+        for (UIView *obj in btn.superview.subviews)
+        {
+            if ([obj isKindOfClass:[UIImageView class]] && obj.tag==1)
+            {
+                UIImageView *imgView = (UIImageView *)obj;
+                imgView.image = [UIImage imageNamed:@"checkbox-normal"];
+            }
+            
+        }
+        
         [_cancelDic removeObjectForKey:[NSString stringWithFormat:@"%ld",(long)btn.tag]];
         if (_cancelDic.count==0)
         {
@@ -240,12 +260,29 @@
     [vi.tagBtn addTarget:self action:@selector(tagBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     if ([_cancelDic objectForKey:[NSString stringWithFormat:@"%ld",(long)section]])
     {
-        [vi.tagBtn setImage:[UIImage imageNamed:@"yes"] forState:UIControlStateNormal];
+        for (UIView *obj in vi.subviews)
+        {
+            if ([obj isKindOfClass:[UIImageView class]] && obj.tag==1)
+            {
+                UIImageView *imgView = (UIImageView *)obj;
+                imgView.image = [UIImage imageNamed:@"checkbox-selected"];
+                
+            }
+            
+        }
         vi.tagBtn.isClike = YES;
     }
     else
     {
-        [vi.tagBtn setImage:[UIImage imageNamed:@"circle"] forState:UIControlStateNormal];
+        for (UIView *obj in vi.subviews)
+        {
+            if ([obj isKindOfClass:[UIImageView class]] && obj.tag==1)
+            {
+                UIImageView *imgView = (UIImageView *)obj;
+                imgView.image = [UIImage imageNamed:@"checkbox-normal"];
+            }
+            
+        }
     }
     
     if ([_courseTagArr[section] isEqualToString:@"1"])

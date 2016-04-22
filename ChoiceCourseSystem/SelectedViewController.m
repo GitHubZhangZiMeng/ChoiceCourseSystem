@@ -12,6 +12,9 @@
 #import "CourseInfoView.h"
 #import "SVPullToRefresh/SVPullToRefresh.h"
 #import "ClassViewController.h"
+#import "SelectedTableViewCell.h"
+#import "SelectingTableViewCell.h"
+#import "CourseVC.h"
 @interface SelectedViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 
 @property (nonatomic, strong)NSArray *selectArr;
@@ -31,6 +34,7 @@
 @property (nonatomic, strong)UIButton *rightBtn;
 
 
+
 @end
 
 @implementation SelectedViewController
@@ -38,9 +42,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title=@"选择课程";
+    self.navigationItem.title=self.collegeName;
     self.courseDic = [[NSMutableDictionary alloc] init];
-    
+    self.tabBarController.tabBar.hidden = YES;
 
     //请求数据
     self.selectArr = [NSArray arrayWithObjects:@"大学英语",@"高等数学",@"工程导论", nil];
@@ -112,6 +116,7 @@
     _selectedTab = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, MainScreenWidth, _scroll.bounds.size.height) style:UITableViewStylePlain];
     _selectedTab.tag = 1;
     _selectedTab.delegate = self;
+    _selectedTab.separatorStyle = UITableViewCellSeparatorStyleNone;
     _selectedTab.dataSource = self;
     _selectedTab.showsVerticalScrollIndicator = NO;
     
@@ -127,6 +132,7 @@
     _notSelectedTab.tag = 2;
     _notSelectedTab.delegate = self;
     _notSelectedTab.dataSource = self;
+    _notSelectedTab.separatorStyle = UITableViewCellSeparatorStyleNone;
     _notSelectedTab.showsVerticalScrollIndicator = NO;
     [_scroll addSubview:_notSelectedTab];
     
@@ -144,6 +150,11 @@
     
     // Do any additional setup after loading the view.
 }
+- (void)viewWillAppear:(BOOL)animated
+{
+   [self.navigationController setNavigationBarHidden:NO];
+}
+
 #pragma mark - 下拉刷新
 - (void)tab1pulltoRefresh
 {
@@ -185,51 +196,51 @@
         [_leftBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     }
 }
-- (void)commitClick
-{
-    NSLog(@"____%@",self.courseDic);
-    [AlertNotice showAlert:2 withTitle:@"提示" withContent:[NSString stringWithFormat:@"共选课%lu门，是否进行提交",(unsigned long)self.courseDic.count] withVC:self clickLeftBtn:^{
-        //提交选课
-    } clickRightBtn:^{
-        
-    }];
-    
-}
+//- (void)commitClick
+//{
+//    NSLog(@"____%@",self.courseDic);
+//    [AlertNotice showAlert:2 withTitle:@"提示" withContent:[NSString stringWithFormat:@"共选课%lu门，是否进行提交",(unsigned long)self.courseDic.count] withVC:self clickLeftBtn:^{
+//        //提交选课
+//    } clickRightBtn:^{
+//        
+//    }];
+//    
+//}
 
-- (void)headerClick:(UIButton *)headerBtn
-{
-    if (_scroll.contentOffset.x > 0)
-    {
-        if ([self.seletedNotTagArr[headerBtn.tag] isEqualToString:@"1"])
-        {
-            [self.seletedNotTagArr replaceObjectAtIndex:headerBtn.tag withObject:@"0"];
-        }
-        else
-        {
-            [self.seletedNotTagArr replaceObjectAtIndex:headerBtn.tag withObject:@"1"];
-        }
-        
-        
-        [_notSelectedTab reloadSections:[NSIndexSet indexSetWithIndex:headerBtn.tag] withRowAnimation:UITableViewRowAnimationFade];
-    }
-    else
-    {
-        NSLog(@"%lu",(unsigned long)self.seletedTagArr.count);
-        NSLog(@"%ld",(long)headerBtn.tag);
-        if ([self.seletedTagArr[headerBtn.tag] isEqualToString:@"1"])
-        {
-            [self.seletedTagArr replaceObjectAtIndex:headerBtn.tag withObject:@"0"];
-        }
-        else
-        {
-            [self.seletedTagArr replaceObjectAtIndex:headerBtn.tag withObject:@"1"];
-        }
-        
-        [_selectedTab reloadSections:[NSIndexSet indexSetWithIndex:headerBtn.tag] withRowAnimation:UITableViewRowAnimationFade];
-    }
-    
-    
-}
+//- (void)headerClick:(UIButton *)headerBtn
+//{
+//    if (_scroll.contentOffset.x > 0)
+//    {
+//        if ([self.seletedNotTagArr[headerBtn.tag] isEqualToString:@"1"])
+//        {
+//            [self.seletedNotTagArr replaceObjectAtIndex:headerBtn.tag withObject:@"0"];
+//        }
+//        else
+//        {
+//            [self.seletedNotTagArr replaceObjectAtIndex:headerBtn.tag withObject:@"1"];
+//        }
+//        
+//        
+//        [_notSelectedTab reloadSections:[NSIndexSet indexSetWithIndex:headerBtn.tag] withRowAnimation:UITableViewRowAnimationFade];
+//    }
+//    else
+//    {
+//        NSLog(@"%lu",(unsigned long)self.seletedTagArr.count);
+//        NSLog(@"%ld",(long)headerBtn.tag);
+//        if ([self.seletedTagArr[headerBtn.tag] isEqualToString:@"1"])
+//        {
+//            [self.seletedTagArr replaceObjectAtIndex:headerBtn.tag withObject:@"0"];
+//        }
+//        else
+//        {
+//            [self.seletedTagArr replaceObjectAtIndex:headerBtn.tag withObject:@"1"];
+//        }
+//        
+//        [_selectedTab reloadSections:[NSIndexSet indexSetWithIndex:headerBtn.tag] withRowAnimation:UITableViewRowAnimationFade];
+//    }
+//    
+//    
+//}
 #pragma mark - scroller代理
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -245,28 +256,28 @@
 
 #pragma mark - tableView代理
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (tableView.tag==2)
-    {
-         return UITableViewCellEditingStyleDelete | UITableViewCellEditingStyleInsert;
-    }
-    else
-    {
-        return UITableViewCellEditingStyleNone;
-    }
-   
-}
-
+//- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if (tableView.tag==2)
+//    {
+//         return UITableViewCellEditingStyleDelete | UITableViewCellEditingStyleInsert;
+//    }
+//    else
+//    {
+//        return UITableViewCellEditingStyleNone;
+//    }
+//   
+//}
+//
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (tableView.tag==2)
+    
+    if (tableView.tag==1)
     {
         NSLog(@"didSelectRowAtIndexPath");
-        ClassViewController *classVC = [[ClassViewController alloc] init];
-        classVC.collegeName = self.collegeName;
-        classVC.courseName = _seledtNotArr[indexPath.section];
-        [self.navigationController pushViewController:classVC animated:YES];
+        CourseVC *vc = [[CourseVC alloc] init];
+        vc.collegeStr = self.collegeName;
+        [self.navigationController pushViewController:vc animated:YES];
         
 //        NSString *str = [NSString stringWithFormat:@"%d",indexPath.section];
 //        [self.courseDic setObject:self.seledtNotArr[indexPath.section] forKey:str];
@@ -277,154 +288,169 @@
 //            self.commitBtn.hidden = NO;
 //        }
     }
-   
+   else
+   {
+       
+   }
     
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (tableView.tag==2)
-    {
-        NSLog(@"didDeselectRowAtIndexPath");
-        NSString *str = [NSString stringWithFormat:@"%d",indexPath.section];
-        [self.courseDic removeObjectForKey:str];
-        [_commitBtn setTitle:[NSString stringWithFormat:@"提交选课(%d)",self.courseDic.count] forState:UIControlStateNormal];
-        if (self.courseDic.count==0)
-        {
-            self.commitBtn.hidden = YES;
-        }
+//- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if (tableView.tag==2)
+//    {
+//        NSLog(@"didDeselectRowAtIndexPath");
+//        NSString *str = [NSString stringWithFormat:@"%d",indexPath.section];
+//        [self.courseDic removeObjectForKey:str];
+//        [_commitBtn setTitle:[NSString stringWithFormat:@"提交选课(%d)",self.courseDic.count] forState:UIControlStateNormal];
+//        if (self.courseDic.count==0)
+//        {
+//            self.commitBtn.hidden = YES;
+//        }
+//
+//    }
+//}
 
-    }
-}
 
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    if (tableView.tag == 1)
-    {
-        return self.selectArr.count;
-    }
-    else
-    {
-        return self.seledtNotArr.count;
-    }
-    
-}
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//    if (tableView.tag == 1)
+//    {
+//        return self.selectArr.count;
+//    }
+//    else
+//    {
+//        return self.seledtNotArr.count;
+//    }
+//    
+//}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 300;
+    return 70;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 50;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//{
+//    return 50;
+//}
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    if (tableView.tag ==1)
-    {
-        CourseInfoView *infoView = [[NSBundle mainBundle] loadNibNamed:@"CourseInfoView" owner:nil options:nil][0];
-        infoView.headerBtn.tag = section;
-        [infoView.headerBtn addTarget:self action:@selector(headerClick:) forControlEvents:UIControlEventTouchUpInside];
-
-        infoView.CourseNameLab.text = self.selectArr[section];
-        for (NSObject *obj in infoView.subviews)
-        {
-            if ([obj isKindOfClass:[UIImageView class]])
-            {
-                UIImageView *img = (UIImageView *)obj;
-                if ([self.seletedTagArr[section] isEqualToString:@"1"])
-                {
-                    img.image = [UIImage imageNamed:@"down"];
-                }
-                else
-                {
-                    img.image = [UIImage imageNamed:@"in"];
-                }
-                break;
-            }
-        }
-        return infoView;
-    }
-    else
-    {
-        CourseInfoView *infoView = [[NSBundle mainBundle] loadNibNamed:@"CourseInfoView" owner:nil options:nil][0];
-        infoView.headerBtn.tag = section;
-        [infoView.headerBtn addTarget:self action:@selector(headerClick:) forControlEvents:UIControlEventTouchUpInside];
-
-        infoView.CourseNameLab.text = self.seledtNotArr[section];
-        for (NSObject *obj in infoView.subviews)
-        {
-            if ([obj isKindOfClass:[UIImageView class]])
-            {
-                UIImageView *img = (UIImageView *)obj;
-                if ([self.seletedNotTagArr[section] isEqualToString:@"1"])
-                {
-                    img.image = [UIImage imageNamed:@"down"];
-                }
-                else
-                {
-                    img.image = [UIImage imageNamed:@"in"];
-                }
-                break;
-            }
-        }
-        return infoView;
-    }
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    if (tableView.tag ==1)
+//    {
+//        CourseInfoView *infoView = [[NSBundle mainBundle] loadNibNamed:@"CourseInfoView" owner:nil options:nil][0];
+//        infoView.headerBtn.tag = section;
+//        [infoView.headerBtn addTarget:self action:@selector(headerClick:) forControlEvents:UIControlEventTouchUpInside];
+//
+//        infoView.CourseNameLab.text = self.selectArr[section];
+//        for (NSObject *obj in infoView.subviews)
+//        {
+//            if ([obj isKindOfClass:[UIImageView class]])
+//            {
+//                UIImageView *img = (UIImageView *)obj;
+//                if ([self.seletedTagArr[section] isEqualToString:@"1"])
+//                {
+//                    img.image = [UIImage imageNamed:@"down"];
+//                }
+//                else
+//                {
+//                    img.image = [UIImage imageNamed:@"in"];
+//                }
+//                break;
+//            }
+//        }
+//        return infoView;
+//    }
+//    else
+//    {
+//        CourseInfoView *infoView = [[NSBundle mainBundle] loadNibNamed:@"CourseInfoView" owner:nil options:nil][0];
+//        infoView.headerBtn.tag = section;
+//        [infoView.headerBtn addTarget:self action:@selector(headerClick:) forControlEvents:UIControlEventTouchUpInside];
+//
+//        infoView.CourseNameLab.text = self.seledtNotArr[section];
+//        for (NSObject *obj in infoView.subviews)
+//        {
+//            if ([obj isKindOfClass:[UIImageView class]])
+//            {
+//                UIImageView *img = (UIImageView *)obj;
+//                if ([self.seletedNotTagArr[section] isEqualToString:@"1"])
+//                {
+//                    img.image = [UIImage imageNamed:@"down"];
+//                }
+//                else
+//                {
+//                    img.image = [UIImage imageNamed:@"in"];
+//                }
+//                break;
+//            }
+//        }
+//        return infoView;
+//    }
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (tableView.tag==1)
     {
-        if ([self.seletedTagArr[section] isEqualToString:@"1"])
-        {
-            return 1;
-        }
-        else
-        {
-            return 0;
-        }
-        
+//        if ([self.seletedTagArr[section] isEqualToString:@"1"])
+//        {
+//            return 1;
+//        }
+//        else
+//        {
+//            return 0;
+//        }
+        return _selectArr.count;
     }
     else
     {
-        if ([self.seletedNotTagArr[section] isEqualToString:@"1"])
-        {
-            return 1;
-        }
-        else
-        {
-            return 0;
-        }
+//        if ([self.seletedNotTagArr[section] isEqualToString:@"1"])
+//        {
+//            return 1;
+//        }
+//        else
+//        {
+//            return 0;
+//        }
+        return _seledtNotArr.count;
     }
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CourseInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    
-    if (!cell)
+    if (tableView.tag==1)
     {
-        cell = [[NSBundle mainBundle] loadNibNamed:@"CourseInfoTableViewCell" owner:nil options:nil][0];
-        cell.courseStart.adjustsFontSizeToFitWidth = YES;
-    }
-    
-    
-    if (tableView.tag == 1)
-    {
-        cell.inImgView.hidden = YES;
+        SelectedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"selectedCell"];
+        if (!cell)
+        {
+            cell = [[NSBundle mainBundle] loadNibNamed:@"SelectedTableViewCell" owner:nil options:nil][0];
+        }
+        cell.courseNameLab.text = _selectArr[indexPath.row];
+        cell.courseNameLab.adjustsFontSizeToFitWidth = YES;
+        cell.openTimeLab.text = @"第5周";
+        cell.courseTeacherLab.text = @"王祖丽";
+        cell.courseTimeLab.text = @"航空港2103";
         return cell;
+        
     }
     
     else
     {
-        
+        SelectingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"selectingCell"];
+        if (!cell)
+        {
+            cell = [[NSBundle mainBundle] loadNibNamed:@"SelectingTableViewCell" owner:nil options:nil][0];
+        }
+        cell.courseNameLab.text = _seledtNotArr[indexPath.row];
+        cell.courseNameLab.adjustsFontSizeToFitWidth = YES;
+        cell.selectTimeLab.text = @"2016年9月10日12点整";
+        cell.selectTimeLab.adjustsFontSizeToFitWidth = YES;
+        cell.courseAllTimeLab.text = @"48课时";
         return cell;
     }
+   
 }
 
 - (void)didReceiveMemoryWarning {

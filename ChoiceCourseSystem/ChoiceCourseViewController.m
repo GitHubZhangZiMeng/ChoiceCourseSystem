@@ -7,7 +7,8 @@
 //
 
 #import "ChoiceCourseViewController.h"
-#import "PersonTableViewCell.h"
+
+#import "CollegeTableViewCell.h"
 #import "YearClassVC.h"
 #import "CourseVC.h"
 #import "SelectedViewController.h"
@@ -41,6 +42,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [self.navigationController setNavigationBarHidden:NO];
     self.tabBarController.tabBar.hidden = NO;
 }
 - (void)didReceiveMemoryWarning {
@@ -64,12 +66,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PersonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    CollegeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell)
     {
-        cell = [[NSBundle mainBundle] loadNibNamed:@"PersonTableViewCell" owner:nil options:nil][0];
+        cell = [[NSBundle mainBundle] loadNibNamed:@"CollegeTableViewCell" owner:nil options:nil][0];
     }
-    cell.personRowLab.text = self.collegeArr[indexPath.row];
+    cell.collegeCellLab.text = self.collegeArr[indexPath.row];
     return cell;
 }
 

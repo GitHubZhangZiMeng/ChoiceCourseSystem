@@ -14,7 +14,10 @@
 #import "SetPassWordViewController.h"
 #import "LoginViewController.h"
 #import "MyCourseVC.h"
+
 @interface PersonViewController ()
+
+@property (nonatomic,strong)NSArray *imgRowArr;
 
 @end
 
@@ -24,6 +27,7 @@
     [super viewDidLoad];
     self.navigationItem.title=@"个人设置";
     self.personArr = [NSMutableArray arrayWithObjects:@"我的选课",@"设置密码",@"退出登陆",@"关于我们",nil];
+    self.imgRowArr = [NSArray arrayWithObjects:@"star",@"setPwd",@"tui",@"about_we", nil];
     // Do any additional setup after loading the view from its nib.
 }
 - (void)viewWillAppear:(BOOL)animated
@@ -38,16 +42,11 @@
 # pragma mark - table的代理
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    
-    
-    
     PersonHeaderView *personHeader = [[NSBundle mainBundle] loadNibNamed:@"PersonHeaderView" owner:nil options:nil][0];
+    
     personHeader.labOne.text = [NSString stringWithFormat:@"姓名：%@",self.name];
     personHeader.labTwo.text = [NSString stringWithFormat:@"教师工号：%@",self.numble];
     personHeader.labThree.text = [NSString stringWithFormat:@"所属学院：%@",self.college];
-    personHeader.labFore.text = [NSString stringWithFormat:@"学校校区：成都信息工程大学%@",self.schoolArea];
-    personHeader.labFore.adjustsFontSizeToFitWidth = YES;
-    
     
     return personHeader;
 }
@@ -113,15 +112,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     PersonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell)
     {
         cell = [[NSBundle mainBundle] loadNibNamed:@"PersonTableViewCell" owner:nil options:nil][0];
     }
+    
     cell.personRowLab.text = self.personArr[indexPath.row];
-    
+    cell.personRowImg.image = [UIImage imageNamed:self.imgRowArr[indexPath.row]];
     return cell;
-    
 }
 
 

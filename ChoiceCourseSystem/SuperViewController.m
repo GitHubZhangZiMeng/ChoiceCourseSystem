@@ -20,7 +20,7 @@
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     
     
-    NSLog(@"count____%ld", self.navigationController.viewControllers.count);
+    NSLog(@"count____%u", self.navigationController.viewControllers.count);
     
     if (self.navigationController.viewControllers.count>1)
     {

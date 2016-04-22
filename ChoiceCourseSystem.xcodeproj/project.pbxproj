@@ -40,6 +40,32 @@
 		C12835AC1CC60BC9003906AE /* superBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = C12835AB1CC60BC9003906AE /* superBtn.m */; };
 		C12835AF1CC61900003906AE /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12835AD1CC61900003906AE /* icon@2x.png */; };
 		C12835B01CC61900003906AE /* icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12835AE1CC61900003906AE /* icon@3x.png */; };
+		C12FB42F1CC9BAEA00FFB99C /* CollegeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C12FB42D1CC9BAEA00FFB99C /* CollegeTableViewCell.m */; };
+		C12FB4301CC9BAEA00FFB99C /* CollegeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12FB42E1CC9BAEA00FFB99C /* CollegeTableViewCell.xib */; };
+		C12FB4331CC9CB9500FFB99C /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12FB4311CC9CB9500FFB99C /* star@2x.png */; };
+		C12FB4341CC9CB9500FFB99C /* star@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12FB4321CC9CB9500FFB99C /* star@3x.png */; };
+		C12FB4371CC9CDFE00FFB99C /* about_we@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12FB4351CC9CDFE00FFB99C /* about_we@2x.png */; };
+		C12FB4381CC9CDFE00FFB99C /* about_we@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12FB4361CC9CDFE00FFB99C /* about_we@3x.png */; };
+		C12FB43D1CC9CF2200FFB99C /* tui@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12FB43B1CC9CF2200FFB99C /* tui@2x.png */; };
+		C12FB43E1CC9CF2200FFB99C /* tui@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12FB43C1CC9CF2200FFB99C /* tui@3x.png */; };
+		C12FB4411CC9CF5100FFB99C /* setPwd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12FB43F1CC9CF5100FFB99C /* setPwd@2x.png */; };
+		C12FB4421CC9CF5100FFB99C /* setPwd@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12FB4401CC9CF5100FFB99C /* setPwd@3x.png */; };
+		C12FB4441CC9D7F900FFB99C /* course_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C12FB4431CC9D7F900FFB99C /* course_bg.png */; };
+		C12FB4481CC9EF3000FFB99C /* SelectedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C12FB4461CC9EF3000FFB99C /* SelectedTableViewCell.m */; };
+		C12FB4491CC9EF3000FFB99C /* SelectedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12FB4471CC9EF3000FFB99C /* SelectedTableViewCell.xib */; };
+		C12FB44D1CC9F6F300FFB99C /* SelectingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C12FB44B1CC9F6F300FFB99C /* SelectingTableViewCell.m */; };
+		C12FB44E1CC9F6F300FFB99C /* SelectingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12FB44C1CC9F6F300FFB99C /* SelectingTableViewCell.xib */; };
+		C12FB45D1CCA0E3000FFB99C /* 6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C12FB4521CCA0E3000FFB99C /* 6.jpg */; };
+		C12FB45E1CCA0E3000FFB99C /* 7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C12FB4531CCA0E3000FFB99C /* 7.jpg */; };
+		C12FB45F1CCA0E3000FFB99C /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C12FB4541CCA0E3000FFB99C /* 4.jpg */; };
+		C12FB4601CCA0E3000FFB99C /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C12FB4551CCA0E3000FFB99C /* 2.jpg */; };
+		C12FB4611CCA0E3000FFB99C /* 8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C12FB4561CCA0E3000FFB99C /* 8.jpg */; };
+		C12FB4621CCA0E3000FFB99C /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C12FB4571CCA0E3000FFB99C /* 3.jpg */; };
+		C12FB4631CCA0E3000FFB99C /* 9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C12FB4581CCA0E3000FFB99C /* 9.jpg */; };
+		C12FB4641CCA0E3000FFB99C /* 10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C12FB4591CCA0E3000FFB99C /* 10.jpg */; };
+		C12FB4651CCA0E3000FFB99C /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C12FB45A1CCA0E3000FFB99C /* 1.jpg */; };
+		C12FB4661CCA0E3000FFB99C /* 11.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C12FB45B1CCA0E3000FFB99C /* 11.jpg */; };
+		C12FB4671CCA0E3000FFB99C /* 5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C12FB45C1CCA0E3000FFB99C /* 5.jpg */; };
 		C1660AAD1CC4D1C500F55040 /* MyCourseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C1660AAB1CC4D1C500F55040 /* MyCourseVC.m */; };
 		C1660AAE1CC4D1C500F55040 /* MyCourseVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1660AAC1CC4D1C500F55040 /* MyCourseVC.xib */; };
 		C166721F1CBC893C000DAA6F /* CourseInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = C166721E1CBC893C000DAA6F /* CourseInfoView.m */; };
@@ -78,6 +104,14 @@
 		C1E8450A1CBDD7A3009D1981 /* in@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1E845081CBDD7A3009D1981 /* in@2x.png */; };
 		C1E8450D1CBDD828009D1981 /* down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1E8450B1CBDD828009D1981 /* down@2x.png */; };
 		C1E8450E1CBDD828009D1981 /* down@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1E8450C1CBDD828009D1981 /* down@3x.png */; };
+		C1EA84791CC9B9D90037D3DC /* consigneeTypeDialog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1EA84711CC9B9D90037D3DC /* consigneeTypeDialog@2x.png */; };
+		C1EA847A1CC9B9D90037D3DC /* consigneeTypeDialog@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1EA84721CC9B9D90037D3DC /* consigneeTypeDialog@3x.png */; };
+		C1EA847B1CC9B9D90037D3DC /* checkbox-normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1EA84731CC9B9D90037D3DC /* checkbox-normal@2x.png */; };
+		C1EA847C1CC9B9D90037D3DC /* checkbox-normal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1EA84741CC9B9D90037D3DC /* checkbox-normal@3x.png */; };
+		C1EA847D1CC9B9D90037D3DC /* checkbox-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1EA84751CC9B9D90037D3DC /* checkbox-selected@2x.png */; };
+		C1EA847E1CC9B9D90037D3DC /* checkbox-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1EA84761CC9B9D90037D3DC /* checkbox-selected@3x.png */; };
+		C1EA847F1CC9B9D90037D3DC /* cell_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1EA84771CC9B9D90037D3DC /* cell_bg@2x.png */; };
+		C1EA84801CC9B9D90037D3DC /* cell_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1EA84781CC9B9D90037D3DC /* cell_bg@3x.png */; };
 		FAEBB2359A989E2461BBAB37 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AA4956B7BBF0171E834A703 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -135,6 +169,35 @@
 		C12835AB1CC60BC9003906AE /* superBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = superBtn.m; sourceTree = "<group>"; };
 		C12835AD1CC61900003906AE /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		C12835AE1CC61900003906AE /* icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@3x.png"; sourceTree = "<group>"; };
+		C12FB42C1CC9BAEA00FFB99C /* CollegeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollegeTableViewCell.h; sourceTree = "<group>"; };
+		C12FB42D1CC9BAEA00FFB99C /* CollegeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollegeTableViewCell.m; sourceTree = "<group>"; };
+		C12FB42E1CC9BAEA00FFB99C /* CollegeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollegeTableViewCell.xib; sourceTree = "<group>"; };
+		C12FB4311CC9CB9500FFB99C /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star@2x.png"; sourceTree = "<group>"; };
+		C12FB4321CC9CB9500FFB99C /* star@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star@3x.png"; sourceTree = "<group>"; };
+		C12FB4351CC9CDFE00FFB99C /* about_we@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_we@2x.png"; sourceTree = "<group>"; };
+		C12FB4361CC9CDFE00FFB99C /* about_we@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_we@3x.png"; sourceTree = "<group>"; };
+		C12FB43B1CC9CF2200FFB99C /* tui@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tui@2x.png"; sourceTree = "<group>"; };
+		C12FB43C1CC9CF2200FFB99C /* tui@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tui@3x.png"; sourceTree = "<group>"; };
+		C12FB43F1CC9CF5100FFB99C /* setPwd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setPwd@2x.png"; sourceTree = "<group>"; };
+		C12FB4401CC9CF5100FFB99C /* setPwd@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setPwd@3x.png"; sourceTree = "<group>"; };
+		C12FB4431CC9D7F900FFB99C /* course_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = course_bg.png; sourceTree = "<group>"; };
+		C12FB4451CC9EF3000FFB99C /* SelectedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedTableViewCell.h; sourceTree = "<group>"; };
+		C12FB4461CC9EF3000FFB99C /* SelectedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedTableViewCell.m; sourceTree = "<group>"; };
+		C12FB4471CC9EF3000FFB99C /* SelectedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectedTableViewCell.xib; sourceTree = "<group>"; };
+		C12FB44A1CC9F6F300FFB99C /* SelectingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectingTableViewCell.h; sourceTree = "<group>"; };
+		C12FB44B1CC9F6F300FFB99C /* SelectingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectingTableViewCell.m; sourceTree = "<group>"; };
+		C12FB44C1CC9F6F300FFB99C /* SelectingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectingTableViewCell.xib; sourceTree = "<group>"; };
+		C12FB4521CCA0E3000FFB99C /* 6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 6.jpg; sourceTree = "<group>"; };
+		C12FB4531CCA0E3000FFB99C /* 7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 7.jpg; sourceTree = "<group>"; };
+		C12FB4541CCA0E3000FFB99C /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = "<group>"; };
+		C12FB4551CCA0E3000FFB99C /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
+		C12FB4561CCA0E3000FFB99C /* 8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 8.jpg; sourceTree = "<group>"; };
+		C12FB4571CCA0E3000FFB99C /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
+		C12FB4581CCA0E3000FFB99C /* 9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 9.jpg; sourceTree = "<group>"; };
+		C12FB4591CCA0E3000FFB99C /* 10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10.jpg; sourceTree = "<group>"; };
+		C12FB45A1CCA0E3000FFB99C /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		C12FB45B1CCA0E3000FFB99C /* 11.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 11.jpg; sourceTree = "<group>"; };
+		C12FB45C1CCA0E3000FFB99C /* 5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 5.jpg; sourceTree = "<group>"; };
 		C1660AAA1CC4D1C500F55040 /* MyCourseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCourseVC.h; sourceTree = "<group>"; };
 		C1660AAB1CC4D1C500F55040 /* MyCourseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCourseVC.m; sourceTree = "<group>"; };
 		C1660AAC1CC4D1C500F55040 /* MyCourseVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCourseVC.xib; sourceTree = "<group>"; };
@@ -190,6 +253,14 @@
 		C1E845081CBDD7A3009D1981 /* in@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "in@2x.png"; sourceTree = "<group>"; };
 		C1E8450B1CBDD828009D1981 /* down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down@2x.png"; sourceTree = "<group>"; };
 		C1E8450C1CBDD828009D1981 /* down@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down@3x.png"; sourceTree = "<group>"; };
+		C1EA84711CC9B9D90037D3DC /* consigneeTypeDialog@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "consigneeTypeDialog@2x.png"; sourceTree = "<group>"; };
+		C1EA84721CC9B9D90037D3DC /* consigneeTypeDialog@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "consigneeTypeDialog@3x.png"; sourceTree = "<group>"; };
+		C1EA84731CC9B9D90037D3DC /* checkbox-normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox-normal@2x.png"; sourceTree = "<group>"; };
+		C1EA84741CC9B9D90037D3DC /* checkbox-normal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox-normal@3x.png"; sourceTree = "<group>"; };
+		C1EA84751CC9B9D90037D3DC /* checkbox-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox-selected@2x.png"; sourceTree = "<group>"; };
+		C1EA84761CC9B9D90037D3DC /* checkbox-selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox-selected@3x.png"; sourceTree = "<group>"; };
+		C1EA84771CC9B9D90037D3DC /* cell_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_bg@2x.png"; sourceTree = "<group>"; };
+		C1EA84781CC9B9D90037D3DC /* cell_bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_bg@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +279,8 @@
 		0A8E152A1C8A98AD005200AB /* resImg */ = {
 			isa = PBXGroup;
 			children = (
+				C12FB4511CCA0E1F00FFB99C /* school */,
+				C12FB4431CC9D7F900FFB99C /* course_bg.png */,
 				C12835A21CC609CE003906AE /* circle@2x.png */,
 				C12835A31CC609CE003906AE /* circle@3x.png */,
 				C12835A41CC609CE003906AE /* yes@2x.png */,
@@ -229,6 +302,22 @@
 				0A082C5B1C86BEFF00A63C5B /* cuitPNG.png */,
 				C12835AD1CC61900003906AE /* icon@2x.png */,
 				C12835AE1CC61900003906AE /* icon@3x.png */,
+				C1EA84711CC9B9D90037D3DC /* consigneeTypeDialog@2x.png */,
+				C1EA84721CC9B9D90037D3DC /* consigneeTypeDialog@3x.png */,
+				C1EA84731CC9B9D90037D3DC /* checkbox-normal@2x.png */,
+				C1EA84741CC9B9D90037D3DC /* checkbox-normal@3x.png */,
+				C1EA84751CC9B9D90037D3DC /* checkbox-selected@2x.png */,
+				C1EA84761CC9B9D90037D3DC /* checkbox-selected@3x.png */,
+				C1EA84771CC9B9D90037D3DC /* cell_bg@2x.png */,
+				C1EA84781CC9B9D90037D3DC /* cell_bg@3x.png */,
+				C12FB4311CC9CB9500FFB99C /* star@2x.png */,
+				C12FB4321CC9CB9500FFB99C /* star@3x.png */,
+				C12FB4351CC9CDFE00FFB99C /* about_we@2x.png */,
+				C12FB4361CC9CDFE00FFB99C /* about_we@3x.png */,
+				C12FB43B1CC9CF2200FFB99C /* tui@2x.png */,
+				C12FB43C1CC9CF2200FFB99C /* tui@3x.png */,
+				C12FB43F1CC9CF5100FFB99C /* setPwd@2x.png */,
+				C12FB4401CC9CF5100FFB99C /* setPwd@3x.png */,
 			);
 			name = resImg;
 			sourceTree = "<group>";
@@ -389,6 +478,15 @@
 				C17316221CBB8DEB00915D5B /* CourseInfoTableViewCell.h */,
 				C17316231CBB8DEB00915D5B /* CourseInfoTableViewCell.m */,
 				C17316241CBB8DEB00915D5B /* CourseInfoTableViewCell.xib */,
+				C12FB42C1CC9BAEA00FFB99C /* CollegeTableViewCell.h */,
+				C12FB42D1CC9BAEA00FFB99C /* CollegeTableViewCell.m */,
+				C12FB42E1CC9BAEA00FFB99C /* CollegeTableViewCell.xib */,
+				C12FB4451CC9EF3000FFB99C /* SelectedTableViewCell.h */,
+				C12FB4461CC9EF3000FFB99C /* SelectedTableViewCell.m */,
+				C12FB4471CC9EF3000FFB99C /* SelectedTableViewCell.xib */,
+				C12FB44A1CC9F6F300FFB99C /* SelectingTableViewCell.h */,
+				C12FB44B1CC9F6F300FFB99C /* SelectingTableViewCell.m */,
+				C12FB44C1CC9F6F300FFB99C /* SelectingTableViewCell.xib */,
 			);
 			name = CellView;
 			sourceTree = "<group>";
@@ -408,6 +506,24 @@
 				6470E9AF9CFEF7CA71EB5F68 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		C12FB4511CCA0E1F00FFB99C /* school */ = {
+			isa = PBXGroup;
+			children = (
+				C12FB4521CCA0E3000FFB99C /* 6.jpg */,
+				C12FB4531CCA0E3000FFB99C /* 7.jpg */,
+				C12FB4541CCA0E3000FFB99C /* 4.jpg */,
+				C12FB4551CCA0E3000FFB99C /* 2.jpg */,
+				C12FB4561CCA0E3000FFB99C /* 8.jpg */,
+				C12FB4571CCA0E3000FFB99C /* 3.jpg */,
+				C12FB4581CCA0E3000FFB99C /* 9.jpg */,
+				C12FB4591CCA0E3000FFB99C /* 10.jpg */,
+				C12FB45A1CCA0E3000FFB99C /* 1.jpg */,
+				C12FB45B1CCA0E3000FFB99C /* 11.jpg */,
+				C12FB45C1CCA0E3000FFB99C /* 5.jpg */,
+			);
+			name = school;
 			sourceTree = "<group>";
 		};
 		C184BE141CB7451F00C844FF /* UserManager */ = {
@@ -573,23 +689,44 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C12FB45E1CCA0E3000FFB99C /* 7.jpg in Resources */,
+				C12FB4421CC9CF5100FFB99C /* setPwd@3x.png in Resources */,
 				C12835A71CC609CE003906AE /* circle@3x.png in Resources */,
 				C184BE2F1CB798F200C844FF /* PersonHeaderView.xib in Resources */,
+				C12FB43E1CC9CF2200FFB99C /* tui@3x.png in Resources */,
 				0A8E15431C8A9F59005200AB /* ChoiceCourseViewController.xib in Resources */,
 				C17316261CBB8DEB00915D5B /* CourseInfoTableViewCell.xib in Resources */,
+				C1EA84791CC9B9D90037D3DC /* consigneeTypeDialog@2x.png in Resources */,
 				C12835A61CC609CE003906AE /* circle@2x.png in Resources */,
 				C184BE1D1CB7868800C844FF /* book@2x.png in Resources */,
 				C17316161CBB4ECE00915D5B /* left@2x.png in Resources */,
+				C12FB4671CCA0E3000FFB99C /* 5.jpg in Resources */,
+				C12FB45D1CCA0E3000FFB99C /* 6.jpg in Resources */,
+				C12FB4411CC9CF5100FFB99C /* setPwd@2x.png in Resources */,
 				C1660AAE1CC4D1C500F55040 /* MyCourseVC.xib in Resources */,
 				C12835B01CC61900003906AE /* icon@3x.png in Resources */,
 				C12835991CC60539003906AE /* CancelCourseView.xib in Resources */,
+				C12FB44E1CC9F6F300FFB99C /* SelectingTableViewCell.xib in Resources */,
+				C1EA847A1CC9B9D90037D3DC /* consigneeTypeDialog@3x.png in Resources */,
+				C12FB4341CC9CB9500FFB99C /* star@3x.png in Resources */,
 				C12835AF1CC61900003906AE /* icon@2x.png in Resources */,
+				C12FB45F1CCA0E3000FFB99C /* 4.jpg in Resources */,
+				C12FB4651CCA0E3000FFB99C /* 1.jpg in Resources */,
 				C1E8450E1CBDD828009D1981 /* down@3x.png in Resources */,
+				C12FB4381CC9CDFE00FFB99C /* about_we@3x.png in Resources */,
+				C12FB4611CCA0E3000FFB99C /* 8.jpg in Resources */,
 				C12835901CC5BD96003906AE /* CourseVC.xib in Resources */,
 				C12835A91CC609CE003906AE /* yes@3x.png in Resources */,
 				C184BE1E1CB7868800C844FF /* book@3x.png in Resources */,
 				C17316171CBB4ECE00915D5B /* left@3x.png in Resources */,
+				C1EA847D1CC9B9D90037D3DC /* checkbox-selected@2x.png in Resources */,
+				C12FB4371CC9CDFE00FFB99C /* about_we@2x.png in Resources */,
+				C12FB4621CCA0E3000FFB99C /* 3.jpg in Resources */,
 				0A8E15481C8A9FCF005200AB /* CancelCourseViewController.xib in Resources */,
+				C12FB4601CCA0E3000FFB99C /* 2.jpg in Resources */,
+				C12FB4641CCA0E3000FFB99C /* 10.jpg in Resources */,
+				C1EA847E1CC9B9D90037D3DC /* checkbox-selected@3x.png in Resources */,
+				C12FB43D1CC9CF2200FFB99C /* tui@2x.png in Resources */,
 				0A082C5C1C86BEFF00A63C5B /* cuitPNG.png in Resources */,
 				0AB6C1001C75658B00BCC4A4 /* LaunchScreen.storyboard in Resources */,
 				0A8E154E1C8AA02C005200AB /* PersonViewController.xib in Resources */,
@@ -598,20 +735,30 @@
 				C1E8450A1CBDD7A3009D1981 /* in@2x.png in Resources */,
 				C173160F1CBB438C00915D5B /* MajorViewController.xib in Resources */,
 				C12835A81CC609CE003906AE /* yes@2x.png in Resources */,
+				C1EA847F1CC9B9D90037D3DC /* cell_bg@2x.png in Resources */,
 				C173160A1CBB3A4000915D5B /* YearClassVC.xib in Resources */,
 				C184BE261CB788CF00C844FF /* person@3x.png in Resources */,
 				C17316211CBB57BA00915D5B /* CourseViewController.xib in Resources */,
+				C12FB4441CC9D7F900FFB99C /* course_bg.png in Resources */,
+				C12FB4661CCA0E3000FFB99C /* 11.jpg in Resources */,
+				C1EA847B1CC9B9D90037D3DC /* checkbox-normal@2x.png in Resources */,
 				C1E845091CBDD7A3009D1981 /* in@3x.png in Resources */,
 				C1E8450D1CBDD828009D1981 /* down@2x.png in Resources */,
+				C12FB4491CC9EF3000FFB99C /* SelectedTableViewCell.xib in Resources */,
 				0AB6C0FD1C75658B00BCC4A4 /* Assets.xcassets in Resources */,
 				C16672211CBC895B000DAA6F /* CourseInfoView.xib in Resources */,
 				0AD912ED1CA79BFC0090B2BB /* PersonTableViewCell.xib in Resources */,
+				C12FB4301CC9BAEA00FFB99C /* CollegeTableViewCell.xib in Resources */,
 				C17316121CBB4E5000915D5B /* close@2x.png in Resources */,
+				C1EA847C1CC9B9D90037D3DC /* checkbox-normal@3x.png in Resources */,
 				0A082C5A1C86BCE600A63C5B /* LoginViewController.xib in Resources */,
 				C184BE2A1CB789D400C844FF /* cancle@3x.png in Resources */,
 				C173161C1CBB538E00915D5B /* ClassViewController.xib in Resources */,
+				C12FB4331CC9CB9500FFB99C /* star@2x.png in Resources */,
 				0A23DF651CB8A72200BCDAC2 /* SetPassWordViewController.xib in Resources */,
+				C12FB4631CCA0E3000FFB99C /* 9.jpg in Resources */,
 				C184BE251CB788CF00C844FF /* person@2x.png in Resources */,
+				C1EA84801CC9B9D90037D3DC /* cell_bg@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -672,12 +819,14 @@
 			files = (
 				C12835AC1CC60BC9003906AE /* superBtn.m in Sources */,
 				0AB6C0F51C75658B00BCC4A4 /* AppDelegate.m in Sources */,
+				C12FB44D1CC9F6F300FFB99C /* SelectingTableViewCell.m in Sources */,
 				C1B1D3FC1CAE6BDB0022A23F /* AlertNotice.m in Sources */,
 				C128358F1CC5BD96003906AE /* CourseVC.m in Sources */,
 				C12835971CC6051C003906AE /* CancelCourseView.m in Sources */,
 				C184BE121CB742FC00C844FF /* SuperViewController.m in Sources */,
 				0A8E154D1C8AA02C005200AB /* PersonViewController.m in Sources */,
 				C1DBB63D1CB50F0D00C478A7 /* CourseNameViewController.m in Sources */,
+				C12FB4481CC9EF3000FFB99C /* SelectedTableViewCell.m in Sources */,
 				C173161B1CBB538E00915D5B /* ClassViewController.m in Sources */,
 				C17316251CBB8DEB00915D5B /* CourseInfoTableViewCell.m in Sources */,
 				C1D4DFBC1CB3A4C700F14071 /* collegeModel.m in Sources */,
@@ -685,6 +834,7 @@
 				0AD912EC1CA79BFC0090B2BB /* PersonTableViewCell.m in Sources */,
 				C184BE2D1CB798CE00C844FF /* PersonHeaderView.m in Sources */,
 				0A8E153A1C8A9E26005200AB /* UIScrollView+SVPullToRefresh.m in Sources */,
+				C12FB42F1CC9BAEA00FFB99C /* CollegeTableViewCell.m in Sources */,
 				C173160E1CBB438C00915D5B /* MajorViewController.m in Sources */,
 				C17316091CBB3A4000915D5B /* YearClassVC.m in Sources */,
 				C1D4DFBF1CB3AA1D00F14071 /* CourseContent.m in Sources */,

@@ -13,4 +13,5 @@
 @property (weak, nonatomic) IBOutlet UIButton *headerBtn;
 @property (weak, nonatomic) IBOutlet UILabel *CourseNameLab;
 @property (weak, nonatomic) IBOutlet superBtn *tagBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *checkImg;
 @end

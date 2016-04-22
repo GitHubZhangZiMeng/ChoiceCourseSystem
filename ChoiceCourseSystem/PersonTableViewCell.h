@@ -11,6 +11,7 @@
 @interface PersonTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *personRowLab;
+@property (weak, nonatomic) IBOutlet UIImageView *personRowImg;
 
 
 @end

@@ -13,10 +13,11 @@
 
 @interface CourseVC () <UITableViewDelegate,UITableViewDataSource>
 
-@property (nonatomic,strong)NSArray *courseArr;
+@property (nonatomic,strong)NSArray *courseInfoArr;
 @property (nonatomic,strong)NSArray *classArr;
 @property (nonatomic,strong)NSMutableArray *courseTagArr;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic,strong)IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIImageView *imgView;
 
 @end
 
@@ -24,19 +25,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _courseArr = [NSArray arrayWithObjects:@"C语言基础编程技术",@"C++面向对象编程",@"Java面向对象编程",@"计算机科学技术", nil];
-    _tableView.editing= YES;
+    [self.navigationController setNavigationBarHidden:YES];
+    
+    _courseInfoArr = [NSArray arrayWithObjects:@"开课时间",@"选课时间",@"开设学院",@"课程时长",@"授课教室", nil];
     _classArr = [NSArray arrayWithObjects:@"信息对抗121",@"信息对抗122",@"信息安全121",@"信息安全122",nil];
     _courseTagArr = [NSMutableArray array];
-    for (int i=0; i<_courseArr.count; i++)
-    {
-        [_courseTagArr addObject:@"0"];
-    }
+    _imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg",arc4random()%11+1]];
     
-    
-    
-    // Do any additional setup after loading the view from its nib.
 }
+
+- (IBAction)backClick:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
+- (IBAction)closeClick:(id)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -77,76 +83,51 @@
 
 #pragma mark - tableview 代理
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.row==0)
-    {
-        
-        return 0;
-    }
-    else
-    {
-        
-        return 3;
-    }
-}
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    CourseInfoView *vi = [[NSBundle mainBundle] loadNibNamed:@"CourseInfoView" owner:nil options:nil][0];
-    vi.CourseNameLab.text = _courseArr[section];
-    vi.headerBtn.tag = section;
-    [vi.headerBtn addTarget:self action:@selector(headerBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    if ([_courseTagArr[section] isEqualToString:@"1"])
-    {
-        vi.inImgView.image = [UIImage imageNamed:@"down"];
-    }
-    else
-    {
-        vi.inImgView.image = [UIImage imageNamed:@"in"];
-    }
-    return vi;
-    
+    UILabel *lab = [[UILabel alloc] init];
+    lab.text = _courseInfoArr[section];
+//    lab.textAlignment = NSTextAlignmentCenter;
+    return lab;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
    
-    return 300;
+    return 30;
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 50;
+    return 20;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return _courseArr.count;
+    return _courseInfoArr.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if ([_courseTagArr[section] isEqualToString:@"1"])
-    {
-        return 1;
-    }
-    else
-    {
-        return 0;
-    }
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CourseInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
     if (!cell)
     {
-        cell = [[NSBundle mainBundle] loadNibNamed:@"CourseInfoTableViewCell" owner:nil options:nil][0];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
       
     }
-    
+    cell.textLabel.text = @"123123123123123123123";
+    cell.textLabel.textColor = [UIColor grayColor];
     return cell;
     
 }
