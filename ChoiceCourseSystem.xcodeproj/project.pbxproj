@@ -29,6 +29,7 @@
 		0AD6E2781CA7AD87003541E2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD6E2771CA7AD87003541E2 /* Reachability.m */; };
 		0AD912EC1CA79BFC0090B2BB /* PersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD912EA1CA79BFC0090B2BB /* PersonTableViewCell.m */; };
 		0AD912ED1CA79BFC0090B2BB /* PersonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AD912EB1CA79BFC0090B2BB /* PersonTableViewCell.xib */; };
+		0AFE879F1CCCDFE1008A71AC /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFE879E1CCCDFE1008A71AC /* Base64.m */; };
 		C128358F1CC5BD96003906AE /* CourseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C128358D1CC5BD96003906AE /* CourseVC.m */; };
 		C12835901CC5BD96003906AE /* CourseVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C128358E1CC5BD96003906AE /* CourseVC.xib */; };
 		C12835971CC6051C003906AE /* CancelCourseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C12835961CC6051C003906AE /* CancelCourseView.m */; };
@@ -152,6 +153,8 @@
 		0AD912E91CA79BFC0090B2BB /* PersonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonTableViewCell.h; sourceTree = "<group>"; };
 		0AD912EA1CA79BFC0090B2BB /* PersonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonTableViewCell.m; sourceTree = "<group>"; };
 		0AD912EB1CA79BFC0090B2BB /* PersonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonTableViewCell.xib; sourceTree = "<group>"; };
+		0AFE879D1CCCDFE1008A71AC /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		0AFE879E1CCCDFE1008A71AC /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		1AA4956B7BBF0171E834A703 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		53ABE67F66050BEF4F3D2CA4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6470E9AF9CFEF7CA71EB5F68 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -424,6 +427,7 @@
 		0AB6C0EF1C75658B00BCC4A4 /* ChoiceCourseSystem */ = {
 			isa = PBXGroup;
 			children = (
+				0AFE879C1CCCDFA8008A71AC /* base64 */,
 				C184BE141CB7451F00C844FF /* UserManager */,
 				C1B1D3FD1CAE706D0022A23F /* PrefixHeader */,
 				0AD6E27A1CA7B3C9003541E2 /* framework */,
@@ -489,6 +493,15 @@
 				C12FB44C1CC9F6F300FFB99C /* SelectingTableViewCell.xib */,
 			);
 			name = CellView;
+			sourceTree = "<group>";
+		};
+		0AFE879C1CCCDFA8008A71AC /* base64 */ = {
+			isa = PBXGroup;
+			children = (
+				0AFE879D1CCCDFE1008A71AC /* Base64.h */,
+				0AFE879E1CCCDFE1008A71AC /* Base64.m */,
+			);
+			name = base64;
 			sourceTree = "<group>";
 		};
 		0C65449DA3F82A04F6118444 /* Frameworks */ = {
@@ -838,6 +851,7 @@
 				C173160E1CBB438C00915D5B /* MajorViewController.m in Sources */,
 				C17316091CBB3A4000915D5B /* YearClassVC.m in Sources */,
 				C1D4DFBF1CB3AA1D00F14071 /* CourseContent.m in Sources */,
+				0AFE879F1CCCDFE1008A71AC /* Base64.m in Sources */,
 				0A23DF641CB8A72200BCDAC2 /* SetPassWordViewController.m in Sources */,
 				C166721F1CBC893C000DAA6F /* CourseInfoView.m in Sources */,
 				0A8E15471C8A9FCF005200AB /* CancelCourseViewController.m in Sources */,

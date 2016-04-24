@@ -24,6 +24,7 @@
 #import "SuperViewController.h"
 #import "SVPullToRefresh.h"
 #import "superBtn.h"
+#import "Base64.h"
 
 
 #pragma mark -状态栏大小
@@ -46,8 +47,8 @@
 
 #pragma mark - URL
 
-#define kURL_Host   @""  ///请示 URL
-#define kURL_Login  [kURL_Host stringByAppendingString:@""]   //登陆请求
+#define kURL_Host   @"http://192.168.1.112:8000/ajaxrequest/"  ///寝室地址 URL
+#define kURL_LoginUser  [kURL_Host stringByAppendingString:@"user.ashx"]   //登陆请求
 #define kURL_college [kURL_Host stringByAppendingString:@""]  //学院
 
 #endif /* PrefixHeader_pch */
