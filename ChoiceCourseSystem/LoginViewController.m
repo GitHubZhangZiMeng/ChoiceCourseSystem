@@ -13,6 +13,7 @@
 #import "AppDelegate.h"
 #import "UserManager.h"
 #import "MBProgressHUD.h"
+#import "NewViewController.h"
 @interface LoginViewController ()<MBProgressHUDDelegate>
 {
     MBProgressHUD *hub;
@@ -64,6 +65,39 @@
         [hub showWhileExecuting:@selector(loginPro) onTarget:self withObject:nil animated:YES];
         
         
+        
+        ChoiceCourseViewController *choiseVC = [[ChoiceCourseViewController alloc] init];
+        choiseVC.view.backgroundColor = [UIColor whiteColor];
+        choiseVC.tabBarItem.title=@"选课";
+        choiseVC.tabBarItem.image=[UIImage imageNamed:@"book"];
+        UINavigationController *choiseNav = [[UINavigationController alloc] initWithRootViewController:choiseVC];
+        //背景颜色
+        [UINavigationBar appearance].barTintColor = [UIColor colorWithRed:253/255.0 green:146/255.0 blue:8/255.0 alpha:1];
+        //title 颜色
+        [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+        NewViewController *newVC = [[NewViewController alloc] init];
+        newVC.view.backgroundColor = [UIColor whiteColor];
+        newVC.tabBarItem.title = @"消息";
+        newVC.tabBarItem.image = [UIImage imageNamed:@"new"];
+        UINavigationController *newNav = [[UINavigationController alloc] initWithRootViewController:newVC];
+        
+        CancelCourseViewController *cancelVC = [[CancelCourseViewController alloc] init];
+        cancelVC.tabBarItem.title=@"退选";
+        cancelVC.tabBarItem.image=[UIImage imageNamed:@"cancle"];
+        UINavigationController *cancelNav = [[UINavigationController alloc] initWithRootViewController:cancelVC];
+        
+        PersonViewController *personVC = [[PersonViewController alloc] init];
+        personVC.tabBarItem.title=@"个人";
+        personVC.tabBarItem.image=[UIImage imageNamed:@"person"];
+        UINavigationController *personNav = [[UINavigationController alloc] initWithRootViewController:personVC];
+        
+        UITabBarController *tabbarController = [[UITabBarController alloc] init];
+        tabbarController.viewControllers = @[choiseNav,newNav,cancelNav,personNav];
+        tabbarController.tabBar.tintColor = [UIColor colorWithRed:253/255.0 green:146/255.0 blue:8/255.0 alpha:1];
+        
+        
+        AppDelegate *app = [UIApplication sharedApplication].delegate;
+        app.window.rootViewController=tabbarController;
 
     }
     else
@@ -77,60 +111,60 @@
 
 - (void)loginPro
 {
-    [NetHelper postRequest:kURL_LoginUser withActionStr:@"login" withDataStr:[NSString stringWithFormat:@"{\"username\":\"%@\",\"password\":\"%@\"}",self.usernameTF.text,self.pwdTF.text]
-        withNetBlock:^(id responseObject) {
-        NSLog(@"%@",responseObject);
-            if ([[responseObject objectForKey:@"errMsg"] rangeOfString:@"error"].location!=NSNotFound)
-            {
-                NSLog(@"no");
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [AlertNotice showAlertNotType:@"提示" withContent:@"账号密码错误" withVC:self clickLeftBtn:^{
-                        
-                    }];
-                });
-                
-            }
-            else
-            {
-                NSLog(@"yes");
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5* NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [[UserManager new] SaveUserInfo:self.usernameTF.text andPWD:self.pwdTF.text];
-                    ChoiceCourseViewController *choiseVC = [[ChoiceCourseViewController alloc] init];
-                    choiseVC.view.backgroundColor = [UIColor whiteColor];
-                    choiseVC.tabBarItem.title=@"选课";
-                    choiseVC.tabBarItem.image=[UIImage imageNamed:@"book"];
-                    UINavigationController *choiseNav = [[UINavigationController alloc] initWithRootViewController:choiseVC];
-                    //背景颜色
-                    [UINavigationBar appearance].barTintColor = [UIColor colorWithRed:253/255.0 green:146/255.0 blue:8/255.0 alpha:1];
-                    //title 颜色
-                    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
-                    
-                    CancelCourseViewController *cancelVC = [[CancelCourseViewController alloc] init];
-                    cancelVC.tabBarItem.title=@"退选";
-                    cancelVC.tabBarItem.image=[UIImage imageNamed:@"cancle"];
-                    UINavigationController *cancelNav = [[UINavigationController alloc] initWithRootViewController:cancelVC];
-                    
-                    PersonViewController *personVC = [[PersonViewController alloc] init];
-                    personVC.tabBarItem.title=@"个人";
-                    personVC.tabBarItem.image=[UIImage imageNamed:@"person"];
-                    UINavigationController *personNav = [[UINavigationController alloc] initWithRootViewController:personVC];
-                    
-                    UITabBarController *tabbarController = [[UITabBarController alloc] init];
-                    tabbarController.viewControllers = @[choiseNav,cancelNav,personNav];
-                    tabbarController.tabBar.tintColor = [UIColor colorWithRed:253/255.0 green:146/255.0 blue:8/255.0 alpha:1];
-                    
-                    
-                    AppDelegate *app = [UIApplication sharedApplication].delegate;
-                    app.window.rootViewController=tabbarController;
-                });
-                
-                
-
-            }
-            
-    } withErrBlock:^(id err) {
-        
-    }];
+//    [NetHelper postRequest:kURL_LoginUser withActionStr:@"login" withDataStr:[NSString stringWithFormat:@"{\"username\":\"%@\",\"password\":\"%@\"}",self.usernameTF.text,self.pwdTF.text]
+//        withNetBlock:^(id responseObject) {
+//        NSLog(@"%@",responseObject);
+//            if ([[responseObject objectForKey:@"errMsg"] rangeOfString:@"error"].location!=NSNotFound)
+//            {
+//                NSLog(@"no");
+//                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                    [AlertNotice showAlertNotType:@"提示" withContent:@"账号密码错误" withVC:self clickLeftBtn:^{
+//                        
+//                    }];
+//                });
+//                
+//            }
+//            else
+//            {
+//                NSLog(@"yes");
+//                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5* NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                    [[UserManager new] SaveUserInfo:self.usernameTF.text andPWD:self.pwdTF.text];
+//                    ChoiceCourseViewController *choiseVC = [[ChoiceCourseViewController alloc] init];
+//                    choiseVC.view.backgroundColor = [UIColor whiteColor];
+//                    choiseVC.tabBarItem.title=@"选课";
+//                    choiseVC.tabBarItem.image=[UIImage imageNamed:@"book"];
+//                    UINavigationController *choiseNav = [[UINavigationController alloc] initWithRootViewController:choiseVC];
+//                    //背景颜色
+//                    [UINavigationBar appearance].barTintColor = [UIColor colorWithRed:253/255.0 green:146/255.0 blue:8/255.0 alpha:1];
+//                    //title 颜色
+//                    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+//                    
+//                    CancelCourseViewController *cancelVC = [[CancelCourseViewController alloc] init];
+//                    cancelVC.tabBarItem.title=@"退选";
+//                    cancelVC.tabBarItem.image=[UIImage imageNamed:@"cancle"];
+//                    UINavigationController *cancelNav = [[UINavigationController alloc] initWithRootViewController:cancelVC];
+//                    
+//                    PersonViewController *personVC = [[PersonViewController alloc] init];
+//                    personVC.tabBarItem.title=@"个人";
+//                    personVC.tabBarItem.image=[UIImage imageNamed:@"person"];
+//                    UINavigationController *personNav = [[UINavigationController alloc] initWithRootViewController:personVC];
+//                    
+//                    UITabBarController *tabbarController = [[UITabBarController alloc] init];
+//                    tabbarController.viewControllers = @[choiseNav,cancelNav,personNav];
+//                    tabbarController.tabBar.tintColor = [UIColor colorWithRed:253/255.0 green:146/255.0 blue:8/255.0 alpha:1];
+//                    
+//                    
+//                    AppDelegate *app = [UIApplication sharedApplication].delegate;
+//                    app.window.rootViewController=tabbarController;
+//                });
+//                
+//                
+//
+//            }
+//            
+//    } withErrBlock:^(id err) {
+//        
+//    }];
     
 }
 

@@ -9,9 +9,12 @@
 #import "CourseViewController.h"
 #import "PersonTableViewCell.h"
 #import "SelectedViewController.h"
+#import "SelectingHeadView.h"
 @interface CourseViewController () <UITableViewDelegate,UITableViewDataSource>
 
-@property (nonatomic, strong)NSArray *courseArr;
+@property (nonatomic, strong)NSArray *courselistArr;
+@property (nonatomic, strong)NSArray *courseInfoArr;
+@property (weak, nonatomic) IBOutlet UIButton *commitBtn;
 
 @end
 
@@ -20,8 +23,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title=@"选择课程";
-    self.courseArr = [NSArray arrayWithObjects:@"大学英语",@"高等数学",@"工程导论",@"计算机科学基础",@"人生规划教育",@"思想道德修养和法律基础",@"体育1",@"网页制作",@"线性代数A", nil];
+    self.navigationItem.title=self.courseName;
+    _commitBtn.hidden = YES;
+    _courselistArr = [NSArray arrayWithObjects:@"选课时间",@"开课时间",@"开设学院",@"课程时长",@"授课教室",@"选择班级",nil];
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -29,31 +34,56 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    SelectedViewController *vc = [[SelectedViewController alloc] init];
-    vc.collegeName = self.collegeName;
-    vc.yearClass = self.yearClass;
-    vc.major = self.major;
-    vc.clas = self.clas;
-    [self.navigationController pushViewController:vc animated:YES];
+    if (section==0)
+    {
+        SelectingHeadView *view = [[NSBundle mainBundle] loadNibNamed:@"SelectingHeadView" owner:nil options:nil][0];
+        view.courseNameLab.text = self.courseName;
+        return view;
+    }
+    else
+    {
+        UILabel *lab = [[UILabel alloc] init];
+        lab.text = _courselistArr[section];
+        return lab;
+    }
     
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return _courselistArr.count;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 0)
+    {
+        return 200;
+    }
+    else
+    {
+        return 30;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.courseArr.count;
+    return 1;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PersonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell)
     {
-        cell = [[NSBundle mainBundle] loadNibNamed:@"PersonTableViewCell" owner:nil options:nil][0];
+        cell = [[UITableViewCell alloc] initWithStyle:0 reuseIdentifier:@"cell"];
     }
-    cell.personRowLab.text = self.courseArr[indexPath.row];
-    return cell;
     
+    cell.textLabel.text = @"qweqweadasdwadasdwdasdwa";
+    
+    return cell;
 }
 
 /*

@@ -15,6 +15,7 @@
 #import "SelectedTableViewCell.h"
 #import "SelectingTableViewCell.h"
 #import "CourseVC.h"
+#import "CourseViewController.h"
 @interface SelectedViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 
 @property (nonatomic, strong)NSArray *selectArr;
@@ -57,14 +58,14 @@
         [self.seletedNotTagArr addObject:@"0"];
     }
     
-    NSLog(@"%d",self.selectArr.count);
+    NSLog(@"%lu",(unsigned long)self.selectArr.count);
     
     for (int i=0; i<self.selectArr.count; i++)
     {
         [self.seletedTagArr addObject:@"0"];
     }
     
-    NSLog(@"%d",self.seletedTagArr.count);
+    NSLog(@"%lu",(unsigned long)self.seletedTagArr.count);
     
     if(self.selectArr.count==0)
     {
@@ -290,6 +291,9 @@
     }
    else
    {
+       CourseViewController *vc = [[CourseViewController alloc] init];
+       vc.courseName = self.seledtNotArr[indexPath.row];
+       [self.navigationController pushViewController:vc animated:YES];
        
    }
     
