@@ -52,20 +52,68 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return 3;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    switch (indexPath.row)
+    {
+        case 0:
+            return 210;
+            break;
+        case 1:
+            return 260;
+            break;
+        case 2:
+            return 300;
+            break;
+        default:
+            break;
+    }
     return 300;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    if (!cell)
+    NewTableViewCell *cell;
+    switch (indexPath.row)
     {
-        cell = [[NSBundle mainBundle] loadNibNamed:@"NewTableViewCell" owner:nil options:nil][0];
+        case 0:
+        {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"cell1"];
+            if (!cell)
+            {
+                cell = [[NSBundle mainBundle] loadNibNamed:@"NewTableViewCell" owner:nil options:nil][0];
+            }
+        }
+            break;
+        case 1:
+        {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"cell2"];
+            if (!cell)
+            {
+                cell = [[NSBundle mainBundle] loadNibNamed:@"NewTableViewCell" owner:nil options:nil][1];
+            }
+        }
+            
+            break;
+            
+        case 2:
+        {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"cell3"];
+            if (!cell)
+            {
+                cell = [[NSBundle mainBundle] loadNibNamed:@"NewTableViewCell" owner:nil options:nil][2];
+            }
+        }
+            
+            break;
+            
+        default:
+            break;
     }
+    
+   
     
     return cell;
 }
