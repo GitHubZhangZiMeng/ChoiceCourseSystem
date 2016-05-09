@@ -22,7 +22,7 @@
                             <constraint firstAttribute="width" constant="25" id="gmM-nT-EAq"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="A844D0DD-0A90-4C7A-8F48-4DC493F25231" translatesAutoresizingMaskIntoConstraints="NO" id="esy-po-YHO">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="A486FCD6-DBEF-4448-8958-F068F6079C6B" translatesAutoresizingMaskIntoConstraints="NO" id="esy-po-YHO">
                         <rect key="frame" x="8" y="29" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="4u3-NO-xis"/>
@@ -60,7 +60,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="A844D0DD-0A90-4C7A-8F48-4DC493F25231" width="15" height="15">
+        <image name="A486FCD6-DBEF-4448-8958-F068F6079C6B" width="15" height="15">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
