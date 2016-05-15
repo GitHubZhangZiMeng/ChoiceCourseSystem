@@ -14,5 +14,6 @@
 @property (nonatomic, strong)NSString *courseTime;
 @property (nonatomic, strong)NSString *courseCollege;
 @property (nonatomic, strong)NSString *courseSourse;
+@property (nonatomic, strong)NSString *courseTeaType;
 
 @end

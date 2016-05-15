@@ -21,6 +21,10 @@
 		0A8E15481C8A9FCF005200AB /* CancelCourseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A8E15461C8A9FCF005200AB /* CancelCourseViewController.xib */; };
 		0A8E154D1C8AA02C005200AB /* PersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8E154B1C8AA02C005200AB /* PersonViewController.m */; };
 		0A8E154E1C8AA02C005200AB /* PersonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A8E154C1C8AA02C005200AB /* PersonViewController.xib */; };
+		0AAF607A1CE8082E0026910F /* Teacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AAF60791CE8082E0026910F /* Teacher.m */; };
+		0AAF607D1CE815D90026910F /* GradeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AAF607C1CE815D90026910F /* GradeModel.m */; };
+		0AAF60811CE817E60026910F /* ClassModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AAF60801CE817E60026910F /* ClassModel.m */; };
+		0AAF60841CE818310026910F /* Major.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AAF60831CE818310026910F /* Major.m */; };
 		0AB6C0F21C75658B00BCC4A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6C0F11C75658B00BCC4A4 /* main.m */; };
 		0AB6C0F51C75658B00BCC4A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6C0F41C75658B00BCC4A4 /* AppDelegate.m */; };
 		0AB6C0FD1C75658B00BCC4A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AB6C0FC1C75658B00BCC4A4 /* Assets.xcassets */; };
@@ -159,6 +163,14 @@
 		0A8E154A1C8AA02C005200AB /* PersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonViewController.h; sourceTree = "<group>"; };
 		0A8E154B1C8AA02C005200AB /* PersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonViewController.m; sourceTree = "<group>"; };
 		0A8E154C1C8AA02C005200AB /* PersonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonViewController.xib; sourceTree = "<group>"; };
+		0AAF60781CE8082E0026910F /* Teacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Teacher.h; sourceTree = "<group>"; };
+		0AAF60791CE8082E0026910F /* Teacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Teacher.m; sourceTree = "<group>"; };
+		0AAF607B1CE815D90026910F /* GradeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeModel.h; sourceTree = "<group>"; };
+		0AAF607C1CE815D90026910F /* GradeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeModel.m; sourceTree = "<group>"; };
+		0AAF607F1CE817E60026910F /* ClassModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassModel.h; sourceTree = "<group>"; };
+		0AAF60801CE817E60026910F /* ClassModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassModel.m; sourceTree = "<group>"; };
+		0AAF60821CE818310026910F /* Major.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Major.h; sourceTree = "<group>"; };
+		0AAF60831CE818310026910F /* Major.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Major.m; sourceTree = "<group>"; };
 		0AB6C0ED1C75658B00BCC4A4 /* ChoiceCourseSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChoiceCourseSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AB6C0F11C75658B00BCC4A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0AB6C0F31C75658B00BCC4A4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -384,6 +396,14 @@
 				C1D4DFBB1CB3A4C700F14071 /* collegeModel.m */,
 				C1D4DFBD1CB3AA1D00F14071 /* CourseContent.h */,
 				C1D4DFBE1CB3AA1D00F14071 /* CourseContent.m */,
+				0AAF60781CE8082E0026910F /* Teacher.h */,
+				0AAF60791CE8082E0026910F /* Teacher.m */,
+				0AAF607B1CE815D90026910F /* GradeModel.h */,
+				0AAF607C1CE815D90026910F /* GradeModel.m */,
+				0AAF607F1CE817E60026910F /* ClassModel.h */,
+				0AAF60801CE817E60026910F /* ClassModel.m */,
+				0AAF60821CE818310026910F /* Major.h */,
+				0AAF60831CE818310026910F /* Major.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -920,6 +940,7 @@
 				C12835AC1CC60BC9003906AE /* superBtn.m in Sources */,
 				0AB6C0F51C75658B00BCC4A4 /* AppDelegate.m in Sources */,
 				C12FB44D1CC9F6F300FFB99C /* SelectingTableViewCell.m in Sources */,
+				0AAF607D1CE815D90026910F /* GradeModel.m in Sources */,
 				C1B1D3FC1CAE6BDB0022A23F /* AlertNotice.m in Sources */,
 				C128358F1CC5BD96003906AE /* CourseVC.m in Sources */,
 				C1E141851CCDB4F200AA7D90 /* SelectingHeadView.m in Sources */,
@@ -938,8 +959,10 @@
 				C184BE2D1CB798CE00C844FF /* PersonHeaderView.m in Sources */,
 				0A8E153A1C8A9E26005200AB /* UIScrollView+SVPullToRefresh.m in Sources */,
 				C12FB42F1CC9BAEA00FFB99C /* CollegeTableViewCell.m in Sources */,
+				0AAF607A1CE8082E0026910F /* Teacher.m in Sources */,
 				C173160E1CBB438C00915D5B /* MajorViewController.m in Sources */,
 				C17316091CBB3A4000915D5B /* YearClassVC.m in Sources */,
+				0AAF60811CE817E60026910F /* ClassModel.m in Sources */,
 				C1D4DFBF1CB3AA1D00F14071 /* CourseContent.m in Sources */,
 				0AFE879F1CCCDFE1008A71AC /* Base64.m in Sources */,
 				0A23DF641CB8A72200BCDAC2 /* SetPassWordViewController.m in Sources */,
@@ -947,6 +970,7 @@
 				0A8E15471C8A9FCF005200AB /* CancelCourseViewController.m in Sources */,
 				0A8E15391C8A9E26005200AB /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				0A8E15421C8A9F59005200AB /* ChoiceCourseViewController.m in Sources */,
+				0AAF60841CE818310026910F /* Major.m in Sources */,
 				C1D4DFB91CB3483500F14071 /* NetHelper.m in Sources */,
 				0AD6E2781CA7AD87003541E2 /* Reachability.m in Sources */,
 				0AB6C0F21C75658B00BCC4A4 /* main.m in Sources */,

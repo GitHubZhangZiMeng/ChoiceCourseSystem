@@ -1,15 +1,17 @@
 //
-//  collegeModel.h
+//  Teacher.h
 //  ChoiceCourseSystem
 //
-//  Created by monst on 16/4/5.
+//  Created by zzm on 16/5/15.
 //  Copyright © 2016年 zzm. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface collegeModel : NSObject
+@interface Teacher : NSObject
 
+@property (nonatomic, strong)NSString *userName;
+@property (nonatomic, strong)NSString *realName;
 @property (nonatomic, strong)NSString *collegeName;
 
 @end
