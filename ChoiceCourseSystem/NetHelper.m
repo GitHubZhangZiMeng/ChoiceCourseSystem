@@ -94,4 +94,15 @@
     //7.执行任务
     [dataTask resume];
 }
+
+
++ (void)postAsynchronousRequest:(NSString *)urlStr withActionStr:(NSString *)action withDataStr:(NSString *)dataStr withNetBlock:(netBlock)block withErrBlock:(errBlock)errblock
+{
+    [[NetHelper shareAFManager] POST:urlStr parameters:[NSString stringWithFormat:@"action=%@&data=%@",action,[dataStr base64EncodedString]] progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        block(responseObject);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errblock(error);
+    }];
+}
 @end

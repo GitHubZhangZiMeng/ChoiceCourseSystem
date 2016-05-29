@@ -9,5 +9,6 @@
 #import "SuperViewController.h"
 
 @interface SetPassWordViewController : SuperViewController
+@property (nonatomic,strong)NSString *username;
 
 @end

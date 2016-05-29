@@ -8,9 +8,11 @@
 
 #import "NewViewController.h"
 #import "NewTableViewCell.h"
+#import "MBProgressHUD.h"
 
-@interface NewViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface NewViewController ()<UITableViewDelegate,UITableViewDataSource,MBProgressHUDDelegate>
 
+@property (nonatomic, strong)MBProgressHUD *hub;
 @end
 
 @implementation NewViewController
@@ -18,14 +20,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"消息";
+    _hub = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:_hub];
+    
+    _hub.delegate = self;
+    _hub.labelText = @"加载中...";
+    
+    [_hub showWhileExecuting:@selector(loadNewCourse) onTarget:self withObject:nil animated:YES];
     
     // Do any additional setup after loading the view from its nib.
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void)loadNewCourse
+{
+    [NetHelper postRequest:kURL_selectable withActionStr:@"news" withDataStr:@"{\"year\":\"\"}" withNetBlock:^(id responseObject) {
+        
+        NSLog(@"responseObject___%@",responseObject);
+    } withErrBlock:^(id err) {
+        
+    }];
+}
+
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIImageView *img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"school"]];

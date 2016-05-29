@@ -59,8 +59,11 @@
             [self.navigationController pushViewController:[MyCourseVC new] animated:YES];
             break;
         case 1:
-          
-            [self.navigationController pushViewController:[SetPassWordViewController new] animated:YES];
+        {
+            SetPassWordViewController *vc = [[SetPassWordViewController alloc] init];
+            vc.username = self.numble;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
             break;
             
         case 2:

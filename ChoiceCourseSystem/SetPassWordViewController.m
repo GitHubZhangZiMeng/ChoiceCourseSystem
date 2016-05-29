@@ -36,34 +36,78 @@
     
     if (self.oldPassWord.text.length != 0 &&self.NewPassWord.text.length != 0 && self.fixNewPW.text.length != 0)
     {
-        BOOL oldPassword = YES;//请求老密码 对错
-        
-        if (oldPassword)//旧密码正确
+//        @"{\"username\":\"%@\",\"password\":\"%@\"}"
+        if([self.NewPassWord.text isEqualToString:self.fixNewPW.text])//验证密码正确
         {
-            if([self.NewPassWord.text isEqualToString:self.fixNewPW.text])//验证密码正确
-            {
-                [AlertNotice showAlert:3 withTitle:@"提示" withContent:@"是否确定修改密码" withVC:self clickLeftBtn:^{//修改密码
+            NSLog(@"%@",_username);
+            [AlertNotice showAlert:3 withTitle:@"提示" withContent:@"是否确定修改密码" withVC:self clickLeftBtn:^{//修改密码
+                
+                [NetHelper postRequest:kURL_LoginUser withActionStr:@"changepwd" withDataStr:[NSString stringWithFormat:@"{\"username\":\"%@\",\"password\":\"%@\",\"newpassword\":\"%@\"}",self.username, self.oldPassWord.text,self.fixNewPW.text] withNetBlock:^(id responseObject) {
                     
-                } clickRightBtn:^{
-                    [self dismissViewControllerAnimated:YES completion:nil];
+                    NSLog(@"%@",responseObject);
+                    if ([[responseObject objectForKey:@"errMsg"] rangeOfString:@"error"].location != NSNotFound)
+                    {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [AlertNotice showAlertNotType:@"提示" withContent:@"旧密码不正确" withVC:self clickLeftBtn:^{
+                                [self dismissViewControllerAnimated:YES completion:nil];
+                            }];
+                        });
+                        
+                        
+                    }
+                    else
+                    {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [AlertNotice showAlertNotType:@"提示" withContent:@"密码修改成功" withVC:self clickLeftBtn:^{
+                                [self dismissViewControllerAnimated:YES completion:nil];
+                            }];
+                        });
+                    }
+                    
+                } withErrBlock:^(id err) {
+                    NSLog(@"%@",err);
+                    
                 }];
-            }
-            else
-            {
-                [AlertNotice showAlertNotType:@"提示" withContent:@"密码不一致" withVC:self clickLeftBtn:^{
-                    [self dismissViewControllerAnimated:YES completion:nil];
-                }];
-            }
-            
+                
+                
+            } clickRightBtn:^{
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }];
         }
         else
         {
-            [AlertNotice showAlertNotType:@"提示" withContent:@"旧密码不正确" withVC:self clickLeftBtn:^{
+            [AlertNotice showAlertNotType:@"提示" withContent:@"密码不一致" withVC:self clickLeftBtn:^{
                 [self dismissViewControllerAnimated:YES completion:nil];
             }];
-            
-            
         }
+        
+        
+//        if (oldPassword)//旧密码正确
+//        {
+//            if([self.NewPassWord.text isEqualToString:self.fixNewPW.text])//验证密码正确
+//            {
+//                [AlertNotice showAlert:3 withTitle:@"提示" withContent:@"是否确定修改密码" withVC:self clickLeftBtn:^{//修改密码
+//                    
+//                } clickRightBtn:^{
+//                    [self dismissViewControllerAnimated:YES completion:nil];
+//                }];
+//            }
+//            else
+//            {
+//                [AlertNotice showAlertNotType:@"提示" withContent:@"密码不一致" withVC:self clickLeftBtn:^{
+//                    [self dismissViewControllerAnimated:YES completion:nil];
+//                }];
+//            }
+//            
+//        }
+//        else
+//        {
+//            [AlertNotice showAlertNotType:@"提示" withContent:@"旧密码不正确" withVC:self clickLeftBtn:^{
+//                [self dismissViewControllerAnimated:YES completion:nil];
+//            }];
+//            
+//            
+//        }
         
     }
     else

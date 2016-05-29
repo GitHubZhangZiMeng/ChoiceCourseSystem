@@ -27,16 +27,22 @@
     //请求学院数据
     
     
-    self.collegeArr = [NSArray arrayWithObjects:@"大气科学学院",@"资源环境学院",@"电子工程学院",@"通信工程学院",@"控制工程学院",@"计算机学院",@"软件工程学院",@"信息安全工程学院",@"应用数学学院",@"管理学院",@"外国语学院",@"光电技术学院",@"文化艺术学院",nil];
+//    self.collegeArr = [NSArray arrayWithObjects:@"大气科学学院",@"资源环境学院",@"电子工程学院",@"通信工程学院",@"控制工程学院",@"计算机学院",@"软件工程学院",@"信息安全工程学院",@"应用数学学院",@"管理学院",@"外国语学院",@"光电技术学院",@"文化艺术学院",nil];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [NetHelper postRequest:kURL_college withActionStr:@"list" withDataStr:[NSString stringWithFormat:@"{\"collegename\":\"\"}"] withNetBlock:^(id responseObject) {
+            //查询所有学院
+            NSLog(@"%@",responseObject);
+            NSLog(@"%@",[responseObject objectForKey:@"colleges"]);
+            self.collegeArr = [responseObject objectForKey:@"colleges"];
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                [_collegeTable reloadData];
+            });
+            
+        } withErrBlock:^(id err) {
+            
+        }];
+    });
     
-//    [NetHelper postRequest:kURL_college withActionStr:@"list" withDataStr:[NSString stringWithFormat:@"{\"collegename\":\"\"}"] withNetBlock:^(id responseObject) {
-//       //查询所有学院
-//        
-//        NSLog(@"%@",responseObject);
-//    } withErrBlock:^(id err) {
-//        
-//    }];
-//    
 
     
     // Do any additional setup after loading the view from its nib.
@@ -55,14 +61,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SelectedViewController *vc = [[SelectedViewController alloc] init];
-    vc.collegeName = self.collegeArr[indexPath.row];
+    vc.collegeName = [self.collegeArr[indexPath.row] objectForKey:@"name"];
+    vc.collegeID = [self.collegeArr[indexPath.row]objectForKey:@"collegeid"];
     [self.navigationController pushViewController:vc animated:YES];
-    
     
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSLog(@"%d",[self.collegeArr count]);
     return [self.collegeArr count];
 }
 
@@ -73,7 +80,7 @@
     {
         cell = [[NSBundle mainBundle] loadNibNamed:@"CollegeTableViewCell" owner:nil options:nil][0];
     }
-    cell.collegeCellLab.text = self.collegeArr[indexPath.row];
+    cell.collegeCellLab.text = [self.collegeArr[indexPath.row] objectForKey:@"name"];
     return cell;
 }
 

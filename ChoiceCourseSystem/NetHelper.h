@@ -18,4 +18,6 @@ typedef void(^errBlock)(id err);
 + (void)getWaitRequest:(NSString *)urlStr withNetBlock:(netBlock)block withErrBlock:(errBlock)errblock;
 
 + (void)postRequest:(NSString *)urlStr withActionStr:(NSString *)action withDataStr:(NSString *)dataStr withNetBlock:(netBlock)block withErrBlock:(errBlock)errblock;
+
++ (void)postAsynchronousRequest:(NSString *)urlStr withActionStr:(NSString *)action withDataStr:(NSString *)dataStr withNetBlock:(netBlock)block withErrBlock:(errBlock)errblock;
 @end

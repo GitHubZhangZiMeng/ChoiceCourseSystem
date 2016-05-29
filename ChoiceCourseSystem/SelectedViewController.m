@@ -16,7 +16,8 @@
 #import "SelectingTableViewCell.h"
 #import "CourseVC.h"
 #import "CourseViewController.h"
-@interface SelectedViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
+#import "MBProgressHUD.h"
+@interface SelectedViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,MBProgressHUDDelegate>
 
 @property (nonatomic, strong)NSArray *selectArr;
 @property (nonatomic, strong)NSMutableArray *seletedTagArr;
@@ -34,7 +35,7 @@
 @property (nonatomic, strong)UIButton *leftBtn;
 @property (nonatomic, strong)UIButton *rightBtn;
 
-
+@property (nonatomic, strong)MBProgressHUD *hub;
 
 @end
 
@@ -48,6 +49,17 @@
     self.tabBarController.tabBar.hidden = YES;
 
     //请求数据
+    _hub = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:_hub];
+    
+    _hub.delegate = self;
+    _hub.labelText = @"加载中...";
+    
+    [_hub showWhileExecuting:@selector(loadCourseData) onTarget:self withObject:nil animated:YES];
+    
+
+    
+    
     self.selectArr = [NSArray arrayWithObjects:@"大学英语",@"高等数学",@"工程导论", nil];
     self.seledtNotArr = [NSArray arrayWithObjects:@"人生规划教育",@"思想道德修养和法律基础",@"体育1",@"网页制作",@"线性代数A", nil];
     self.seletedNotTagArr = [NSMutableArray array];
@@ -155,6 +167,27 @@
 {
    [self.navigationController setNavigationBarHidden:NO];
 }
+
+#pragma mark - 加载数据
+- (void)loadCourseData
+{
+    
+    [NetHelper postRequest:kURL_selectable withActionStr:@"selected" withDataStr:[NSString stringWithFormat:@"{\"collegeid\":\"%@\"}",self.collegeID] withNetBlock:^(id responseObject) {
+        NSLog(@"%@",self.collegeID);
+        NSLog(@"____%@",responseObject);
+    } withErrBlock:^(id err) {
+        
+        
+    }];
+    
+    [NetHelper postRequest:kURL_selectable withActionStr:@"selectable" withDataStr:[NSString stringWithFormat:@"{\"collegeid\":\"%@\"}",self.collegeID] withNetBlock:^(id responseObject) {
+        NSLog(@"____%@",responseObject);
+    } withErrBlock:^(id err) {
+        
+    }];
+    
+}
+
 
 #pragma mark - 下拉刷新
 - (void)tab1pulltoRefresh
