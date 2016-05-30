@@ -40,5 +40,9 @@
 {
     return [[UserManager shareUserManager] objectForKey:@"username"];
 }
+- (NSString *)GetPassWord
+{
+    return [[UserManager shareUserManager] objectForKey:@"password"];
+}
 
 @end

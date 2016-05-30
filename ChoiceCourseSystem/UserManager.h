@@ -15,4 +15,6 @@
 - (void)ClearUserInfo;
 
 - (NSString *)GetUsername;
+
+- (NSString *)GetPassWord;
 @end

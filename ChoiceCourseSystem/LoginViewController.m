@@ -17,6 +17,8 @@
 @interface LoginViewController ()<MBProgressHUDDelegate>
 {
     MBProgressHUD *hub;
+    NSString *userName;
+    NSString *passWord;
 }
 
 @end
@@ -26,9 +28,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.usernameTF.text = [[UserManager new] GetUsername];
+    userName = [[UserManager new] GetUsername];
+    passWord = [[UserManager new] GetPassWord];
+    
+    hub = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:hub];
+    hub.delegate = self;
+    hub.labelText = @"加载中...";
     
     
+    if (userName&&passWord)
+    {
+        [hub showWhileExecuting:@selector(loginPro) onTarget:self withObject:nil animated:YES];
+    }
     
     NSLog(@"%@",NSHomeDirectory());
     
@@ -56,12 +68,6 @@
     
     if (self.usernameTF.text.length != 0 && self.pwdTF.text.length != 0)
     {
-        hub = [[MBProgressHUD alloc] initWithView:self.view];
-        [self.view addSubview:hub];
-        
-        hub.delegate = self;
-        hub.labelText = @"加载中...";
-        
         [hub showWhileExecuting:@selector(loginPro) onTarget:self withObject:nil animated:YES];
         
         
