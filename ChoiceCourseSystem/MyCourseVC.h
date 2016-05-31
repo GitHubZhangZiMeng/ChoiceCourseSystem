@@ -10,4 +10,6 @@
 
 @interface MyCourseVC : SuperViewController
 
+@property(nonatomic ,strong)NSString *userid;
+
 @end

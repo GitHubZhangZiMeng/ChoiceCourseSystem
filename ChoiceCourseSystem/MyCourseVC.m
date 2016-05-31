@@ -9,7 +9,7 @@
 #import "MyCourseVC.h"
 #import "CourseInfoTableViewCell.h"
 #import "CourseInfoView.h"
-@interface MyCourseVC ()<UITableViewDelegate,UITableViewDataSource>
+@interface MyCourseVC ()<UITableViewDelegate,UITableViewDataSource,MBProgressHUDDelegate>
 
 @property (nonatomic, strong)NSArray *courseArr;
 @property (nonatomic, strong)NSMutableArray *courseTagArr;
@@ -21,6 +21,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    MBProgressHUD *hub =[[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:hub];
+    hub.delegate = self;
+    hub.labelText = @"加载中...";
+    [hub showWhileExecuting:@selector(loadData) onTarget:self withObject:nil animated:YES];
+    
     _courseArr = [NSArray arrayWithObjects:@"C语言",@"C++面向对象编程",@"J2EE编程技术", nil];
     _courseTagArr = [NSMutableArray array];
     for (int i=0; i<_courseArr.count; i++)
@@ -29,12 +36,23 @@
     }
     
     
+    
+    
     // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)loadData
+{
+    [NetHelper postRequest:kURL_selectable withActionStr:@"history" withDataStr:[NSString stringWithFormat:@"{\"userid\":\"%@\"}",self.userid] withNetBlock:^(id responseObject) {
+        
+    } withErrBlock:^(id err) {
+        
+    }];
 }
 
 - (void)headerBtnClick:(UIButton *)btn

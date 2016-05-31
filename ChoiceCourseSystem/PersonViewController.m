@@ -56,6 +56,11 @@
     switch (indexPath.row)
     {
         case 0://我的选课
+        {
+            MyCourseVC *vc = [[MyCourseVC alloc] init];
+            vc.userid = self.userid;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
             [self.navigationController pushViewController:[MyCourseVC new] animated:YES];
             break;
         case 1:

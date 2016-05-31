@@ -11,7 +11,7 @@
 @interface PersonViewController : SuperViewController<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic ,strong)NSMutableArray *personArr;
 
-
+@property (nonatomic, strong)NSString *userid;
 @property (nonatomic, strong)NSString *name;
 @property (nonatomic, strong)NSString *college;
 @property (nonatomic, strong)NSString *numble;

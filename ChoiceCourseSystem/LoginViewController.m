@@ -39,6 +39,8 @@
     
     if (userName&&passWord)
     {
+        self.usernameTF.text = userName;
+        self.pwdTF.text = passWord;
         [hub showWhileExecuting:@selector(loginPro) onTarget:self withObject:nil animated:YES];
     }
     
@@ -154,11 +156,13 @@
 
                     
                     CancelCourseViewController *cancelVC = [[CancelCourseViewController alloc] init];
+                    cancelVC.userid = [responseObject objectForKey:@""];
                     cancelVC.tabBarItem.title=@"退选";
                     cancelVC.tabBarItem.image=[UIImage imageNamed:@"cancle"];
                     UINavigationController *cancelNav = [[UINavigationController alloc] initWithRootViewController:cancelVC];
                     
                     PersonViewController *personVC = [[PersonViewController alloc] init];
+                    personVC.userid = [responseObject objectForKey:@""];
                     personVC.name = [[responseObject objectForKey:@"user"]objectForKey:@"realname"];
                     personVC.numble = [[responseObject objectForKey:@"user"] objectForKey:@"username"];
                     personVC.college = [responseObject objectForKey:@"collegeid"];

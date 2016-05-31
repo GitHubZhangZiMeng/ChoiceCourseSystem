@@ -11,7 +11,7 @@
 #import "CourseInfoView.h"
 #import "CancelCourseView.h"
 
-@interface CancelCourseViewController () <UITableViewDelegate,UITableViewDataSource>
+@interface CancelCourseViewController () <UITableViewDelegate,UITableViewDataSource,MBProgressHUDDelegate>
 
 @property (nonatomic, strong)NSMutableArray *courseArr;
 @property (nonatomic, strong)NSMutableArray *courseTagArr;
@@ -32,7 +32,16 @@
     _rightBar.enabled = NO;
     self.navigationItem.rightBarButtonItem = _rightBar;
     
+    
+    
     _cancelDic = [NSMutableDictionary dictionary];
+    
+    MBProgressHUD *hub =[[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:hub];
+    hub.delegate = self;
+    hub.labelText = @"加载中...";
+    [hub showWhileExecuting:@selector(loadData) onTarget:self withObject:nil animated:YES];
+    
     _courseArr = [NSMutableArray arrayWithObjects:@"C语言",@"C++面向对象编程",@"J2EE编程技术",@"网路编程技术",@"大学英语",@"汇编基础",@"数据结构",@"计算机基础",@"计算机网络", nil];
     _tableView.sectionIndexColor = [UIColor grayColor];
     
@@ -75,6 +84,15 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void)loadData
+{
+    [NetHelper postRequest:kURL_selectable withActionStr:@"history" withDataStr:[NSString stringWithFormat:@"{\"userid\":\"%@\"}",self.userid] withNetBlock:^(id responseObject) {
+        
+    } withErrBlock:^(id err) {
+        
+    }];
+}
+
 - (NSString *)firstCharactor:(NSString *)aString
 {
     //转成了可变字符串
@@ -93,6 +111,12 @@
 {
     [AlertNotice showAlert:3 withTitle:nil withContent:[NSString stringWithFormat:@"共退选%lu门课程，是否确定退选",(unsigned long)_cancelDic.count] withVC:self clickLeftBtn:^{
         //确定退选
+        MBProgressHUD *hub =[[MBProgressHUD alloc] initWithView:self.view];
+        [self.view addSubview:hub];
+        hub.delegate = self;
+        hub.labelText = @"加载中...";
+        [hub showWhileExecuting:@selector(commitCancal) onTarget:self withObject:nil animated:YES];
+        
         _rightBar.enabled = NO;
         
         for (NSString *str in [_cancelDic allKeys])
@@ -107,6 +131,15 @@
         
     }];
     
+}
+- (void)commitCancal
+{
+    
+    [NetHelper postRequest:kURL_selectCollege withActionStr:@"giveup" withDataStr:<#(NSString *)#> withNetBlock:^(id responseObject) {
+        
+    } withErrBlock:^(id err) {
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
