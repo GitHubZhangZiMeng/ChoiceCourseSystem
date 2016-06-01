@@ -10,11 +10,13 @@
 
 @interface UserManager : NSObject
 
-- (void)SaveUserInfo:(NSString *)UserName andPWD:(NSString *)password;
+- (void)SaveUserInfo:(NSString *)UserName andPWD:(NSString *)password andUserid:(NSString *)userid;
 
 - (void)ClearUserInfo;
 
 - (NSString *)GetUsername;
 
 - (NSString *)GetPassWord;
+
+- (NSString *)getUserID;
 @end

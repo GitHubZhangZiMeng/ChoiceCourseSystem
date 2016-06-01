@@ -23,9 +23,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [_commitBtn addTarget:self action:@selector(commitCourse) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.title=self.courseName;
-    _commitBtn.hidden = YES;
-    _courselistArr = [NSArray arrayWithObjects:@"选课时间",@"开课时间",@"开设学院",@"课程时长",@"授课教室",@"选择班级",nil];
+    _courselistArr = [NSArray arrayWithObjects:@"开课时间",@"开设学院",@"开设专业",@"课程时长",@"开设班级",nil];
+    _courseInfoArr = [NSArray arrayWithObjects:self.openTime,self.collegeName,self.major,self.totalhour,self.clas,nil];
     
     // Do any additional setup after loading the view from its nib.
 }
@@ -34,6 +35,16 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)commitCourse
+{
+    [NetHelper postRequest:kURL_selectCollege withActionStr:@"select" withDataStr:[NSString stringWithFormat:@"{\"teachingscheduleid\":\"%@\",\"userid\":\"%@\"}",self.teachingscheduleid,[[UserManager new] getUserID]] withNetBlock:^(id responseObject) {
+        NSLog(@"responseObject");
+    } withErrBlock:^(id err) {
+        
+    }];
+}
+
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
@@ -81,7 +92,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:0 reuseIdentifier:@"cell"];
     }
     
-    cell.textLabel.text = @"qweqweadasdwadasdwdasdwa";
+    cell.textLabel.text =_courseInfoArr[indexPath.section];
     
     return cell;
 }

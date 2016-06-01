@@ -44,6 +44,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    NSLog(@"%@",self.collegeID);
     self.navigationItem.title=self.collegeName;
     self.courseDic = [[NSMutableDictionary alloc] init];
     self.tabBarController.tabBar.hidden = YES;
@@ -60,31 +61,6 @@
 
     
     
-    self.selectArr = [NSArray arrayWithObjects:@"大学英语",@"高等数学",@"工程导论", nil];
-    self.seledtNotArr = [NSArray arrayWithObjects:@"人生规划教育",@"思想道德修养和法律基础",@"体育1",@"网页制作",@"线性代数A", nil];
-    self.seletedNotTagArr = [NSMutableArray array];
-    self.seletedTagArr = [NSMutableArray array];
-    
-    for (int i=0; i<self.seledtNotArr.count; i++)
-    {
-        [self.seletedNotTagArr addObject:@"0"];
-    }
-    
-    NSLog(@"%lu",(unsigned long)self.selectArr.count);
-    
-    for (int i=0; i<self.selectArr.count; i++)
-    {
-        [self.seletedTagArr addObject:@"0"];
-    }
-    
-    NSLog(@"%lu",(unsigned long)self.seletedTagArr.count);
-    
-    if(self.selectArr.count==0)
-    {
-        [AlertNotice showAlertNotType:@"提示" withContent:@"您还没有选课，请尽快去选课" withVC:self clickLeftBtn:^{
-            
-        }];
-    }
     UIView *seView = [[UIView alloc] init];
     seView.backgroundColor = [UIColor colorWithRed:253/255.0 green:146/255.0 blue:8/255.0 alpha:1];
     seView.frame = CGRectMake(0 , NavHeight+StatusHeight, MainScreenWidth, 44);
@@ -148,7 +124,9 @@
     _notSelectedTab.separatorStyle = UITableViewCellSeparatorStyleNone;
     _notSelectedTab.showsVerticalScrollIndicator = NO;
     [_scroll addSubview:_notSelectedTab];
-    
+    [_notSelectedTab addPullToRefreshWithActionHandler:^{
+        [weakself tab2pulltoRefresh];
+    }];
     
 //    _commitBtn = [UIButton buttonWithType:UIButtonTypeSystem];
 //    _commitBtn.hidden = YES;
@@ -175,6 +153,8 @@
     [NetHelper postRequest:kURL_selectable withActionStr:@"selected" withDataStr:[NSString stringWithFormat:@"{\"collegeid\":\"%@\"}",self.collegeID] withNetBlock:^(id responseObject) {
         NSLog(@"%@",self.collegeID);
         NSLog(@"____%@",responseObject);
+        _selectArr = [NSArray arrayWithArray:[responseObject objectForKey:@"teachingschedules"]];
+        [_selectedTab reloadData];
     } withErrBlock:^(id err) {
         
         
@@ -182,6 +162,8 @@
     
     [NetHelper postRequest:kURL_selectable withActionStr:@"selectable" withDataStr:[NSString stringWithFormat:@"{\"collegeid\":\"%@\"}",self.collegeID] withNetBlock:^(id responseObject) {
         NSLog(@"____%@",responseObject);
+        _seledtNotArr = [NSArray arrayWithArray:[responseObject objectForKey:@"teachingschedules"]];
+        [_notSelectedTab reloadData];
     } withErrBlock:^(id err) {
         
     }];
@@ -194,6 +176,15 @@
 {
     
 //    sleep(2);
+    [NetHelper postRequest:kURL_selectable withActionStr:@"selected" withDataStr:[NSString stringWithFormat:@"{\"collegeid\":\"%@\"}",self.collegeID] withNetBlock:^(id responseObject) {
+        NSLog(@"%@",self.collegeID);
+        NSLog(@"____%@",responseObject);
+        _selectArr = [NSArray arrayWithArray:[responseObject objectForKey:@"teachingschedules"]];
+        [_selectedTab reloadData];
+    } withErrBlock:^(id err) {
+        
+        
+    }];
     [self.selectedTab reloadData];
     [self.selectedTab.pullToRefreshView stopAnimating];
     
@@ -202,6 +193,13 @@
 - (void)tab2pulltoRefresh
 {
     [self.notSelectedTab reloadData];
+    [NetHelper postRequest:kURL_selectable withActionStr:@"selectable" withDataStr:[NSString stringWithFormat:@"{\"collegeid\":\"%@\"}",self.collegeID] withNetBlock:^(id responseObject) {
+        NSLog(@"____%@",responseObject);
+        _seledtNotArr = [NSArray arrayWithArray:[responseObject objectForKey:@"teachingschedules"]];
+        [_notSelectedTab reloadData];
+    } withErrBlock:^(id err) {
+        
+    }];
     [self.notSelectedTab.pullToRefreshView stopAnimating];
 }
 
@@ -309,8 +307,21 @@
     if (tableView.tag==1)
     {
         NSLog(@"didSelectRowAtIndexPath");
+        NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
         CourseVC *vc = [[CourseVC alloc] init];
         vc.collegeStr = self.collegeName;
+        vc.course = [_selectArr[indexPath.row] objectForKey:@"coursename"];
+        vc.teach = [_selectArr[indexPath.row] objectForKey:@"username"];
+        vc.major = [_selectArr[indexPath.row] objectForKey:@"majorname"];
+        vc.openTime = [numFormatter stringFromNumber:[_selectArr[indexPath.row] objectForKey:@"startweek"]];
+        vc.totalhour = [numFormatter stringFromNumber:[_selectArr[indexPath.row] objectForKey:@"totalhour"]];
+        NSString *yearStr = [NSString stringWithFormat:@"%@级",[_selectArr[indexPath.row] objectForKey:@"gradeyear"]];
+        for (int i=0; i<[[_selectArr[indexPath.row] objectForKey:@"class"]count]; i++)
+        {
+            yearStr = [yearStr stringByAppendingString:[numFormatter stringFromNumber:[[_selectArr[indexPath.row] objectForKey:@"class"][i] objectForKey:@"no"]]];
+            yearStr = [yearStr stringByAppendingString:@"班"];
+        }
+        vc.clas = yearStr;
         [self.navigationController pushViewController:vc animated:YES];
         
 //        NSString *str = [NSString stringWithFormat:@"%d",indexPath.section];
@@ -322,10 +333,24 @@
 //            self.commitBtn.hidden = NO;
 //        }
     }
+    
    else
    {
+       NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
        CourseViewController *vc = [[CourseViewController alloc] init];
-       vc.courseName = self.seledtNotArr[indexPath.row];
+       vc.teachingscheduleid = [_seledtNotArr[indexPath.row] objectForKey:@"teachingscheduleid"];
+       vc.collegeName = self.collegeName;
+       vc.courseName = [_seledtNotArr[indexPath.row] objectForKey:@"coursename"];
+       vc.major = [_seledtNotArr[indexPath.row] objectForKey:@"majorname"];
+       vc.openTime = [numFormatter stringFromNumber:[_seledtNotArr[indexPath.row] objectForKey:@"startweek"]];
+       vc.totalhour = [numFormatter stringFromNumber:[_seledtNotArr[indexPath.row] objectForKey:@"totalhour"]];
+       NSString *yearStr = [NSString stringWithFormat:@"%@级",[_seledtNotArr[indexPath.row] objectForKey:@"gradeyear"]];
+       for (int i=0; i<[[_seledtNotArr[indexPath.row] objectForKey:@"class"]count]; i++)
+       {
+           yearStr = [yearStr stringByAppendingString:[numFormatter stringFromNumber:[[_seledtNotArr[indexPath.row] objectForKey:@"class"][i] objectForKey:@"no"]]];
+           yearStr = [yearStr stringByAppendingString:@"班"];
+       }
+       vc.clas = yearStr;
        [self.navigationController pushViewController:vc animated:YES];
        
    }
@@ -464,11 +489,23 @@
         {
             cell = [[NSBundle mainBundle] loadNibNamed:@"SelectedTableViewCell" owner:nil options:nil][0];
         }
-        cell.courseNameLab.text = _selectArr[indexPath.row];
+        NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
+        cell.courseNameLab.text = [_selectArr[indexPath.row] objectForKey:@"coursename"];
         cell.courseNameLab.adjustsFontSizeToFitWidth = YES;
-        cell.openTimeLab.text = @"第5周";
-        cell.courseTeacherLab.text = @"王祖丽";
-        cell.courseTimeLab.text = @"航空港2103";
+        cell.openTimeLab.text = [NSString stringWithFormat:@"第%@周开课",[numFormatter stringFromNumber:[_selectArr[indexPath.row] objectForKey:@"startweek"]]];
+        cell.courseTeacherLab.text = [_selectArr[indexPath.row]objectForKey:@"username"];
+        NSString *yearStr = [_selectArr[indexPath.row]objectForKey:@"majorname"];
+        yearStr = [yearStr stringByAppendingString:[_selectArr[indexPath.row]objectForKey:@"gradeyear"]];
+        yearStr = [yearStr stringByAppendingString:@"级"];
+        for (int i=0; i<[[_selectArr[indexPath.row] objectForKey:@"class"]count]; i++)
+        {
+            NSLog(@"%@",yearStr);
+            
+            yearStr = [yearStr stringByAppendingString:[numFormatter stringFromNumber:[[_selectArr[indexPath.row] objectForKey:@"class"][i] objectForKey:@"no"]]];
+            yearStr = [yearStr stringByAppendingString:@"班"];
+        }
+        cell.courseTimeLab.text = yearStr;
+        cell.courseTimeLab.adjustsFontSizeToFitWidth = YES;
         return cell;
         
     }
@@ -480,11 +517,22 @@
         {
             cell = [[NSBundle mainBundle] loadNibNamed:@"SelectingTableViewCell" owner:nil options:nil][0];
         }
-        cell.courseNameLab.text = _seledtNotArr[indexPath.row];
+        NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
+        cell.courseNameLab.text = [_seledtNotArr[indexPath.row] objectForKey:@"coursename"];
         cell.courseNameLab.adjustsFontSizeToFitWidth = YES;
-        cell.selectTimeLab.text = @"2016年9月10日12点整";
+        cell.selectTimeLab.text = [_seledtNotArr[indexPath.row] objectForKey:@"majorname"];
         cell.selectTimeLab.adjustsFontSizeToFitWidth = YES;
-        cell.courseAllTimeLab.text = @"48课时";
+        NSString *yearStr = [_seledtNotArr[indexPath.row]objectForKey:@"gradeyear"];
+        yearStr = [yearStr stringByAppendingString:@"级"];
+        for (int i=0; i<[[_seledtNotArr[indexPath.row] objectForKey:@"class"]count]; i++)
+        {
+            NSLog(@"%@",yearStr);
+            
+            yearStr = [yearStr stringByAppendingString:[numFormatter stringFromNumber:[[_seledtNotArr[indexPath.row] objectForKey:@"class"][i] objectForKey:@"no"]]];
+            yearStr = [yearStr stringByAppendingString:@"班"];
+        }
+        cell.courseAllTimeLab.text = yearStr;
+        
         return cell;
     }
    

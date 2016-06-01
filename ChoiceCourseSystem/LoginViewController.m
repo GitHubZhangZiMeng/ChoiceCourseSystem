@@ -137,7 +137,7 @@
                 NSLog(@"yes");
                 NSLog(@"%@",[responseObject objectForKey:@"user"]);
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0* NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [[UserManager new] SaveUserInfo:self.usernameTF.text andPWD:self.pwdTF.text];
+                    [[UserManager new] SaveUserInfo:self.usernameTF.text andPWD:self.pwdTF.text andUserid:[[responseObject objectForKey:@"user"] objectForKey:@"userid"]];
                     ChoiceCourseViewController *choiseVC = [[ChoiceCourseViewController alloc] init];
                     choiseVC.view.backgroundColor = [UIColor whiteColor];
                     choiseVC.tabBarItem.title=@"选课";
@@ -162,10 +162,10 @@
                     UINavigationController *cancelNav = [[UINavigationController alloc] initWithRootViewController:cancelVC];
                     
                     PersonViewController *personVC = [[PersonViewController alloc] init];
-                    personVC.userid = [responseObject objectForKey:@""];
+                    personVC.userid = [[responseObject objectForKey:@"user"] objectForKey:@"userid"];
                     personVC.name = [[responseObject objectForKey:@"user"]objectForKey:@"realname"];
                     personVC.numble = [[responseObject objectForKey:@"user"] objectForKey:@"username"];
-                    personVC.college = [responseObject objectForKey:@"collegeid"];
+                    personVC.college = [[responseObject objectForKey:@"college"] objectForKey:@"name"];
                     
                     personVC.tabBarItem.title=@"个人";
                     personVC.tabBarItem.image=[UIImage imageNamed:@"person"];
@@ -174,7 +174,6 @@
                     UITabBarController *tabbarController = [[UITabBarController alloc] init];
                     tabbarController.viewControllers = @[choiseNav,newNav,cancelNav,personNav];
                     tabbarController.tabBar.tintColor = [UIColor colorWithRed:253/255.0 green:146/255.0 blue:8/255.0 alpha:1];
-                    [[UserManager new] SaveUserInfo:self.usernameTF.text andPWD:self.pwdTF.text];
                     
                     
                     AppDelegate *app = [UIApplication sharedApplication].delegate;

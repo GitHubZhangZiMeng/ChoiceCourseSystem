@@ -21,11 +21,12 @@
     
 }
 
-- (void)SaveUserInfo:(NSString *)UserName andPWD:(NSString *)password
+- (void)SaveUserInfo:(NSString *)UserName andPWD:(NSString *)password andUserid:(NSString *)userid
 {
     [[UserManager shareUserManager] setObject:UserName forKey:@"username"];
     [[UserManager shareUserManager] setObject:password forKey:@"password"];
-     [[UserManager shareUserManager] setObject:@"YES" forKey:@"LoginState"];
+    [[UserManager shareUserManager] setObject:userid forKey:@"userid"];
+    [[UserManager shareUserManager] setObject:@"YES" forKey:@"LoginState"];
     [[UserManager shareUserManager] synchronize];
 }
 
@@ -33,7 +34,8 @@
 {
     [[UserManager shareUserManager] removeObjectForKey:@"username"];
     [[UserManager shareUserManager] removeObjectForKey:@"password"];
-    [[UserManager shareUserManager] setObject:@"NO" forKey:@"LoginState"];
+    [[UserManager shareUserManager] removeObjectForKey:@"userid"];
+    [[UserManager shareUserManager] removeObjectForKey:@"LoginState"];
 }
 
 - (NSString *)GetUsername
@@ -43,6 +45,11 @@
 - (NSString *)GetPassWord
 {
     return [[UserManager shareUserManager] objectForKey:@"password"];
+}
+
+- (NSString *)getUserID
+{
+    return [[UserManager shareUserManager] objectForKey:@"userid"];
 }
 
 @end

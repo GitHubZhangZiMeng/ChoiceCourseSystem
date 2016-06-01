@@ -27,13 +27,14 @@
     hub.delegate = self;
     hub.labelText = @"加载中...";
     [hub showWhileExecuting:@selector(loadData) onTarget:self withObject:nil animated:YES];
+    NSLog(@"userid:%@---",self.userid);
     
-    _courseArr = [NSArray arrayWithObjects:@"C语言",@"C++面向对象编程",@"J2EE编程技术", nil];
-    _courseTagArr = [NSMutableArray array];
-    for (int i=0; i<_courseArr.count; i++)
-    {
-        [_courseTagArr addObject:@"0"];
-    }
+//    _courseArr = [NSArray arrayWithObjects:@"C语言",@"C++面向对象编程",@"J2EE编程技术", nil];
+//    _courseTagArr = [NSMutableArray array];
+//    for (int i=0; i<_courseArr.count; i++)
+//    {
+//        [_courseTagArr addObject:@"0"];
+//    }
     
     
     
@@ -48,11 +49,21 @@
 
 - (void)loadData
 {
+    __weak UITableView *weakTableView = _tableView;
     [NetHelper postRequest:kURL_selectable withActionStr:@"history" withDataStr:[NSString stringWithFormat:@"{\"userid\":\"%@\"}",self.userid] withNetBlock:^(id responseObject) {
         
+        _courseArr = [NSArray arrayWithArray:[responseObject objectForKey:@"teachingschedules"]];
+        _courseTagArr = [NSMutableArray array];
+        for (int i=0; i<_courseArr.count; i++)
+        {
+            [_courseTagArr addObject:@"0"];
+        }
+        [weakTableView reloadData];
+
     } withErrBlock:^(id err) {
         
     }];
+    
 }
 
 - (void)headerBtnClick:(UIButton *)btn
@@ -87,7 +98,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     CourseInfoView *vi = [[NSBundle mainBundle] loadNibNamed:@"CourseInfoView" owner:nil options:nil][0];
-    vi.CourseNameLab.text = _courseArr[section];
+    vi.CourseNameLab.text = [_courseArr[section] objectForKey:@"coursename"];
     vi.headerBtn.tag = section;
     [vi.headerBtn addTarget:self action:@selector(headerBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     if ([_courseTagArr[section] isEqualToString:@"1"])
@@ -111,6 +122,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    
     return _courseArr.count;
 }
 
@@ -132,8 +144,24 @@
     {
         cell = [[NSBundle mainBundle] loadNibNamed:@"CourseInfoTableViewCell" owner:nil options:nil][0];
     }
-    cell.inImgView.hidden = YES;
+    NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
+    cell.collegeName.text = [_courseArr[indexPath.section] objectForKey:@"collegename"];
+    cell.maiorName.text = [_courseArr[indexPath.section] objectForKey:@"majorname"];
+    cell.openTime.text = [NSString stringWithFormat:@"第%@周", [numFormatter stringFromNumber:[_courseArr[indexPath.section] objectForKey:@"startweek"]]];
+    cell.gradeyear.text = [_courseArr[indexPath.section]objectForKey:@"gradeyear"];
+    cell.totalhour.text = [numFormatter stringFromNumber:[_courseArr[indexPath.section]objectForKey:@"totalhour"]];
+    NSString *clasStr = [NSString string];
     
+    for (int i=0; i<[[_courseArr[indexPath.section] objectForKey:@"class"]count]; i++)
+    {
+        NSLog(@"%@",clasStr);
+        
+        clasStr = [clasStr stringByAppendingString:[numFormatter stringFromNumber:[[_courseArr[indexPath.row] objectForKey:@"class"][i] objectForKey:@"no"]]];
+        clasStr = [clasStr stringByAppendingString:@"班"];
+    }
+    
+    cell.courseClass.text = clasStr;
+    NSLog(@"%@,%@,%@,%@,%@",cell.collegeName.text,cell.maiorName.text,cell.openTime.text,cell.gradeyear.text,cell.totalhour.text);
     return cell;
     
 }

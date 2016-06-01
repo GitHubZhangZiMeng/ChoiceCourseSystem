@@ -90,7 +90,6 @@
         NSLog(@"%@",dict);
         block(dict);
     }];
-    
     //7.执行任务
     [dataTask resume];
 }

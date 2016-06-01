@@ -9,19 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface CourseInfoTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *courseName;
-@property (weak, nonatomic) IBOutlet UILabel *choiseCourseTime;
-@property (weak, nonatomic) IBOutlet UILabel *courseStart;
-@property (weak, nonatomic) IBOutlet UILabel *courseCategory;
+@property (weak, nonatomic) IBOutlet UILabel *collegeName;
+@property (weak, nonatomic) IBOutlet UILabel *maiorName;
+@property (weak, nonatomic) IBOutlet UILabel *openTime;
+@property (weak, nonatomic) IBOutlet UILabel *gradeyear;
+@property (weak, nonatomic) IBOutlet UILabel *totalhour;
+@property (weak, nonatomic) IBOutlet UILabel *courseClass;
 
-@property (weak, nonatomic) IBOutlet UILabel *courseProperty;
 
-@property (weak, nonatomic) IBOutlet UILabel *classroomForm;
-@property (weak, nonatomic) IBOutlet UILabel *examCategory;
-@property (weak, nonatomic) IBOutlet UILabel *studyTime;
-@property (weak, nonatomic) IBOutlet UILabel *peopleNum;
-@property (weak, nonatomic) IBOutlet UILabel *creditLab;
-@property (weak, nonatomic) IBOutlet UILabel *teacherLab;
-@property (weak, nonatomic) IBOutlet UIImageView *inImgView;
 
 @end

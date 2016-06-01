@@ -28,6 +28,7 @@
     self.navigationItem.title=@"个人设置";
     self.personArr = [NSMutableArray arrayWithObjects:@"我的选课",@"设置密码",@"退出登陆",@"关于我们",nil];
     self.imgRowArr = [NSArray arrayWithObjects:@"star",@"setPwd",@"tui",@"about_we", nil];
+    NSLog(@"userid___%@",self.userid);
     // Do any additional setup after loading the view from its nib.
 }
 - (void)viewWillAppear:(BOOL)animated
@@ -61,7 +62,6 @@
             vc.userid = self.userid;
             [self.navigationController pushViewController:vc animated:YES];
         }
-            [self.navigationController pushViewController:[MyCourseVC new] animated:YES];
             break;
         case 1:
         {

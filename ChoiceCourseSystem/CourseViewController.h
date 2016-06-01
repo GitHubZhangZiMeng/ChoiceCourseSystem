@@ -10,7 +10,12 @@
 
 @interface CourseViewController : SuperViewController
 
+@property (nonatomic, strong)NSString *teachingscheduleid;
 @property (nonatomic, strong)NSString *collegeName;
 @property (nonatomic, strong)NSString *courseName;
+@property (nonatomic, strong)NSString *openTime;
+@property (nonatomic, strong)NSString *major;
+@property (nonatomic, strong)NSString *clas;
+@property (nonatomic, strong)NSString *totalhour;
 
 @end

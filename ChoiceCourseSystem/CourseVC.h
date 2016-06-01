@@ -10,6 +10,18 @@
 
 @interface CourseVC : SuperViewController
 
+
+@property (weak, nonatomic) IBOutlet UILabel *courseName;
+@property (weak, nonatomic) IBOutlet UILabel *teacher;
+
 @property (nonatomic, strong)NSString *collegeStr;
+@property (nonatomic, strong)NSString *course;
+@property (nonatomic, strong)NSString *teach;
+@property (nonatomic, strong)NSString *openTime;
+@property (nonatomic, strong)NSString *major;
+@property (nonatomic, strong)NSString *clas;
+@property (nonatomic, strong)NSString *totalhour;
+
+
 
 @end

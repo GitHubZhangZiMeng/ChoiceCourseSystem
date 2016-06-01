@@ -27,6 +27,9 @@
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:YES];
     
+    self.courseName.text = self.course;
+    self.teacher.text = self.teach;
+    
     _courseInfoArr = [NSArray arrayWithObjects:@"开课时间",@"选课时间",@"开设学院",@"课程时长",@"授课教室", nil];
     _classArr = [NSArray arrayWithObjects:@"信息对抗121",@"信息对抗122",@"信息安全121",@"信息安全122",nil];
     _courseTagArr = [NSMutableArray array];

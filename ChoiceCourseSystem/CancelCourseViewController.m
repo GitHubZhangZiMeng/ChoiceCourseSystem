@@ -135,11 +135,11 @@
 - (void)commitCancal
 {
     
-    [NetHelper postRequest:kURL_selectCollege withActionStr:@"giveup" withDataStr:<#(NSString *)#> withNetBlock:^(id responseObject) {
-        
-    } withErrBlock:^(id err) {
-        
-    }];
+//    [NetHelper postRequest:kURL_selectCollege withActionStr:@"giveup" withDataStr:<#(NSString *)#> withNetBlock:^(id responseObject) {
+//        
+//    } withErrBlock:^(id err) {
+//        
+//    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -367,7 +367,6 @@
         cell = [[NSBundle mainBundle] loadNibNamed:@"CourseInfoTableViewCell" owner:nil options:nil][0];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleDefault;
-    cell.inImgView.hidden = YES;
     return cell;
 }
 
