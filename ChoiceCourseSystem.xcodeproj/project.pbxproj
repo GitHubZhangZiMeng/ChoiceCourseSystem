@@ -766,7 +766,6 @@
 				TargetAttributes = {
 					0AB6C0EC1C75658B00BCC4A4 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = KT8X4XSVNM;
 					};
 				};
 			};
@@ -1084,9 +1083,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = ChoiceCourseSystem/PrefixHeader.pch;
 				INFOPLIST_FILE = ChoiceCourseSystem/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = zzm.ChoiceCourseSystem;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ChoiseCourse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1100,9 +1099,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = ChoiceCourseSystem/PrefixHeader.pch;
 				INFOPLIST_FILE = ChoiceCourseSystem/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = zzm.ChoiceCourseSystem;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ChoiseCourse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

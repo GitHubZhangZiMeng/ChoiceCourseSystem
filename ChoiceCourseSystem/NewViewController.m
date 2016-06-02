@@ -20,17 +20,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"消息";
-    _hub = [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:_hub];
     
-    _hub.delegate = self;
-    _hub.labelText = @"加载中...";
-    
-    [_hub showWhileExecuting:@selector(loadNewCourse) onTarget:self withObject:nil animated:YES];
     
     // Do any additional setup after loading the view from its nib.
 }
-
+- (void)viewWillAppear:(BOOL)animated
+{
+    MBProgressHUD *hub = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:hub];
+    hub.delegate = self;
+    hub.labelText = @"加载中...";
+    [hub showWhileExecuting:@selector(loadNewCourse) onTarget:self withObject:nil animated:YES];
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

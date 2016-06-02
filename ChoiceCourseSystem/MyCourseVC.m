@@ -58,7 +58,10 @@
         {
             [_courseTagArr addObject:@"0"];
         }
-        [weakTableView reloadData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakTableView reloadData];
+        });
+        
 
     } withErrBlock:^(id err) {
         

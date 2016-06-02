@@ -34,7 +34,7 @@
     hub = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:hub];
     hub.delegate = self;
-    hub.labelText = @"加载中...";
+    hub.labelText = @"登陆中...";
     
     
     if (userName&&passWord)
@@ -71,42 +71,6 @@
     if (self.usernameTF.text.length != 0 && self.pwdTF.text.length != 0)
     {
         [hub showWhileExecuting:@selector(loginPro) onTarget:self withObject:nil animated:YES];
-        
-        
-        
-//        ChoiceCourseViewController *choiseVC = [[ChoiceCourseViewController alloc] init];
-//        choiseVC.view.backgroundColor = [UIColor whiteColor];
-//        choiseVC.tabBarItem.title=@"选课";
-//        choiseVC.tabBarItem.image=[UIImage imageNamed:@"book"];
-//        UINavigationController *choiseNav = [[UINavigationController alloc] initWithRootViewController:choiseVC];
-//        //背景颜色
-//        [UINavigationBar appearance].barTintColor = [UIColor colorWithRed:253/255.0 green:146/255.0 blue:8/255.0 alpha:1];
-//        //title 颜色
-//        [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
-//        NewViewController *newVC = [[NewViewController alloc] init];
-//        newVC.view.backgroundColor = [UIColor whiteColor];
-//        newVC.tabBarItem.title = @"消息";
-//        newVC.tabBarItem.image = [UIImage imageNamed:@"new"];
-//        UINavigationController *newNav = [[UINavigationController alloc] initWithRootViewController:newVC];
-//        
-//        CancelCourseViewController *cancelVC = [[CancelCourseViewController alloc] init];
-//        cancelVC.tabBarItem.title=@"退选";
-//        cancelVC.tabBarItem.image=[UIImage imageNamed:@"cancle"];
-//        UINavigationController *cancelNav = [[UINavigationController alloc] initWithRootViewController:cancelVC];
-//        
-//        PersonViewController *personVC = [[PersonViewController alloc] init];
-//        personVC.tabBarItem.title=@"个人";
-//        personVC.tabBarItem.image=[UIImage imageNamed:@"person"];
-//        UINavigationController *personNav = [[UINavigationController alloc] initWithRootViewController:personVC];
-//        
-//        UITabBarController *tabbarController = [[UITabBarController alloc] init];
-//        tabbarController.viewControllers = @[choiseNav,newNav,cancelNav,personNav];
-//        tabbarController.tabBar.tintColor = [UIColor colorWithRed:253/255.0 green:146/255.0 blue:8/255.0 alpha:1];
-//        
-//        
-//        AppDelegate *app = [UIApplication sharedApplication].delegate;
-//        app.window.rootViewController=tabbarController;
-
     }
     else
     {
@@ -114,7 +78,6 @@
             [self dismissViewControllerAnimated:YES completion:nil];
         }];
     }
-    
 }
 
 - (void)loginPro
@@ -122,6 +85,15 @@
     [NetHelper postRequest:kURL_LoginUser withActionStr:@"login" withDataStr:[NSString stringWithFormat:@"{\"username\":\"%@\",\"password\":\"%@\"}",self.usernameTF.text,self.pwdTF.text]
         withNetBlock:^(id responseObject) {
         NSLog(@"%@",responseObject);
+            if ([responseObject isKindOfClass:[NSString class]])
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [AlertNotice showAlertNotType:@"提示" withContent:@"网络状态差，请求超时" withVC:self clickLeftBtn:^{
+                        
+                    }];
+                });
+                return ;
+            }
             if ([[responseObject objectForKey:@"errMsg"] rangeOfString:@"error"].location!=NSNotFound)
             {
                 NSLog(@"no");
@@ -156,7 +128,7 @@
 
                     
                     CancelCourseViewController *cancelVC = [[CancelCourseViewController alloc] init];
-                    cancelVC.userid = [responseObject objectForKey:@""];
+                    cancelVC.userid = [[responseObject objectForKey:@"user"] objectForKey:@"userid"];
                     cancelVC.tabBarItem.title=@"退选";
                     cancelVC.tabBarItem.image=[UIImage imageNamed:@"cancle"];
                     UINavigationController *cancelNav = [[UINavigationController alloc] initWithRootViewController:cancelVC];

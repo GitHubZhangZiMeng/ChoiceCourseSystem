@@ -14,7 +14,7 @@
 @interface CourseVC () <UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong)NSArray *courseInfoArr;
-@property (nonatomic,strong)NSArray *classArr;
+@property (nonatomic,strong)NSArray *courseListArr;
 @property (nonatomic,strong)NSMutableArray *courseTagArr;
 @property (nonatomic,strong)IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
@@ -30,9 +30,11 @@
     self.courseName.text = self.course;
     self.teacher.text = self.teach;
     
-    _courseInfoArr = [NSArray arrayWithObjects:@"开课时间",@"选课时间",@"开设学院",@"课程时长",@"授课教室", nil];
-    _classArr = [NSArray arrayWithObjects:@"信息对抗121",@"信息对抗122",@"信息安全121",@"信息安全122",nil];
-    _courseTagArr = [NSMutableArray array];
+    
+    _courseInfoArr = [NSArray arrayWithObjects:self.openTime,self.collegeStr,self.major,self.totalhour,self.clas,nil];
+    _courseListArr = [NSArray arrayWithObjects:@"开课时间",@"开设学院",@"开设专业",@"课程时长",@"开设班级",nil];
+    
+    
     _imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg",arc4random()%11+1]];
     
 }
@@ -90,7 +92,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UILabel *lab = [[UILabel alloc] init];
-    lab.text = _courseInfoArr[section];
+    lab.text = _courseListArr[section];
 //    lab.textAlignment = NSTextAlignmentCenter;
     return lab;
 }
@@ -129,7 +131,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
       
     }
-    cell.textLabel.text = @"123123123123123123123";
+    cell.textLabel.text = _courseInfoArr[indexPath.section];
     cell.textLabel.textColor = [UIColor grayColor];
     return cell;
     

@@ -49,15 +49,7 @@
     self.courseDic = [[NSMutableDictionary alloc] init];
     self.tabBarController.tabBar.hidden = YES;
 
-    //请求数据
-    _hub = [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:_hub];
-    
-    _hub.delegate = self;
-    _hub.labelText = @"加载中...";
-    
-    [_hub showWhileExecuting:@selector(loadCourseData) onTarget:self withObject:nil animated:YES];
-    
+    //请求数
 
     
     
@@ -144,6 +136,14 @@
 - (void)viewWillAppear:(BOOL)animated
 {
    [self.navigationController setNavigationBarHidden:NO];
+    _hub = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:_hub];
+    
+    _hub.delegate = self;
+    _hub.labelText = @"加载中...";
+    
+    [_hub showWhileExecuting:@selector(loadCourseData) onTarget:self withObject:nil animated:YES];
+    
 }
 
 #pragma mark - 加载数据
@@ -154,7 +154,9 @@
         NSLog(@"%@",self.collegeID);
         NSLog(@"____%@",responseObject);
         _selectArr = [NSArray arrayWithArray:[responseObject objectForKey:@"teachingschedules"]];
-        [_selectedTab reloadData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_selectedTab reloadData];
+        });
     } withErrBlock:^(id err) {
         
         
@@ -163,7 +165,9 @@
     [NetHelper postRequest:kURL_selectable withActionStr:@"selectable" withDataStr:[NSString stringWithFormat:@"{\"collegeid\":\"%@\"}",self.collegeID] withNetBlock:^(id responseObject) {
         NSLog(@"____%@",responseObject);
         _seledtNotArr = [NSArray arrayWithArray:[responseObject objectForKey:@"teachingschedules"]];
-        [_notSelectedTab reloadData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_notSelectedTab reloadData];
+        });
     } withErrBlock:^(id err) {
         
     }];
@@ -180,23 +184,26 @@
         NSLog(@"%@",self.collegeID);
         NSLog(@"____%@",responseObject);
         _selectArr = [NSArray arrayWithArray:[responseObject objectForKey:@"teachingschedules"]];
-        [_selectedTab reloadData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_selectedTab reloadData];
+        });
     } withErrBlock:^(id err) {
         
         
     }];
-    [self.selectedTab reloadData];
+    
     [self.selectedTab.pullToRefreshView stopAnimating];
     
 }
 
 - (void)tab2pulltoRefresh
 {
-    [self.notSelectedTab reloadData];
     [NetHelper postRequest:kURL_selectable withActionStr:@"selectable" withDataStr:[NSString stringWithFormat:@"{\"collegeid\":\"%@\"}",self.collegeID] withNetBlock:^(id responseObject) {
         NSLog(@"____%@",responseObject);
         _seledtNotArr = [NSArray arrayWithArray:[responseObject objectForKey:@"teachingschedules"]];
-        [_notSelectedTab reloadData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_notSelectedTab reloadData];
+        });
     } withErrBlock:^(id err) {
         
     }];

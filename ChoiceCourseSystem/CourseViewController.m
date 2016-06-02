@@ -39,6 +39,18 @@
 - (void)commitCourse
 {
     [NetHelper postRequest:kURL_selectCollege withActionStr:@"select" withDataStr:[NSString stringWithFormat:@"{\"teachingscheduleid\":\"%@\",\"userid\":\"%@\"}",self.teachingscheduleid,[[UserManager new] getUserID]] withNetBlock:^(id responseObject) {
+        if([[responseObject objectForKey:@"errMsg"] isEqualToString:@""])
+        {
+            [AlertNotice showAlertNotType:@"提示" withContent:@"已提交选课，待审核中" withVC:self clickLeftBtn:^{
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+            
+        }
+        else
+        {
+            [AlertNotice showAlertNotType:@"提示" withContent:@"提交选课失败" withVC:self clickLeftBtn:nil];
+        }
+        
         NSLog(@"responseObject");
     } withErrBlock:^(id err) {
         

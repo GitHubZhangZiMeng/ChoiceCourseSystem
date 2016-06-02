@@ -36,49 +36,10 @@
     
     _cancelDic = [NSMutableDictionary dictionary];
     
-    MBProgressHUD *hub =[[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:hub];
-    hub.delegate = self;
-    hub.labelText = @"加载中...";
-    [hub showWhileExecuting:@selector(loadData) onTarget:self withObject:nil animated:YES];
     
-    _courseArr = [NSMutableArray arrayWithObjects:@"C语言",@"C++面向对象编程",@"J2EE编程技术",@"网路编程技术",@"大学英语",@"汇编基础",@"数据结构",@"计算机基础",@"计算机网络", nil];
     _tableView.sectionIndexColor = [UIColor grayColor];
     
 //    _tableView.sectionIndexTrackingBackgroundColor = [UIColor blackColor];
-    
-    _courseTagArr = [NSMutableArray array];
-    
-    for (int i=0; i<_courseArr.count; i++)
-    {
-        [_courseTagArr addObject:@"0"];
-    }
-    
-    _suoYingArr = [NSMutableArray array];
-    
-    
-    NSArray *sequenceArr = [_courseArr sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-        return (NSComparisonResult)[obj1 compare:obj2 options:NSNumericSearch];
-    }];
-    
-    _courseArr = [NSMutableArray arrayWithArray:sequenceArr];
-    NSLog(@"___%@",_courseArr);
-    
-    NSMutableArray *fristArr = [NSMutableArray array];
-    
-    for (int i = 0; i < _courseArr.count;i++)
-    {
-        [fristArr addObject:[self firstCharactor:_courseArr[i]]];
-    }
-    NSLog(@"___%@",fristArr);
-    
-    for (int i = 0 ; i< fristArr.count; i++)
-    {
-        if ([fristArr[i] isEqualToString:@""])
-        {
-            
-        }
-    }
     
     
     // Do any additional setup after loading the view from its nib.
@@ -86,7 +47,17 @@
 
 - (void)loadData
 {
-    [NetHelper postRequest:kURL_selectable withActionStr:@"history" withDataStr:[NSString stringWithFormat:@"{\"userid\":\"%@\"}",self.userid] withNetBlock:^(id responseObject) {
+    [NetHelper postRequest:kURL_selectable withActionStr:@"history" withDataStr:[NSString stringWithFormat:@"{\"userid\":\"%@\"}",[[UserManager new] getUserID]] withNetBlock:^(id responseObject) {
+        _courseArr = [NSMutableArray arrayWithArray:[responseObject objectForKey:@"teachingschedules"]];
+        _courseTagArr = [NSMutableArray array];
+        
+        for (int i=0; i<_courseArr.count; i++)
+        {
+            [_courseTagArr addObject:@"0"];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_tableView reloadData];
+        });
         
     } withErrBlock:^(id err) {
         
@@ -111,35 +82,53 @@
 {
     [AlertNotice showAlert:3 withTitle:nil withContent:[NSString stringWithFormat:@"共退选%lu门课程，是否确定退选",(unsigned long)_cancelDic.count] withVC:self clickLeftBtn:^{
         //确定退选
-        MBProgressHUD *hub =[[MBProgressHUD alloc] initWithView:self.view];
-        [self.view addSubview:hub];
-        hub.delegate = self;
-        hub.labelText = @"加载中...";
-        [hub showWhileExecuting:@selector(commitCancal) onTarget:self withObject:nil animated:YES];
+//        MBProgressHUD *hub =[[MBProgressHUD alloc] initWithView:self.view];
+//        [self.view addSubview:hub];
+//        hub.delegate = self;
+//        hub.labelText = @"加载中...";
+//        [hub showWhileExecuting:@selector(commitCancal) onTarget:self withObject:nil animated:YES];
         
-        _rightBar.enabled = NO;
+        NSLog(@"%@",_cancelDic);
         
         for (NSString *str in [_cancelDic allKeys])
         {
-            [_courseArr removeObjectAtIndex:[str intValue]];
+            NSLog(@"str   %@",str);
+            [NetHelper postRequest:kURL_selectCollege withActionStr:@"giveup" withDataStr:[NSString stringWithFormat:@"{\"teachingscheduleid\":\"%@\",\"userid\":\"%@\"}",[_cancelDic objectForKey:str],self.userid] withNetBlock:^(id responseObject) {
+                NSLog(@"_____%@",responseObject);
+                if ([[responseObject objectForKey:@"errMsg"] isEqualToString:@""])
+                {
+                    [AlertNotice showAlertNotType:@"提示" withContent:@"已成功退选" withVC:self clickLeftBtn:^{
+                        _rightBar.enabled = NO;
+                        
+                        for (NSString *str in [_cancelDic allKeys])
+                        {
+                            [_courseArr removeObjectAtIndex:[str intValue]];
+                        }
+                        
+                        [_cancelDic removeAllObjects];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [_tableView reloadData];
+                        });
+                        
+                    }];
+                   
+                }
+                else
+                {
+                    [AlertNotice showAlertNotType:@"提示" withContent:@"请求失败" withVC:self clickLeftBtn:nil];
+                }
+                
+            } withErrBlock:^(id err) {
+                
+            }];
         }
         
-        [_cancelDic removeAllObjects];
-        [_tableView reloadData];
+        
         
     } clickRightBtn:^{
         
     }];
     
-}
-- (void)commitCancal
-{
-    
-//    [NetHelper postRequest:kURL_selectCollege withActionStr:@"giveup" withDataStr:<#(NSString *)#> withNetBlock:^(id responseObject) {
-//        
-//    } withErrBlock:^(id err) {
-//        
-//    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -164,7 +153,7 @@
         }
         
         
-        [_cancelDic setObject:@"" forKey:[NSString stringWithFormat:@"%ld",(long)btn.tag]];
+        [_cancelDic setObject:[_courseArr[btn.tag] objectForKey:@"teachingscheduleid"] forKey:[NSString stringWithFormat:@"%ld",(long)btn.tag]];
         if (_cancelDic.count==0)
         {
             _rightBar.enabled = NO;
@@ -238,6 +227,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     self.tabBarController.tabBar.hidden = NO;
+    MBProgressHUD *hub =[[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:hub];
+    hub.delegate = self;
+    hub.labelText = @"加载中...";
+    [hub showWhileExecuting:@selector(loadData) onTarget:self withObject:nil animated:YES];
 }
 
 
@@ -286,7 +280,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     CancelCourseView *vi = [[NSBundle mainBundle] loadNibNamed:@"CancelCourseView" owner:nil options:nil][0];
-    vi.CourseNameLab.text = _courseArr[section];
+    vi.CourseNameLab.text = [_courseArr[section] objectForKey:@"coursename"];
     vi.headerBtn.tag = section;
     [vi.headerBtn addTarget:self action:@selector(headerBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     vi.tagBtn.tag = section;
@@ -366,6 +360,23 @@
     {
         cell = [[NSBundle mainBundle] loadNibNamed:@"CourseInfoTableViewCell" owner:nil options:nil][0];
     }
+    NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
+    cell.collegeName.text = [_courseArr[indexPath.section] objectForKey:@"collegename"];
+    cell.maiorName.text = [_courseArr[indexPath.section] objectForKey:@"majorname"];
+    cell.openTime.text = [NSString stringWithFormat:@"第%@周", [numFormatter stringFromNumber:[_courseArr[indexPath.section] objectForKey:@"startweek"]]];
+    cell.gradeyear.text = [_courseArr[indexPath.section]objectForKey:@"gradeyear"];
+    cell.totalhour.text = [numFormatter stringFromNumber:[_courseArr[indexPath.section]objectForKey:@"totalhour"]];
+    NSString *clasStr = [NSString string];
+    
+    for (int i=0; i<[[_courseArr[indexPath.section] objectForKey:@"class"]count]; i++)
+    {
+        NSLog(@"%@",clasStr);
+        
+        clasStr = [clasStr stringByAppendingString:[numFormatter stringFromNumber:[[_courseArr[indexPath.row] objectForKey:@"class"][i] objectForKey:@"no"]]];
+        clasStr = [clasStr stringByAppendingString:@"班"];
+    }
+    
+    cell.courseClass.text = clasStr;
     cell.selectionStyle = UITableViewCellSelectionStyleDefault;
     return cell;
 }

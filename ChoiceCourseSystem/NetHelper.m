@@ -61,12 +61,12 @@
 
 + (void)postRequest:(NSString *)urlStr withActionStr:(NSString *)action withDataStr:(NSString *)dataStr withNetBlock:(netBlock)block withErrBlock:(errBlock)errblock
 {
-    NSURLSession *session = [NSURLSession sharedSession];
+//    NSURLSession *session = [NSURLSession sharedSession];
     
     //2.根据会话对象创建task
     NSURL *url = [NSURL URLWithString:urlStr];
     //3.创建可变的请求对象
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:5.0];
     //4.修改请求方法为POST
     request.HTTPMethod = @"POST";
     
@@ -85,13 +85,28 @@
      29                 response：响应头信息，主要是对服务器端的描述
      30                 error：错误信息，如果请求失败，则error有值
      31      */
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-        NSLog(@"%@",dict);
-        block(dict);
-    }];
-    //7.执行任务
-    [dataTask resume];
+//    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+//        NSLog(@"%@",dict);
+//        block(dict);
+//    }];
+//    //7.执行任务
+//    [dataTask resume];
+    
+    
+    NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    if (received)
+    {
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:received options:NSJSONReadingMutableContainers error:nil];
+        block(dic);
+        NSLog(@"%@",dic);
+    }
+    else
+    {
+        block(@"send overtime");
+    }
+   
+    
 }
 
 
