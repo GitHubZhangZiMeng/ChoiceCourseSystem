@@ -411,8 +411,8 @@
 		0A8E152C1C8A98EB005200AB /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				C1E1418A1CCDE9EC00AA7D90 /* NewController */,
 				C184BE181CB77AB900C844FF /* SuperController */,
+				C1E1418A1CCDE9EC00AA7D90 /* NewController */,
 				C1DBB6411CB5224D00C478A7 /* PersonVC */,
 				C1DBB6401CB5223A00C478A7 /* CancelCourseVC */,
 				C1DBB63F1CB5222C00C478A7 /* ChoiseCourseVC */,
@@ -1085,7 +1085,7 @@
 				INFOPLIST_FILE = ChoiceCourseSystem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ChoiseCourse;
+				PRODUCT_BUNDLE_IDENTIFIER = zzm.ChoiseCourse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1101,7 +1101,7 @@
 				INFOPLIST_FILE = ChoiceCourseSystem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ChoiseCourse;
+				PRODUCT_BUNDLE_IDENTIFIER = zzm.ChoiseCourse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

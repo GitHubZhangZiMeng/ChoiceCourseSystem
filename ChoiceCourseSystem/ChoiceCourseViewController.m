@@ -27,7 +27,6 @@
     //请求学院数据
     
     
-//    self.collegeArr = [NSArray arrayWithObjects:@"大气科学学院",@"资源环境学院",@"电子工程学院",@"通信工程学院",@"控制工程学院",@"计算机学院",@"软件工程学院",@"信息安全工程学院",@"应用数学学院",@"管理学院",@"外国语学院",@"光电技术学院",@"文化艺术学院",nil];
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [NetHelper postRequest:kURL_college withActionStr:@"list" withDataStr:[NSString stringWithFormat:@"{\"collegename\":\"\"}"] withNetBlock:^(id responseObject) {
             //查询所有学院
@@ -69,7 +68,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"%d",[self.collegeArr count]);
+    NSLog(@"%ld",[self.collegeArr count]);
     return [self.collegeArr count];
 }
 

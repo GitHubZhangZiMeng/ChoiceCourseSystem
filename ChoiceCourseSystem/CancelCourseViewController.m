@@ -26,11 +26,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title=@"退选课程";
     
-    _rightBar = [[UIBarButtonItem alloc] initWithTitle:@"确定退选" style:UIBarButtonItemStyleDone target:self action:@selector(rightClick)];
-    _rightBar.enabled = NO;
-    self.navigationItem.rightBarButtonItem = _rightBar;
+    if (self.selectableDic)
+    {
+        self.navigationController.title = [self.selectableDic objectForKey:@"collegename"];
+        _rightBar = [[UIBarButtonItem alloc] initWithTitle:@"确定选择" style:UIBarButtonItemStyleDone target:self action:@selector(rightClick)];
+        _rightBar.enabled = NO;
+        self.navigationItem.rightBarButtonItem = _rightBar;
+    }
+    else
+    {
+        self.navigationItem.title=@"退选课程";
+        _rightBar = [[UIBarButtonItem alloc] initWithTitle:@"确定退选" style:UIBarButtonItemStyleDone target:self action:@selector(rightClick)];
+        _rightBar.enabled = NO;
+        self.navigationItem.rightBarButtonItem = _rightBar;
+        
+    }
+    
     
     
     
@@ -80,55 +92,109 @@
 
 - (void)rightClick
 {
-    [AlertNotice showAlert:3 withTitle:nil withContent:[NSString stringWithFormat:@"共退选%lu门课程，是否确定退选",(unsigned long)_cancelDic.count] withVC:self clickLeftBtn:^{
-        //确定退选
-//        MBProgressHUD *hub =[[MBProgressHUD alloc] initWithView:self.view];
-//        [self.view addSubview:hub];
-//        hub.delegate = self;
-//        hub.labelText = @"加载中...";
-//        [hub showWhileExecuting:@selector(commitCancal) onTarget:self withObject:nil animated:YES];
-        
-        NSLog(@"%@",_cancelDic);
-        
-        for (NSString *str in [_cancelDic allKeys])
-        {
-            NSLog(@"str   %@",str);
-            [NetHelper postRequest:kURL_selectCollege withActionStr:@"giveup" withDataStr:[NSString stringWithFormat:@"{\"teachingscheduleid\":\"%@\",\"userid\":\"%@\"}",[_cancelDic objectForKey:str],self.userid] withNetBlock:^(id responseObject) {
-                NSLog(@"_____%@",responseObject);
-                if ([[responseObject objectForKey:@"errMsg"] isEqualToString:@""])
-                {
-                    [AlertNotice showAlertNotType:@"提示" withContent:@"已成功退选" withVC:self clickLeftBtn:^{
-                        _rightBar.enabled = NO;
-                        
-                        for (NSString *str in [_cancelDic allKeys])
-                        {
-                            [_courseArr removeObjectAtIndex:[str intValue]];
-                        }
-                        
-                        [_cancelDic removeAllObjects];
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            [_tableView reloadData];
-                        });
-                        
-                    }];
-                   
-                }
-                else
-                {
-                    [AlertNotice showAlertNotType:@"提示" withContent:@"请求失败" withVC:self clickLeftBtn:nil];
-                }
-                
-            } withErrBlock:^(id err) {
-                
-            }];
-        }
-        
-        
-        
-    } clickRightBtn:^{
-        
-    }];
     
+    if (self.selectableDic)
+    {
+        [AlertNotice showAlert:3 withTitle:nil withContent:[NSString stringWithFormat:@"共选择%lu门课程，是否确定选择",(unsigned long)_cancelDic.count] withVC:self clickLeftBtn:^{
+            //确定退选
+            //        MBProgressHUD *hub =[[MBProgressHUD alloc] initWithView:self.view];
+            //        [self.view addSubview:hub];
+            //        hub.delegate = self;
+            //        hub.labelText = @"加载中...";
+            //        [hub showWhileExecuting:@selector(commitCancal) onTarget:self withObject:nil animated:YES];
+            
+            NSLog(@"%@",_cancelDic);
+            
+            for (NSString *str in [_cancelDic allKeys])
+            {
+                NSLog(@"str   %@",str);
+                [NetHelper postRequest:kURL_selectCollege withActionStr:@"select" withDataStr:[NSString stringWithFormat:@"{\"teachingscheduleid\":\"%@\",\"userid\":\"%@\"}",[_cancelDic objectForKey:str],[[UserManager new] getUserID]] withNetBlock:^(id responseObject) {
+                    NSLog(@"_____%@",responseObject);
+                    if ([[responseObject objectForKey:@"errMsg"] isEqualToString:@""])
+                    {
+                        [AlertNotice showAlertNotType:@"提示" withContent:@"已成功选择" withVC:self clickLeftBtn:^{
+                            _rightBar.enabled = NO;
+                            
+                            for (NSString *str in [_cancelDic allKeys])
+                            {
+                                [_courseArr removeObjectAtIndex:[str intValue]];
+                            }
+                            
+                            [_cancelDic removeAllObjects];
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [_tableView reloadData];
+                            });
+                            
+                        }];
+                        
+                    }
+                    else
+                    {
+                        [AlertNotice showAlertNotType:@"提示" withContent:@"请求失败" withVC:self clickLeftBtn:nil];
+                    }
+                    
+                } withErrBlock:^(id err) {
+                    
+                }];
+            }
+            
+            
+            
+        } clickRightBtn:^{
+            
+        }];
+    }
+    else
+    {
+        [AlertNotice showAlert:3 withTitle:nil withContent:[NSString stringWithFormat:@"共退选%lu门课程，是否确定退选",(unsigned long)_cancelDic.count] withVC:self clickLeftBtn:^{
+            //确定退选
+            //        MBProgressHUD *hub =[[MBProgressHUD alloc] initWithView:self.view];
+            //        [self.view addSubview:hub];
+            //        hub.delegate = self;
+            //        hub.labelText = @"加载中...";
+            //        [hub showWhileExecuting:@selector(commitCancal) onTarget:self withObject:nil animated:YES];
+            
+            NSLog(@"%@",_cancelDic);
+            
+            for (NSString *str in [_cancelDic allKeys])
+            {
+                NSLog(@"str   %@",str);
+                [NetHelper postRequest:kURL_selectCollege withActionStr:@"giveup" withDataStr:[NSString stringWithFormat:@"{\"teachingscheduleid\":\"%@\",\"userid\":\"%@\"}",[_cancelDic objectForKey:str],self.userid] withNetBlock:^(id responseObject) {
+                    NSLog(@"_____%@",responseObject);
+                    if ([[responseObject objectForKey:@"errMsg"] isEqualToString:@""])
+                    {
+                        [AlertNotice showAlertNotType:@"提示" withContent:@"已成功退选" withVC:self clickLeftBtn:^{
+                            _rightBar.enabled = NO;
+                            
+                            for (NSString *str in [_cancelDic allKeys])
+                            {
+                                [_courseArr removeObjectAtIndex:[str intValue]];
+                            }
+                            
+                            [_cancelDic removeAllObjects];
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [_tableView reloadData];
+                            });
+                            
+                        }];
+                        
+                    }
+                    else
+                    {
+                        [AlertNotice showAlertNotType:@"提示" withContent:@"请求失败" withVC:self clickLeftBtn:nil];
+                    }
+                    
+                } withErrBlock:^(id err) {
+                    
+                }];
+            }
+            
+            
+            
+        } clickRightBtn:^{
+            
+        }];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -226,12 +292,40 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    self.tabBarController.tabBar.hidden = NO;
-    MBProgressHUD *hub =[[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:hub];
-    hub.delegate = self;
-    hub.labelText = @"加载中...";
-    [hub showWhileExecuting:@selector(loadData) onTarget:self withObject:nil animated:YES];
+    if(self.selectableDic)
+    {
+        _courseArr= [NSMutableArray array];
+        for (int i=0; i < self.selctableArr.count; i++)
+        {
+            if ([[[self.selctableArr[i] objectForKey:@"time"] componentsSeparatedByString:@" "][0] isEqualToString:[self.selectableDic objectForKey:@"time"]]&& [[self.selctableArr[i] objectForKey:@"collegename"] isEqualToString:[self.selectableDic objectForKey:@"collegename"]])
+            {
+                [_courseArr addObject:self.selctableArr[i]];
+            }
+        }
+        NSLog(@"%@",_courseArr);
+        
+//        _courseArr = [NSMutableArray arrayWithArray:self.selctableArr];
+        _courseTagArr = [NSMutableArray array];
+        
+        for (int i=0; i<_courseArr.count; i++)
+        {
+            [_courseTagArr addObject:@"0"];
+        }
+        
+        [_tableView reloadData];
+        
+    }
+    else
+    {
+        self.tabBarController.tabBar.hidden = NO;
+        MBProgressHUD *hub =[[MBProgressHUD alloc] initWithView:self.view];
+        [self.view addSubview:hub];
+        hub.delegate = self;
+        hub.labelText = @"加载中...";
+        [hub showWhileExecuting:@selector(loadData) onTarget:self withObject:nil animated:YES];
+    }
+        
+
 }
 
 

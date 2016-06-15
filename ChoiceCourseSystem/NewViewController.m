@@ -9,6 +9,7 @@
 #import "NewViewController.h"
 #import "NewTableViewCell.h"
 #import "MBProgressHUD.h"
+#import "CancelCourseViewController.h"
 
 @interface NewViewController ()<UITableViewDelegate,UITableViewDataSource,MBProgressHUDDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *newsTableview;
@@ -34,6 +35,7 @@
 }
 - (void)viewWillAppear:(BOOL)animated
 {
+    self.tabBarController.tabBar.hidden = NO;
     MBProgressHUD *hub = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:hub];
     hub.delegate = self;
@@ -194,11 +196,21 @@
             {
                 cell = [[NSBundle mainBundle] loadNibNamed:@"NewTableViewCell" owner:nil options:nil][0];
             }
-            cell.timeLab1.text = [_collegeArr[indexPath.row] objectForKey:@"time"];
+            if([[_collegeArr[indexPath.row] objectForKey:@"time"] length] > 4)
+            {
+                cell.timeLab1.text = [[_collegeArr[indexPath.row] objectForKey:@"time"] substringFromIndex:5];
+            }
+            else
+            {
+                cell.timeLab1.text = @"5/3";
+            }
+            
             cell.collegeName1.text = [_collegeArr[indexPath.row] objectForKey:@"collegename"];
+            cell.infoBtn1.tag = indexPath.row;
+            [cell.infoBtn1 addTarget:self action:@selector(infoClick:) forControlEvents:UIControlEventTouchUpInside];
             for (int i = 0; i<_newsArr.count; i++)
             {
-                if ([cell.collegeName1.text isEqualToString:[_newsArr[i] objectForKey:@"collegename"]]&&[cell.timeLab1.text isEqualToString:[[_newsArr[i] objectForKey:@"time"] componentsSeparatedByString:@" "][0]])
+                if ([cell.collegeName1.text isEqualToString:[_newsArr[i] objectForKey:@"collegename"]]&&[[_collegeArr[indexPath.row] objectForKey:@"time"] isEqualToString:[[_newsArr[i] objectForKey:@"time"] componentsSeparatedByString:@" "][0]])
                 {
                     cell.fristLab1.text = [_newsArr[i] objectForKey:@"coursename"];
                 }
@@ -212,12 +224,21 @@
             {
                 cell = [[NSBundle mainBundle] loadNibNamed:@"NewTableViewCell" owner:nil options:nil][1];
             }
-            cell.timeLab2.text = [_collegeArr[indexPath.row] objectForKey:@"time"];
+            if([[_collegeArr[indexPath.row] objectForKey:@"time"] length] > 4)
+            {
+                cell.timeLab2.text = [[_collegeArr[indexPath.row] objectForKey:@"time"] substringFromIndex:5];
+            }
+            else
+            {
+                cell.timeLab2.text = @"5/3";
+            }
             cell.collegeName2.text = [_collegeArr[indexPath.row] objectForKey:@"collegename"];
+            cell.infoBtn2.tag = indexPath.row;
+            [cell.infoBtn2 addTarget:self action:@selector(infoClick:) forControlEvents:UIControlEventTouchUpInside];
             int haveCourseNum = 0;
             for (int i = 0; i<_newsArr.count; i++)
             {
-                if ([cell.collegeName2.text isEqualToString:[_newsArr[i] objectForKey:@"collegename"]]&&[cell.timeLab2.text isEqualToString:[[_newsArr[i] objectForKey:@"time"] componentsSeparatedByString:@" "][0]])
+                if ([cell.collegeName2.text isEqualToString:[_newsArr[i] objectForKey:@"collegename"]]&&[[_collegeArr[indexPath.row] objectForKey:@"time"] isEqualToString:[[_newsArr[i] objectForKey:@"time"] componentsSeparatedByString:@" "][0]])
                 {
                     haveCourseNum ++;
                     if (haveCourseNum==1)
@@ -240,12 +261,22 @@
             {
                 cell = [[NSBundle mainBundle] loadNibNamed:@"NewTableViewCell" owner:nil options:nil][2];
             }
-            cell.timeLab3.text = [_collegeArr[indexPath.row] objectForKey:@"time"];
+            if([[_collegeArr[indexPath.row] objectForKey:@"time"] length] > 4)
+            {
+                cell.timeLab3.text = [[_collegeArr[indexPath.row] objectForKey:@"time"] substringFromIndex:5];
+            }
+            else
+            {
+                cell.timeLab3.text = @"5/3";
+            }
+            cell.timeLab3.text = [[_collegeArr[indexPath.row] objectForKey:@"time"] substringFromIndex:5];
             cell.collegeName3.text = [_collegeArr[indexPath.row] objectForKey:@"collegename"];
+            cell.infoBtn3.tag = indexPath.row;
+            [cell.infoBtn3 addTarget:self action:@selector(infoClick:) forControlEvents:UIControlEventTouchUpInside];
             int haveCourseNum = 0;
             for (int i = 0; i<_newsArr.count; i++)
             {
-                if ([cell.collegeName3.text isEqualToString:[_newsArr[i] objectForKey:@"collegename"]]&&[cell.timeLab3.text isEqualToString:[[_newsArr[i] objectForKey:@"time"] componentsSeparatedByString:@" "][0]])
+                if ([cell.collegeName3.text isEqualToString:[_newsArr[i] objectForKey:@"collegename"]]&&[[_collegeArr[indexPath.row] objectForKey:@"time"] isEqualToString:[[_newsArr[i] objectForKey:@"time"] componentsSeparatedByString:@" "][0]])
                 {
                     haveCourseNum ++;
                     if (haveCourseNum==1)
@@ -273,6 +304,17 @@
     }
     
     return cell;
+}
+
+- (void)infoClick:(UIButton *)sender
+{
+    CancelCourseViewController *vc = [[CancelCourseViewController alloc] init];
+    vc.selectableDic = _collegeArr[sender.tag];
+    vc.selctableArr = _newsArr;
+    NSLog(@"%@",_collegeArr[sender.tag]);
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    
 }
 
 

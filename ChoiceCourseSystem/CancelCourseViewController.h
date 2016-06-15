@@ -12,4 +12,8 @@
 
 @property (nonatomic, strong) NSString *userid;
 
+@property (nonatomic, strong) NSDictionary *selectableDic;
+
+@property (nonatomic, strong) NSArray *selctableArr;
+
 @end

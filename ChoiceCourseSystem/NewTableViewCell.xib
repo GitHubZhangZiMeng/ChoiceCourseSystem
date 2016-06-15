@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -136,9 +136,7 @@
                 <outlet property="collegeName1" destination="Zio-77-QK7" id="60D-8C-UT9"/>
                 <outlet property="fristLab1" destination="xQR-Bk-7Bw" id="q8o-Fz-MoH"/>
                 <outlet property="infoBtn1" destination="nWf-db-tJm" id="J1T-Vl-ZUX"/>
-                <outlet property="secondLab3" destination="4Te-nH-KDc" id="M9V-ZW-yDo"/>
                 <outlet property="timeLab1" destination="g1w-Fd-kca" id="9tK-DF-tvZ"/>
-                <outlet property="trirdLab3" destination="axK-98-H4W" id="kd8-VO-vVu"/>
             </connections>
             <point key="canvasLocation" x="248" y="925.5"/>
         </tableViewCell>
@@ -466,7 +464,9 @@
                 <outlet property="collegeName3" destination="533-OG-Iej" id="JNU-qm-UvK"/>
                 <outlet property="fristLab3" destination="HUc-NO-Pxh" id="CAg-4H-bX5"/>
                 <outlet property="infoBtn3" destination="Vip-sJ-iR6" id="chm-AA-X96"/>
+                <outlet property="secondLab3" destination="4Te-nH-KDc" id="we7-Oz-Zaf"/>
                 <outlet property="timeLab3" destination="iJv-SA-HgT" id="9t8-yg-aOU"/>
+                <outlet property="trirdLab3" destination="axK-98-H4W" id="r9c-ig-unC"/>
             </connections>
             <point key="canvasLocation" x="248" y="236.5"/>
         </tableViewCell>
